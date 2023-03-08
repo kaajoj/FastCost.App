@@ -10,22 +10,32 @@
             VerticalOptions="Center">
 
             <Label
-                Text="Add cost"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <StackLayout>
-                <Button Text="+" FontSize="Large" BackgroundColor="Lime" 
-                        TextColor="White" CornerRadius="40" WidthRequest="80" HeightRequest="80" />
-            </StackLayout>
-
-            <Label
                 Text="Expenses in {March}"
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="test"
                 FontSize="18"
+                HorizontalOptions="Center"/>
+
+            <Label
+                Text="Add cost"
+                SemanticProperties.HeadingLevel="Level1"
+                SemanticProperties.Description="Add cost"
+                FontSize="32"
                 HorizontalOptions="Center" />
+
+            <StackLayout>
+                <Button 
+                    x:Name="CostBtn"
+                    Text="+" 
+                    FontSize="Large" 
+                    BackgroundColor="Lime" 
+                    TextColor="White" 
+                    CornerRadius="40" 
+                    WidthRequest="80" 
+                    HeightRequest="80" 
+                    Clicked="OnCostClicked"
+                    HorizontalOptions="Center"/>
+            </StackLayout>
 
         </VerticalStackLayout>
     </ScrollView>
