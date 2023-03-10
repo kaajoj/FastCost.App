@@ -17,8 +17,9 @@ public partial class MainPage : ContentPage
         {
             if (!string.IsNullOrEmpty(e.NewTextValue))
             {
-                var enteredCost = Convert.ToDecimal(e.NewTextValue);        // TODO: try parse
-
+                Decimal.TryParse(e.NewTextValue, out var enteredCost);
+                // var enteredCost = Convert.ToDecimal(e.NewTextValue);
+                
                 if (enteredCost > 0)
                 {
                     CostBtn.IsEnabled = true;
@@ -26,7 +27,7 @@ public partial class MainPage : ContentPage
                 }
                 else
                 {
-                    enteredCost = 0;
+                    // enteredCost = 0;
                 }
             }
             else
