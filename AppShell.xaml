@@ -21,6 +21,10 @@
         <ShellContent
             Title="Analysis"
             ContentTemplate="{DataTemplate local:MainPage}"
+        Icon="{OnPlatform 'icon_about.png', iOS='icon_about_ios.png', MacCatalyst='icon_about_ios.png'}" />        
+        <ShellContent
+            Title="CostPage"
+            ContentTemplate="{DataTemplate local:CostPage}"
         Icon="{OnPlatform 'icon_about.png', iOS='icon_about_ios.png', MacCatalyst='icon_about_ios.png'}" />
     </TabBar>
 
