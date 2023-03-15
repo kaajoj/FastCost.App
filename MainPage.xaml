@@ -48,6 +48,54 @@
                     HorizontalOptions="Center"/>
             </StackLayout>
 
+            <Grid RowDefinitions="100, Auto, *"
+                  ColumnDefinitions=".75*, .25*"
+                  Padding="10"
+                  RowSpacing="10"
+                  ColumnSpacing="10">
+
+                <Image Grid.ColumnSpan="2"
+                       Source="icon_about.png"
+                       Background="Transparent"/>
+
+                <Entry Placeholder="Enter cost"
+                       Grid.Row="1"/>
+
+                <Button Text="Add"
+                        Grid.Row="1"
+                        Grid.Column="1"/>
+
+                <CollectionView Grid.Row="2" Grid.ColumnSpan="2">
+                    <CollectionView.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>123 test</x:String>
+                            <x:String>223 test</x:String>
+                            <x:String>323 test</x:String>
+                        </x:Array>
+                    </CollectionView.ItemsSource>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Delete"
+                                                   BackgroundColor="Red"/>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <Grid Padding="0,5">
+                                    <Frame>
+                                        <Label Text="{Binding .}"
+                                               FontSize="24"/>
+                                    </Frame>
+                                </Grid>
+                            </SwipeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+            </Grid>
+
         </VerticalStackLayout>
     </ScrollView>
 
