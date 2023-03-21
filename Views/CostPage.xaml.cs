@@ -2,13 +2,27 @@ namespace FastCost.Views;
 
 public partial class CostPage : ContentPage
 {
-    string _fileName = Path.Combine(FileSystem.AppDataDirectory, "costs.txt");
     public CostPage()
 	{
 		InitializeComponent();
 
-        if (File.Exists(_fileName))
-            TextEditor.Text = File.ReadAllText(_fileName);
+        string appDataPath = FileSystem.AppDataDirectory;
+        string randomFileName = $"{Path.GetRandomFileName()}.costs.txt";
+
+        LoadNote(Path.Combine(appDataPath, randomFileName));
+    }
+    private void LoadNote(string fileName)
+    {
+        Models.Cost costModel = new Models.Cost();
+        costModel.FileName = fileName;
+
+        if (File.Exists(fileName))
+        {
+            costModel.Date = File.GetCreationTime(fileName);
+            costModel.Text = File.ReadAllText(fileName);
+        }
+
+        BindingContext = costModel;
     }
 
     private void SaveButton_Clicked(object sender, EventArgs e)
