@@ -3,7 +3,7 @@
     x:Class="FastCost.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:FastCost"
+    xmlns:views="clr-namespace:FastCost.Views"
     Shell.FlyoutBehavior="Disabled">
 
     <!-- <ShellContent -->
@@ -14,17 +14,17 @@
     <TabBar>
         <ShellContent
             Title="Costs"
-            ContentTemplate="{DataTemplate local:MainPage}"
+            ContentTemplate="{DataTemplate views:MainPage}"
             Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
         <!-- iOS to remove -->
         <!-- TODO: change MainPage to new analysis page --> 
-        <ShellContent
-            Title="Analysis"
-            ContentTemplate="{DataTemplate local:MainPage}"
-        Icon="{OnPlatform 'icon_about.png', iOS='icon_about_ios.png', MacCatalyst='icon_about_ios.png'}" />        
+        <!-- <ShellContent -->
+        <!--     Title="Analysis" -->
+        <!--     ContentTemplate="{DataTemplate local:MainPage}" -->
+        <!-- Icon="{OnPlatform 'icon_about.png', iOS='icon_about_ios.png', MacCatalyst='icon_about_ios.png'}" />         -->
         <ShellContent
             Title="CostPage"
-            ContentTemplate="{DataTemplate local:CostPage}"
+            ContentTemplate="{DataTemplate views:CostPage}"
         Icon="{OnPlatform 'icon_about.png', iOS='icon_about_ios.png', MacCatalyst='icon_about_ios.png'}" />
     </TabBar>
 

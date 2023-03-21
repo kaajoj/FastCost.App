@@ -1,4 +1,4 @@
-namespace FastCost;
+namespace FastCost.Views;
 
 public partial class CostPage : ContentPage
 {

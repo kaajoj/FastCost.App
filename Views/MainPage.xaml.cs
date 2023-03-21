@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices.JavaScript;
-
-namespace FastCost;
+﻿namespace FastCost.Views;
 
 public partial class MainPage : ContentPage
 {
