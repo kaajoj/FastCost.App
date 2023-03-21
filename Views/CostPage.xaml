@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:FastCost.Models"
              x:Class="FastCost.Views.CostPage"
              Title="CostPage">
+    <ContentPage.BindingContext>
+        <models:Cost />
+    </ContentPage.BindingContext>
+
+
     <VerticalStackLayout Spacing="10" Margin="5">
+        
+        <!-- // test -->
+        <Label FontSize="22" FontAttributes="Bold" Text="{Binding Title}" VerticalOptions="End" />
+        <Label FontSize="22" Text="{Binding Version}" VerticalOptions="End" />
+        <Label Text="{Binding Message}" />
+        <!-- // test -->
+
         <Editor x:Name="TextEditor"
                 Placeholder="Enter your note"
+                Text="{Binding Text}"
                 HeightRequest="100" />
 
         <Grid ColumnDefinitions="*,*" ColumnSpacing="4">
