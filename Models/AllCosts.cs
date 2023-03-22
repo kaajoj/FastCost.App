@@ -23,7 +23,7 @@ namespace FastCost.Models
                 .Select(fileName => new Cost()
                 {
                     FileName = fileName,
-                    Text = File.ReadAllText(fileName),
+                    Description = File.ReadAllText(fileName),
                     Date = File.GetCreationTime(fileName)
                 })
                 // With the final collection of costs, order them by date

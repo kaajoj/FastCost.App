@@ -3,24 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:FastCost.Models"
              x:Class="FastCost.Views.CostPage"
-             Title="CostPage">
+             Title="Cost">
     <ContentPage.BindingContext>
         <models:Cost />
     </ContentPage.BindingContext>
 
 
-    <VerticalStackLayout Spacing="10" Margin="5">
+    <VerticalStackLayout Spacing="10" Margin="10">
         
         <!-- // test -->
-        <Label FontSize="22" FontAttributes="Bold" Text="{Binding Title}" VerticalOptions="End" />
-        <Label FontSize="22" Text="{Binding Version}" VerticalOptions="End" />
-        <Label Text="{Binding Message}" />
+        <!-- <Label FontSize="22" FontAttributes="Bold" Text="{Binding Title}" VerticalOptions="End" /> -->
+        <!-- <Label FontSize="22" Text="{Binding Version}" VerticalOptions="End" /> -->
         <!-- // test -->
 
-        <Editor x:Name="TextEditor"
-                Placeholder="Enter your note"
-                Text="{Binding Text}"
-                HeightRequest="100" />
+        <Label Text="{Binding Value}"
+               FontSize="28" 
+               FontAttributes="Bold"  
+               HorizontalTextAlignment="Center"/>
+
+        <Editor x:Name="DescriptionEditor"
+                Placeholder="Enter your cost description"
+                Text="{Binding Description}"
+                FontSize="18"
+                HeightRequest="80" />
 
         <Grid ColumnDefinitions="*,*" ColumnSpacing="4">
             <Button Text="Save"

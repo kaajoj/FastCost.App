@@ -24,7 +24,7 @@
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <StackLayout>
-                    <Label Text="{Binding Text}" FontSize="22"/>
+                    <Label Text="{Binding Description}" FontSize="22"/>
                     <Label Text="{Binding Date}" FontSize="14" TextColor="Silver"/>
                 </StackLayout>
             </DataTemplate>

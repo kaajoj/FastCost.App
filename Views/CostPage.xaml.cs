@@ -19,13 +19,15 @@ public partial class CostPage : ContentPage
     }
     private void LoadCost(string fileName)
     {
-        Models.Cost costModel = new Models.Cost();
-        costModel.FileName = fileName;
+        var costModel = new Models.Cost
+        {
+            FileName = fileName
+        };
 
         if (File.Exists(fileName))
         {
             costModel.Date = File.GetCreationTime(fileName);
-            costModel.Text = File.ReadAllText(fileName);
+            costModel.Description = File.ReadAllText(fileName);
         }
 
         BindingContext = costModel;
@@ -34,7 +36,7 @@ public partial class CostPage : ContentPage
     private async void SaveButton_Clicked(object sender, EventArgs e)
     {
         if (BindingContext is Models.Cost cost)
-            File.WriteAllText(cost.FileName, TextEditor.Text);
+            File.WriteAllText(cost.FileName, DescriptionEditor.Text);
 
         await Shell.Current.GoToAsync("..");
     }
