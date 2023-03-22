@@ -1,17 +1,23 @@
 namespace FastCost.Views;
 
+[QueryProperty(nameof(ItemId), nameof(ItemId))]
 public partial class CostPage : ContentPage
 {
+    public string ItemId
+    {
+        set { LoadCost(value); }
+    }
+
     public CostPage()
-	{
+	{   
 		InitializeComponent();
 
         string appDataPath = FileSystem.AppDataDirectory;
         string randomFileName = $"{Path.GetRandomFileName()}.costs.txt";
 
-        LoadNote(Path.Combine(appDataPath, randomFileName));
+        LoadCost(Path.Combine(appDataPath, randomFileName));
     }
-    private void LoadNote(string fileName)
+    private void LoadCost(string fileName)
     {
         Models.Cost costModel = new Models.Cost();
         costModel.FileName = fileName;
@@ -25,16 +31,23 @@ public partial class CostPage : ContentPage
         BindingContext = costModel;
     }
 
-    private void SaveButton_Clicked(object sender, EventArgs e)
+    private async void SaveButton_Clicked(object sender, EventArgs e)
     {
-        File.WriteAllText(_fileName, TextEditor.Text);
+        if (BindingContext is Models.Cost cost)
+            File.WriteAllText(cost.FileName, TextEditor.Text);
+
+        await Shell.Current.GoToAsync("..");
     }
 
-    private void DeleteButton_Clicked(object sender, EventArgs e)
+    private async void DeleteButton_Clicked(object sender, EventArgs e)
     {
-        if (File.Exists(_fileName))
-            File.Delete(_fileName);
+        if (BindingContext is Models.Cost cost)
+        {
+            // Delete the file.
+            if (File.Exists(cost.FileName))
+                File.Delete(cost.FileName);
+        }
 
-        TextEditor.Text = string.Empty;
+        await Shell.Current.GoToAsync("..");
     }
 }

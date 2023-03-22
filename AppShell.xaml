@@ -13,19 +13,18 @@
 
     <TabBar>
         <ShellContent
-            Title="Costs"
+            Title="Add cost"
             ContentTemplate="{DataTemplate views:MainPage}"
-            Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
-        <!-- iOS to remove -->
-        <!-- TODO: change MainPage to new analysis page --> 
+            Icon="{OnPlatform 'icon_notes.png'}" />
+        <ShellContent
+            Title="Costs"
+            ContentTemplate="{DataTemplate views:AllCostsPage}"
+        Icon="{OnPlatform 'icon_about.png'}" />
+        <!-- TODO: change MainPage to new analysis page -->
         <!-- <ShellContent -->
         <!--     Title="Analysis" -->
-        <!--     ContentTemplate="{DataTemplate local:MainPage}" -->
-        <!-- Icon="{OnPlatform 'icon_about.png', iOS='icon_about_ios.png', MacCatalyst='icon_about_ios.png'}" />         -->
-        <ShellContent
-            Title="CostPage"
-            ContentTemplate="{DataTemplate views:CostPage}"
-        Icon="{OnPlatform 'icon_about.png', iOS='icon_about_ios.png', MacCatalyst='icon_about_ios.png'}" />
+        <!--     ContentTemplate="{DataTemplate views:MainPage}" -->
+        <!-- Icon="{OnPlatform 'icon_about.png'}" /> -->
     </TabBar>
 
 </Shell>
