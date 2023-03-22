@@ -17,7 +17,7 @@
             ContentTemplate="{DataTemplate views:MainPage}"
             Icon="{OnPlatform 'icon_notes.png'}" />
         <ShellContent
-            Title="Costs"
+            Title="All costs"
             ContentTemplate="{DataTemplate views:AllCostsPage}"
         Icon="{OnPlatform 'icon_about.png'}" />
         <!-- TODO: change MainPage to new analysis page -->

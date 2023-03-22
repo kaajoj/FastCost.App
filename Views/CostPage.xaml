@@ -21,8 +21,14 @@
                FontAttributes="Bold"  
                HorizontalTextAlignment="Center"/>
 
+        <!-- <Editor x:Name="ValueEditor" -->
+        <!--         Placeholder="Enter cost value" -->
+        <!--         Text="{Binding Value}" -->
+        <!--         FontSize="28" -->
+        <!--         HeightRequest="30" /> -->
+
         <Editor x:Name="DescriptionEditor"
-                Placeholder="Enter your cost description"
+                Placeholder="Enter cost description"
                 Text="{Binding Description}"
                 FontSize="18"
                 HeightRequest="80" />

@@ -58,6 +58,7 @@ public partial class MainPage : ContentPage
                 allCosts += enteredCost;
                 SummaryText.Text = $"Expenses in March: {allCosts}";
                 CostText.Text = string.Empty;
+                await Shell.Current.GoToAsync(nameof(CostPage), true);
             }
             catch (ArgumentNullException)
             {
