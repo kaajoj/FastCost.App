@@ -6,9 +6,9 @@ namespace FastCost.Models
     {
         public ObservableCollection<Cost> Costs { get; set; } = new ObservableCollection<Cost>();
 
-        public AllCosts() => LoadNotes();
+        public AllCosts() => LoadCosts();
 
-        public void LoadNotes()
+        public void LoadCosts()
         {
             Costs.Clear();
 

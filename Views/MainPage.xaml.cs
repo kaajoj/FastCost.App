@@ -2,9 +2,10 @@
 
 public partial class MainPage : ContentPage
 {
-	decimal allCosts = 0;
+	decimal _allCosts = 0;
+    public decimal Amount { get; private set; }
 
-	public MainPage()
+    public MainPage()
 	{
 		InitializeComponent();
 	}
@@ -55,18 +56,27 @@ public partial class MainPage : ContentPage
             try
             {
                 var enteredCost = Convert.ToDecimal(CostText.Text);
-                allCosts += enteredCost;
-                SummaryText.Text = $"Expenses in March: {allCosts}";
+                _allCosts += enteredCost;
+                SummaryText.Text = $"Expenses in March: {_allCosts}";
                 CostText.Text = string.Empty;
-                await Shell.Current.GoToAsync(nameof(CostPage), true);
+                Amount = enteredCost;
+                // await Shell.Current.GoToAsync(nameof(CostPage), true);
+                await Shell.Current.GoToAsync($"{(nameof(CostPage))}?param1={Amount.ToString()}", true);
+                // await Navigation.PushModalAsync(new CostPage(Value));
+                // await Navigation.PushAsync(new CostPage
+                // {
+                //     BindingContext = Amount
+                // });
             }
             catch (ArgumentNullException)
             {
                 await DisplayAlert("Unable to add cost", "Cost value was not valid.", "OK");
+                throw;
             }
             catch (Exception)
             {
                 await DisplayAlert("Unable to add cost", "Cost adding failed.", "OK");
+                throw;
             }
         }
     }

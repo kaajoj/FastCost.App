@@ -1,6 +1,7 @@
-namespace FastCost.Views;
+﻿namespace FastCost.Views;
 
 [QueryProperty(nameof(ItemId), nameof(ItemId))]
+[QueryProperty(nameof(Amount), nameof(Amount))]
 public partial class CostPage : ContentPage
 {
     public string ItemId
@@ -8,15 +9,29 @@ public partial class CostPage : ContentPage
         set { LoadCost(value); }
     }
 
-    public CostPage()
-	{   
-		InitializeComponent();
+    public string Amount { get; set; }
 
-        string appDataPath = FileSystem.AppDataDirectory;
+
+    protected override void OnNavigatedTo(NavigatedToEventArgs state)
+    {
+        base.OnNavigatedTo(state);
+        var shellNavigationState = Shell.Current.CurrentState;
+        // var numericalValue = int.Parse(Uri.UnescapeDataString(state.Location.Query)); //.GetQueryParameter("param1")));
+        // string textValue = Uri.UnescapeDataString(state.Location.PathAndQuery); //GetQueryParameter("param2"));
+        // var numericalValue = parameters. GetValue<decimal>("param1");
+        // var numericalValue2 = parameters; // .GetValue<decimal>("param1");
+    }
+
+    public CostPage() 
+    { 
+        InitializeComponent();
+
+        string appDataPath = FileSystem.AppDataDirectory; 
         string randomFileName = $"{Path.GetRandomFileName()}.costs.txt";
-
+        
         LoadCost(Path.Combine(appDataPath, randomFileName));
     }
+
     private void LoadCost(string fileName)
     {
         var costModel = new Models.Cost

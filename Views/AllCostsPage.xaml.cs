@@ -11,7 +11,7 @@ public partial class AllCostsPage : ContentPage
 
     protected override void OnAppearing()
     {
-        ((Models.AllCosts)BindingContext).LoadNotes();
+        ((Models.AllCosts)BindingContext).LoadCosts();
     }
 
     private async void Add_Clicked(object sender, EventArgs e)
