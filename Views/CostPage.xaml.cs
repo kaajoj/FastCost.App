@@ -76,7 +76,8 @@ public partial class CostPage : ContentPage
             File.WriteAllText(cost.FileName, AmountEditor.Text);
         }
         
-        await Shell.Current.GoToAsync("..");
+        // await Shell.Current.GoToAsync("..");
+        await Shell.Current.GoToAsync($"//allCosts", true);
     }
 
     private async void DeleteButton_Clicked(object sender, EventArgs e)

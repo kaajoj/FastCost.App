@@ -11,15 +11,18 @@
     <!--     ContentTemplate="{DataTemplate local:MainPage}" -->
     <!--     Route="MainPage" /> -->
 
-    <TabBar>
+    <TabBar 
+        Route="tabs">
         <ShellContent
             Title="Add cost"
             ContentTemplate="{DataTemplate views:MainPage}"
-            Icon="{OnPlatform 'icon_notes.png'}" />
+            Icon="{OnPlatform 'icon_notes.png'}"
+            Route="addCost" />
         <ShellContent
             Title="All costs"
             ContentTemplate="{DataTemplate views:AllCostsPage}"
-        Icon="{OnPlatform 'icon_about.png'}" />
+            Icon="{OnPlatform 'icon_about.png'}"
+            Route="allCosts" />
         <!-- TODO: change MainPage to new analysis page -->
         <!-- <ShellContent -->
         <!--     Title="Analysis" -->
