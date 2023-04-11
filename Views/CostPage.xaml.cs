@@ -1,4 +1,6 @@
-﻿namespace FastCost.Views;
+﻿// using Android.Accounts;
+
+namespace FastCost.Views;
 
 [QueryProperty(nameof(ItemId), nameof(ItemId))]
 [QueryProperty(nameof(Amount), nameof(Amount))]
@@ -9,17 +11,37 @@ public partial class CostPage : ContentPage
         set { LoadCost(value); }
     }
 
-    public string Amount { get; set; }
+    // string amount;
+    // public string Amount
+    // {
+    //     get => amount;
+    //     set { amount = value; }
+    // }
 
+    string amount;
+    public string Amount
+    {
+        get => amount;
+        set
+        {
+            amount = value;
+            OnPropertyChanged();
+        }
+    }
+
+    // public string Amount { get; set; }
 
     protected override void OnNavigatedTo(NavigatedToEventArgs state)
     {
         base.OnNavigatedTo(state);
-        var shellNavigationState = Shell.Current.CurrentState;
-        // var numericalValue = int.Parse(Uri.UnescapeDataString(state.Location.Query)); //.GetQueryParameter("param1")));
-        // string textValue = Uri.UnescapeDataString(state.Location.PathAndQuery); //GetQueryParameter("param2"));
-        // var numericalValue = parameters. GetValue<decimal>("param1");
-        // var numericalValue2 = parameters; // .GetValue<decimal>("param1");
+
+        // BindingContext = new Models.Cost
+        // {
+        //     Value = decimal.Parse(Amount)
+        // };
+        // ((Models.Cost)BindingContext).Value = decimal.Parse(Amount);
+        AmountEditor.Text = Amount;
+        AmountEditor.Text = ((decimal)((Models.Cost)BindingContext)?.Value).ToString();
     }
 
     public CostPage() 
@@ -28,9 +50,25 @@ public partial class CostPage : ContentPage
 
         string appDataPath = FileSystem.AppDataDirectory; 
         string randomFileName = $"{Path.GetRandomFileName()}.costs.txt";
-        
+
         LoadCost(Path.Combine(appDataPath, randomFileName));
     }
+
+    // private void LoadAmount(string fileName)
+    // {
+    //     var costModel = new Models.Cost
+    //     {
+    //         FileName = fileName
+    //     };
+    //
+    //     if (File.Exists(fileName))
+    //     {
+    //         costModel.Date = File.GetCreationTime(fileName);
+    //         costModel.Description = File.ReadAllText(fileName);
+    //     }
+    //
+    //     BindingContext = costModel;
+    // }
 
     private void LoadCost(string fileName)
     {
@@ -43,6 +81,7 @@ public partial class CostPage : ContentPage
         {
             costModel.Date = File.GetCreationTime(fileName);
             costModel.Description = File.ReadAllText(fileName);
+            costModel.Value = decimal.Parse(File.ReadAllText(fileName));
         }
 
         BindingContext = costModel;
@@ -51,8 +90,11 @@ public partial class CostPage : ContentPage
     private async void SaveButton_Clicked(object sender, EventArgs e)
     {
         if (BindingContext is Models.Cost cost)
-            File.WriteAllText(cost.FileName, DescriptionEditor.Text);
-
+        {
+            // File.WriteAllText(cost.FileName, DescriptionEditor.Text);
+            File.WriteAllText(cost.FileName, AmountEditor.Text);
+        }
+        
         await Shell.Current.GoToAsync("..");
     }
 
