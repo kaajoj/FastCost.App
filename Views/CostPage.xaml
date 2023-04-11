@@ -16,7 +16,8 @@
         <!-- <Label FontSize="22" Text="{Binding Version}" VerticalOptions="End" /> -->
         <!-- // test -->
 
-        <Label Text="{Binding Value}"
+        <Label x:Name="AmountEditor"
+               Text="{Binding Amount}"
                FontSize="28" 
                FontAttributes="Bold"  
                HorizontalTextAlignment="Center"/>
