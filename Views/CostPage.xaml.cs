@@ -9,25 +9,25 @@ public partial class CostPage : ContentPage
         set { LoadCost(value); }
     }
 
+    public string Amount { get; set; }
+
     // string amount;
     // public string Amount
     // {
     //     get => amount;
     //     set { amount = value; }
     // }
-
-    string amount;
-    public string Amount
-    {
-        get => amount;
-        set
-        {
-            amount = value;
-            OnPropertyChanged();
-        }
-    }
-
-    // public string Amount { get; set; }
+    //
+    // string amount;
+    // public string Amount
+    // {
+    //     get => amount;
+    //     set
+    //     {
+    //         amount = value;
+    //         // OnPropertyChanged();
+    //     }
+    // }
 
     protected override void OnNavigatedTo(NavigatedToEventArgs state)
     {
@@ -38,7 +38,7 @@ public partial class CostPage : ContentPage
             ((Models.Cost)BindingContext).Value = decimal.Parse(Amount);
         }
         AmountEditor.Text = Amount;
-        AmountEditor.Text = ((decimal)((Models.Cost)BindingContext)?.Value).ToString();
+        AmountEditor.Text = ((decimal)((Models.Cost)BindingContext).Value).ToString();
     }
 
     public CostPage() 
