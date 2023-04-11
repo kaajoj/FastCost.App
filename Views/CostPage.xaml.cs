@@ -1,6 +1,4 @@
-﻿// using Android.Accounts;
-
-namespace FastCost.Views;
+﻿namespace FastCost.Views;
 
 [QueryProperty(nameof(ItemId), nameof(ItemId))]
 [QueryProperty(nameof(Amount), nameof(Amount))]
@@ -35,11 +33,10 @@ public partial class CostPage : ContentPage
     {
         base.OnNavigatedTo(state);
 
-        // BindingContext = new Models.Cost
-        // {
-        //     Value = decimal.Parse(Amount)
-        // };
-        // ((Models.Cost)BindingContext).Value = decimal.Parse(Amount);
+        if (!string.IsNullOrEmpty(Amount))
+        {
+            ((Models.Cost)BindingContext).Value = decimal.Parse(Amount);
+        }
         AmountEditor.Text = Amount;
         AmountEditor.Text = ((decimal)((Models.Cost)BindingContext)?.Value).ToString();
     }
@@ -53,22 +50,6 @@ public partial class CostPage : ContentPage
 
         LoadCost(Path.Combine(appDataPath, randomFileName));
     }
-
-    // private void LoadAmount(string fileName)
-    // {
-    //     var costModel = new Models.Cost
-    //     {
-    //         FileName = fileName
-    //     };
-    //
-    //     if (File.Exists(fileName))
-    //     {
-    //         costModel.Date = File.GetCreationTime(fileName);
-    //         costModel.Description = File.ReadAllText(fileName);
-    //     }
-    //
-    //     BindingContext = costModel;
-    // }
 
     private void LoadCost(string fileName)
     {
