@@ -3,7 +3,7 @@
 public partial class MainPage : ContentPage
 {
 	decimal _allCosts = 0;
-    public decimal Amount { get; private set; }
+    public decimal CostValue { get; private set; }
 
     public MainPage()
 	{
@@ -59,8 +59,8 @@ public partial class MainPage : ContentPage
                 _allCosts += enteredCost;
                 SummaryText.Text = $"Expenses in March: {_allCosts}";
                 CostText.Text = string.Empty;
-                Amount = enteredCost;
-                await Shell.Current.GoToAsync($"{nameof(CostPage)}?{nameof(CostPage.Amount)}={Amount.ToString()}", true);
+                CostValue = enteredCost;
+                await Shell.Current.GoToAsync($"{nameof(CostPage)}?{nameof(CostPage.CostValue)}={CostValue.ToString()}", true);
             }
             catch (ArgumentNullException)
             {

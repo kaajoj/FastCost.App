@@ -1,7 +1,7 @@
 ﻿namespace FastCost.Views;
 
 [QueryProperty(nameof(ItemId), nameof(ItemId))]
-[QueryProperty(nameof(Amount), nameof(Amount))]
+[QueryProperty(nameof(CostValue), nameof(CostValue))]
 public partial class CostPage : ContentPage
 {
     public string ItemId
@@ -9,7 +9,7 @@ public partial class CostPage : ContentPage
         set { LoadCost(value); }
     }
 
-    public string Amount { get; set; }
+    public string CostValue { get; set; }
 
     // string amount;
     // public string Amount
@@ -33,12 +33,12 @@ public partial class CostPage : ContentPage
     {
         // base.OnNavigatedTo(state);
 
-        if (!string.IsNullOrEmpty(Amount))
+        if (!string.IsNullOrEmpty(CostValue))
         {
-            ((Models.Cost)BindingContext).Value = decimal.Parse(Amount);
+            ((Models.Cost)BindingContext).Value = decimal.Parse(CostValue);
         }
-        AmountEditor.Text = Amount;
-        AmountEditor.Text = ((decimal)((Models.Cost)BindingContext).Value).ToString();
+        CostValueEditor.Text = CostValue;
+        CostValueEditor.Text = ((decimal)((Models.Cost)BindingContext).Value).ToString();
     }
 
     public CostPage() 
@@ -73,7 +73,7 @@ public partial class CostPage : ContentPage
         if (BindingContext is Models.Cost cost)
         {
             // File.WriteAllText(cost.FileName, DescriptionEditor.Text);
-            File.WriteAllText(cost.FileName, AmountEditor.Text);
+            File.WriteAllText(cost.FileName, CostValueEditor.Text);
         }
         
         // await Shell.Current.GoToAsync("..");

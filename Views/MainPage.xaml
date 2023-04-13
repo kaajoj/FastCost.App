@@ -27,7 +27,7 @@
             <StackLayout>
                 <Entry
                     x:Name = "CostText"
-                    Placeholder="Enter the amount" 
+                    Placeholder="Enter the cost value" 
                     Keyboard="Numeric" 
                     TextChanged="OnCostChanged"
                     Completed="OnCostEntered" />
