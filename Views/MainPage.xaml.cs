@@ -33,7 +33,7 @@ public partial class MainPage : ContentPage
             {
                 CostText.Text = string.Empty;
                 CostBtn.IsEnabled = false;
-                CostBtn.BackgroundColor = Color.Parse("Orange");
+                CostBtn.BackgroundColor = Color.Parse("LightGray");
                 // DisplayAlert("Information", "Entered amount is lower than 0", "OK");
             }
         }

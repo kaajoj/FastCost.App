@@ -38,7 +38,7 @@
                     x:Name="CostBtn"
                     Text="+" 
                     FontSize="Large" 
-                    BackgroundColor="Orange" 
+                    BackgroundColor="LightGray" 
                     TextColor="White" 
                     CornerRadius="40" 
                     WidthRequest="80" 
