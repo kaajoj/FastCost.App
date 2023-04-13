@@ -60,14 +60,7 @@ public partial class MainPage : ContentPage
                 SummaryText.Text = $"Expenses in March: {_allCosts}";
                 CostText.Text = string.Empty;
                 Amount = enteredCost;
-                // await Shell.Current.GoToAsync(nameof(CostPage), true);
-                // await Shell.Current.GoToAsync($"{(nameof(CostPage))}?amount={Amount.ToString()}", true);
                 await Shell.Current.GoToAsync($"{nameof(CostPage)}?{nameof(CostPage.Amount)}={Amount.ToString()}", true);
-                // await Navigation.PushModalAsync(new CostPage(Value));
-                // await Navigation.PushAsync(new CostPage
-                // {
-                //     BindingContext = Amount
-                // });
             }
             catch (ArgumentNullException)
             {

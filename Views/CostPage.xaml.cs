@@ -31,7 +31,7 @@ public partial class CostPage : ContentPage
 
     protected override void OnNavigatedTo(NavigatedToEventArgs state)
     {
-        base.OnNavigatedTo(state);
+        // base.OnNavigatedTo(state);
 
         if (!string.IsNullOrEmpty(Amount))
         {
@@ -84,7 +84,6 @@ public partial class CostPage : ContentPage
     {
         if (BindingContext is Models.Cost cost)
         {
-            // Delete the file.
             if (File.Exists(cost.FileName))
                 File.Delete(cost.FileName);
         }
