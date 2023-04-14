@@ -17,12 +17,12 @@
                 FontSize="22"
                 HorizontalOptions="Center"/>
 
-            <Label
-                Text="Add cost"
-                SemanticProperties.HeadingLevel="Level1"
-                SemanticProperties.Description="Add cost"
-                FontSize="32"
-                HorizontalOptions="Center" />
+            <!-- <Label -->
+            <!--     Text="Add cost" -->
+            <!--     SemanticProperties.HeadingLevel="Level1" -->
+            <!--     SemanticProperties.Description="Add cost" -->
+            <!--     FontSize="32" -->
+            <!--     HorizontalOptions="Center" /> -->
 
             <StackLayout>
                 <Entry
