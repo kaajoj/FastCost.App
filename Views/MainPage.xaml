@@ -14,7 +14,7 @@
                 Text="Expenses in March: 0"
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="test"
-                FontSize="18"
+                FontSize="22"
                 HorizontalOptions="Center"/>
 
             <Label
@@ -27,7 +27,9 @@
             <StackLayout>
                 <Entry
                     x:Name = "CostText"
-                    Placeholder="Enter the cost value" 
+                    Placeholder="Enter the cost value"
+                    HorizontalTextAlignment="Center"
+                    FontSize="26"
                     Keyboard="Numeric" 
                     TextChanged="OnCostChanged"
                     Completed="OnCostEntered" />
