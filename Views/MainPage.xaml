@@ -5,17 +5,18 @@
 
     <ScrollView>
         <VerticalStackLayout
-            Spacing="25"
+            Spacing="20"
             Padding="30,0"
             VerticalOptions="Center">
 
             <Label
                 x:Name = "SummaryText"
-                Text="Expenses in March: 0"
+                Text="Total expenses in March: 0"
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="test"
                 FontSize="22"
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                Padding="0,40"/>
 
             <!-- <Label -->
             <!--     Text="Add cost" -->
