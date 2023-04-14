@@ -29,7 +29,8 @@
                     x:Name = "CostText"
                     Placeholder="Enter the cost value"
                     HorizontalTextAlignment="Center"
-                    FontSize="26"
+                    FontSize="24"
+                    PlaceholderColor="CadetBlue"
                     Keyboard="Numeric" 
                     TextChanged="OnCostChanged"
                     Completed="OnCostEntered" />
