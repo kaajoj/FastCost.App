@@ -17,7 +17,7 @@
         <!-- // test -->
 
         <Label x:Name="CostValueEditor"
-               Text="{Binding CostValue}"
+               Text="{Binding Value}"
                FontSize="28" 
                FontAttributes="Bold"  
                HorizontalTextAlignment="Center"/>
