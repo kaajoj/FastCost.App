@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FastCost.Models
+﻿namespace FastCost.Models
 {
     public class Cost
     {
+        public int Id { get; set; }
+
         public decimal Value { get; set; }
 
         public string Description { get; set; }
