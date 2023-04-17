@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using FastCost.DAL;
+using FastCost.Views;
+using Microsoft.Extensions.Logging;
 
 namespace FastCost;
 
@@ -15,8 +17,11 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
+        builder.Services.AddSingleton<CostRepository>();
+        builder.Services.AddTransient<CostPage>();
+
 #if DEBUG
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
 		return builder.Build();
