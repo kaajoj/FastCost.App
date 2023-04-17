@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FastCost.DAL.Entities;
+using FastCost.Models;
 using SQLite;
 
 namespace FastCost.DAL
 {
-    public class CostsDatabase
+    public class CostRepository
     {
         SQLiteAsyncConnection Database;
 
-        public CostsDatabase()
+        public CostRepository()
         {
         }
 
