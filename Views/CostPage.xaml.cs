@@ -1,9 +1,14 @@
-﻿namespace FastCost.Views;
+﻿using FastCost.DAL;
+using FastCost.DAL.Entities;
+
+namespace FastCost.Views;
 
 [QueryProperty(nameof(ItemId), nameof(ItemId))]
 [QueryProperty(nameof(CostValue), nameof(CostValue))]
 public partial class CostPage : ContentPage
 {
+    private readonly CostRepository _costRepository;
+
     public string ItemId
     {
         set { LoadCost(value); }
@@ -38,11 +43,12 @@ public partial class CostPage : ContentPage
             ((Models.Cost)BindingContext).Value = decimal.Parse(CostValue);
         }
         CostValueEditor.Text = CostValue;
-        CostValueEditor.Text = ((decimal)((Models.Cost)BindingContext).Value).ToString();
+        CostValueEditor.Text = (((Models.Cost)BindingContext).Value).ToString();
     }
 
-    public CostPage() 
-    { 
+    public CostPage(CostRepository costRepository) 
+    {
+        _costRepository = costRepository;
         InitializeComponent();
 
         string appDataPath = FileSystem.AppDataDirectory; 
@@ -74,6 +80,7 @@ public partial class CostPage : ContentPage
         {
             // File.WriteAllText(cost.FileName, DescriptionEditor.Text);
             File.WriteAllText(cost.FileName, CostValueEditor.Text);
+            await _costRepository.SaveCostAsync(cost);
         }
         
         // await Shell.Current.GoToAsync("..");
