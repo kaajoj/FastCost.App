@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FastCost.Models;
-using Microsoft.VisualBasic;
+using FastCost.DAL.Entities;
 using SQLite;
 
 namespace FastCost.DAL
