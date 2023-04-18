@@ -1,16 +1,25 @@
 ﻿using System.Collections.ObjectModel;
+using FastCost.DAL;
 
 namespace FastCost.Models
 {
     public class AllCosts
     {
+        private readonly CostRepository _costRepository;
+
         public ObservableCollection<Cost> Costs { get; set; } = new ObservableCollection<Cost>();
 
-        public AllCosts() => LoadCosts();
+        public AllCosts(CostRepository costRepository)
+        {
+            _costRepository = costRepository;
+            var result = LoadCosts();
+        }
 
-        public void LoadCosts()
+        public async Task LoadCosts()
         {
             Costs.Clear();
+
+            var result = await _costRepository.GetCostsAsync();
 
             // Get the folder where the costs are stored.
             string appDataPath = FileSystem.AppDataDirectory;

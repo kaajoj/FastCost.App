@@ -1,12 +1,14 @@
+using FastCost.DAL;
+
 namespace FastCost.Views;
 
 public partial class AllCostsPage : ContentPage
 {
-	public AllCostsPage()
+    public AllCostsPage(CostRepository costRepository)
 	{
-		InitializeComponent();
+        InitializeComponent();
 
-        BindingContext = new Models.AllCosts();
+        BindingContext = new Models.AllCosts(costRepository);
     }
 
     protected override void OnAppearing()
