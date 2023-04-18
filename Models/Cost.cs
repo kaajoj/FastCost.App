@@ -2,7 +2,7 @@
 
 namespace FastCost.Models
 {
-    [Table("cost")]
+    [Table("costs")]
     public class Cost
     {
         [PrimaryKey, AutoIncrement]
