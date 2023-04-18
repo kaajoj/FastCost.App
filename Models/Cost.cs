@@ -1,7 +1,11 @@
-﻿namespace FastCost.Models
+﻿using SQLite;
+
+namespace FastCost.Models
 {
+    [Table("cost")]
     public class Cost
     {
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
         public decimal Value { get; set; }
