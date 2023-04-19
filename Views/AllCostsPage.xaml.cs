@@ -29,7 +29,7 @@ public partial class AllCostsPage : ContentPage
             var cost = (Models.Cost)e.CurrentSelection[0];
 
             // Should navigate to "CostPage?ItemId=path\on\device\XYZ.costs.txt"
-            await Shell.Current.GoToAsync($"{nameof(CostPage)}?{nameof(CostPage.ItemId)}={cost.FileName}");
+            await Shell.Current.GoToAsync($"{nameof(CostPage)}?{nameof(CostPage.ItemId)}={cost.Id}");
 
             // Unselect the UI
             costsCollection.SelectedItem = null;

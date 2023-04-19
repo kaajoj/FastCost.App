@@ -11,7 +11,7 @@ public partial class CostPage : ContentPage
 
     public string ItemId
     {
-        set { LoadCost(value); }
+        set { _ = LoadCostAsync(value); }
     }
 
     public string CostValue { get; set; }
@@ -58,13 +58,15 @@ public partial class CostPage : ContentPage
         // LoadCost("");
     }
 
-    private void LoadCost(string value)
+    private async Task LoadCostAsync(string id)
     {
-        var costModel = new Models.Cost
-        {
-            // FileName = fileName
-            Value = decimal.Parse(value)
-        };
+        var costModel = await _costRepository.GetCostAsync(Int32.Parse(id));
+
+        // var costModel = new Models.Cost
+        // {
+        //     // FileName = fileName
+        //     // Id = Int32.Parse(id)
+        // };
         //
         // if (File.Exists(fileName))
         // {
