@@ -17,7 +17,7 @@
             Title="Add cost"
             ContentTemplate="{DataTemplate views:MainPage}"
             Icon="{OnPlatform 'icon_notes.png'}"
-            Route="addCost" />
+            Route="mainPage" />
         <ShellContent
             Title="All costs"
             ContentTemplate="{DataTemplate views:AllCostsPage}"
