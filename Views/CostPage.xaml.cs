@@ -51,25 +51,27 @@ public partial class CostPage : ContentPage
         _costRepository = costRepository;
         InitializeComponent();
 
-        string appDataPath = FileSystem.AppDataDirectory; 
-        string randomFileName = $"{Path.GetRandomFileName()}.costs.txt";
+        // string appDataPath = FileSystem.AppDataDirectory; 
+        // string randomFileName = $"{Path.GetRandomFileName()}.costs.txt";
 
-        LoadCost(Path.Combine(appDataPath, randomFileName));
+        // LoadCost(Path.Combine(appDataPath, randomFileName));
+        // LoadCost("");
     }
 
-    private void LoadCost(string fileName)
+    private void LoadCost(string value)
     {
         var costModel = new Models.Cost
         {
-            FileName = fileName
+            // FileName = fileName
+            Value = decimal.Parse(value)
         };
-
-        if (File.Exists(fileName))
-        {
-            costModel.Date = File.GetCreationTime(fileName);
-            costModel.Description = File.ReadAllText(fileName);
-            costModel.Value = decimal.Parse(File.ReadAllText(fileName));
-        }
+        //
+        // if (File.Exists(fileName))
+        // {
+        //     costModel.Date = File.GetCreationTime(fileName);
+        //     costModel.Description = File.ReadAllText(fileName);
+        //     costModel.Value = decimal.Parse(File.ReadAllText(fileName));
+        // }
 
         BindingContext = costModel;
     }
@@ -79,7 +81,7 @@ public partial class CostPage : ContentPage
         if (BindingContext is Models.Cost cost)
         {
             // File.WriteAllText(cost.FileName, DescriptionEditor.Text);
-            File.WriteAllText(cost.FileName, CostValueEditor.Text);
+            // File.WriteAllText(cost.FileName, CostValueEditor.Text);
             await _costRepository.SaveCostAsync(cost);
         }
         
@@ -91,8 +93,9 @@ public partial class CostPage : ContentPage
     {
         if (BindingContext is Models.Cost cost)
         {
-            if (File.Exists(cost.FileName))
-                File.Delete(cost.FileName);
+            await _costRepository.DeleteCostAsync(cost);
+            // if (File.Exists(cost.FileName))
+            //     File.Delete(cost.FileName);
         }
 
         await Shell.Current.GoToAsync("..");
