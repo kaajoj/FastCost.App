@@ -1,11 +1,17 @@
-﻿namespace FastCost;
+﻿using FastCost.DAL;
+
+namespace FastCost;
 
 public partial class App : Application
 {
-	public App()
+    internal static CostRepository CostRepository;
+
+    public App(CostRepository costRepository)
 	{
-		InitializeComponent();
+        InitializeComponent();
 
 		MainPage = new AppShell();
-	}
+
+        CostRepository = costRepository;
+    }
 }
