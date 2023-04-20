@@ -79,6 +79,7 @@ public partial class CostPage : ContentPage
         {
             // File.WriteAllText(cost.FileName, DescriptionEditor.Text);
             // File.WriteAllText(cost.FileName, CostValueEditor.Text);
+            cost.Date = DateTime.UtcNow; 
             await App.CostRepository.SaveCostAsync(cost);
         }
         
