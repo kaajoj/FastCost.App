@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FastCost.Models;
+﻿using FastCost.Models;
 using SQLite;
 
 namespace FastCost.DAL
@@ -22,7 +17,7 @@ namespace FastCost.DAL
                 return;
 
             Database = new SQLiteAsyncConnection(ConfigDb.DatabasePath, ConfigDb.Flags);
-            var result = await Database.CreateTableAsync<Cost>();
+            await Database.CreateTableAsync<Cost>();
         }
 
         public async Task<List<Cost>> GetCostsAsync()
