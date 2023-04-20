@@ -13,7 +13,5 @@ namespace FastCost.DAL.Entities
         public string Description { get; set; }
         
         public DateTime Date { get; set; }
-        
-        // public string FileName { get; set; }
     }
 }
