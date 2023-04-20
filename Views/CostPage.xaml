@@ -16,17 +16,12 @@
         <!-- <Label FontSize="22" Text="{Binding Version}" VerticalOptions="End" /> -->
         <!-- // test -->
 
-        <Label x:Name="CostValueEditor"
-               Text="{Binding Value}"
-               FontSize="28" 
-               FontAttributes="Bold"  
-               HorizontalTextAlignment="Center"/>
-
-        <!-- <Editor x:Name="ValueEditor" -->
-        <!--         Placeholder="Enter cost value" -->
-        <!--         Text="{Binding Value}" -->
-        <!--         FontSize="28" -->
-        <!--         HeightRequest="30" /> -->
+        <Editor x:Name="CostValueEditor"
+                Placeholder="Enter cost value"
+                Text="{Binding Value}"
+                FontSize="28" 
+                FontAttributes="Bold"  
+                HorizontalTextAlignment="Center"/>
 
         <Editor x:Name="DescriptionEditor"
                 Placeholder="Enter cost description"
