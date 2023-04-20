@@ -1,4 +1,5 @@
 using FastCost.DAL;
+using FastCost.Models;
 
 namespace FastCost.Views;
 
@@ -13,7 +14,7 @@ public partial class AllCostsPage : ContentPage
 
     protected override void OnAppearing()
     {
-        ((Models.AllCosts)BindingContext).LoadCosts();
+        ((AllCosts)BindingContext)?.LoadCosts();
     }
 
     private async void Add_Clicked(object sender, EventArgs e)
