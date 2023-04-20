@@ -5,9 +5,9 @@ namespace FastCost.Models
 {
     public class AllCosts
     {
-        public ObservableCollection<Cost> Costs { get; set; } = new ObservableCollection<Cost>();
+        public ObservableCollection<Cost> Costs { get; set; } = new();
 
-        public AllCosts(CostRepository costRepository)
+        public AllCosts()
         {
             LoadCosts();
         }

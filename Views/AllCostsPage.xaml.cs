@@ -4,11 +4,11 @@ namespace FastCost.Views;
 
 public partial class AllCostsPage : ContentPage
 {
-    public AllCostsPage(CostRepository costRepository)
+    public AllCostsPage()
 	{
         InitializeComponent();
 
-        BindingContext = new Models.AllCosts(costRepository);
+        BindingContext = new Models.AllCosts();
     }
 
     protected override void OnAppearing()
