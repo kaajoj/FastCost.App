@@ -5,21 +5,18 @@ namespace FastCost.Models
 {
     public class AllCosts
     {
-        private readonly CostRepository _costRepository;
-
         public ObservableCollection<Cost> Costs { get; set; } = new ObservableCollection<Cost>();
 
         public AllCosts(CostRepository costRepository)
         {
-            _costRepository = costRepository;
-            var result = LoadCosts();
+            LoadCosts();
         }
 
         public async Task LoadCosts()
         {
             Costs.Clear();
 
-            var costs = await _costRepository.GetCostsAsync();
+            var costs = await App.CostRepository.GetCostsAsync();
 
             // Get the folder where the costs are stored.
             // string appDataPath = FileSystem.AppDataDirectory;
