@@ -1,14 +1,9 @@
-﻿using FastCost.DAL;
-using FastCost.DAL.Entities;
-
-namespace FastCost.Views;
+﻿namespace FastCost.Views;
 
 [QueryProperty(nameof(ItemId), nameof(ItemId))]
 [QueryProperty(nameof(CostValue), nameof(CostValue))]
 public partial class CostPage : ContentPage
 {
-    private readonly CostRepository _costRepository;
-
     public string ItemId
     {
         set { _ = LoadCostAsync(value); }
@@ -47,9 +42,8 @@ public partial class CostPage : ContentPage
         CostValueEditor.Text = (((Models.Cost)BindingContext).Value).ToString();
     }
 
-    public CostPage(CostRepository costRepository) 
+    public CostPage() 
     {
-        _costRepository = costRepository;
         InitializeComponent();
 
         // string appDataPath = FileSystem.AppDataDirectory; 
@@ -61,7 +55,7 @@ public partial class CostPage : ContentPage
 
     private async Task LoadCostAsync(string id)
     {
-        var costModel = await _costRepository.GetCostAsync(Int32.Parse(id));
+        var costModel = await App.CostRepository.GetCostAsync(Int32.Parse(id));
 
         // var costModel = new Models.Cost
         // {
@@ -85,7 +79,7 @@ public partial class CostPage : ContentPage
         {
             // File.WriteAllText(cost.FileName, DescriptionEditor.Text);
             // File.WriteAllText(cost.FileName, CostValueEditor.Text);
-            await _costRepository.SaveCostAsync(cost);
+            await App.CostRepository.SaveCostAsync(cost);
         }
         
         // await Shell.Current.GoToAsync("..");
@@ -96,7 +90,7 @@ public partial class CostPage : ContentPage
     {
         if (BindingContext is Models.Cost cost)
         {
-            await _costRepository.DeleteCostAsync(cost);
+            await App.CostRepository.DeleteCostAsync(cost);
             // if (File.Exists(cost.FileName))
             //     File.Delete(cost.FileName);
         }
