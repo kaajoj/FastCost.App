@@ -9,7 +9,7 @@ namespace FastCost.Models
 
         public AllCosts()
         {
-            LoadCosts();
+
         }
 
         public async Task LoadCosts()
