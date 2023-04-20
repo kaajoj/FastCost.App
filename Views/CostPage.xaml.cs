@@ -41,6 +41,7 @@ public partial class CostPage : ContentPage
         if (!string.IsNullOrEmpty(CostValue))
         {
             ((Models.Cost)BindingContext).Value = decimal.Parse(CostValue);
+            ((Models.Cost)BindingContext).Date = DateTime.UtcNow;
         }
         CostValueEditor.Text = CostValue;
         CostValueEditor.Text = (((Models.Cost)BindingContext).Value).ToString();
