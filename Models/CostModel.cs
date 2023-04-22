@@ -10,6 +10,6 @@
  
         public DateTime Date { get; set; }
 
-        public string FormattedDate => Date.ToString("dd.MM.yyyy");
+        public string FormattedDate => Date.ToString("dd.MM");
     }
 }
