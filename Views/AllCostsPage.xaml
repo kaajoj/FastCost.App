@@ -28,7 +28,7 @@
                         <Label Text="{Binding Value}" FontSize="20"/>
                         <Label Text="{Binding Description}" FontSize="16" VerticalTextAlignment="Center"/>
                     </HorizontalStackLayout>
-                    <Label Text="{Binding Date}" FontSize="12" TextColor="Silver"/>
+                    <Label Text="{Binding FormattedDate}" FontSize="12" TextColor="Silver"/>
                 </StackLayout>
             </DataTemplate>
         </CollectionView.ItemTemplate>
