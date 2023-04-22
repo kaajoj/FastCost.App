@@ -11,12 +11,13 @@
 
             <Label
                 x:Name = "SummaryText"
-                Text="Total expenses in March: 0"
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="test"
                 FontSize="22"
                 HorizontalOptions="Center"
                 Padding="0,40"/>
+            <!-- Text="Total expenses in March: 0" -->
+            <!-- Text="{Binding Value, StringFormat='Total expenses in March: {0}'}" -->
 
             <!-- <Label -->
             <!--     Text="Add cost" -->
