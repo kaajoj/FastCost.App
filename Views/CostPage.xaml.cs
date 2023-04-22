@@ -35,11 +35,11 @@ public partial class CostPage : ContentPage
 
         if (!string.IsNullOrEmpty(CostValue))
         {
-            ((Models.Cost)BindingContext).Value = decimal.Parse(CostValue);
-            ((Models.Cost)BindingContext).Date = DateTime.UtcNow;
+            ((Models.CostModel)BindingContext).Value = decimal.Parse(CostValue);
+            ((Models.CostModel)BindingContext).Date = DateTime.UtcNow;
         }
         CostValueEditor.Text = CostValue;
-        CostValueEditor.Text = (((Models.Cost)BindingContext).Value).ToString();
+        CostValueEditor.Text = (((Models.CostModel)BindingContext).Value).ToString();
     }
 
     public CostPage() 
@@ -75,7 +75,7 @@ public partial class CostPage : ContentPage
 
     private async void SaveButton_Clicked(object sender, EventArgs e)
     {
-        if (BindingContext is Models.Cost cost)
+        if (BindingContext is Models.CostModel cost)
         {
             // File.WriteAllText(cost.FileName, DescriptionEditor.Text);
             // File.WriteAllText(cost.FileName, CostValueEditor.Text);
@@ -89,7 +89,7 @@ public partial class CostPage : ContentPage
 
     private async void DeleteButton_Clicked(object sender, EventArgs e)
     {
-        if (BindingContext is Models.Cost cost)
+        if (BindingContext is Models.CostModel cost)
         {
             await App.CostRepository.DeleteCostAsync(cost);
             // if (File.Exists(cost.FileName))
