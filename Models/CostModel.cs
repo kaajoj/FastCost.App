@@ -1,11 +1,7 @@
-﻿using SQLite;
-
-namespace FastCost.Models
+﻿namespace FastCost.Models
 {
-    [Table("costs")]
-    public class Cost
+    public class CostModel
     {
-        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
         public decimal Value { get; set; }
@@ -13,5 +9,7 @@ namespace FastCost.Models
         public string Description { get; set; }
  
         public DateTime Date { get; set; }
+
+        public string FormattedDate => Date.ToString("dd.MM");
     }
 }

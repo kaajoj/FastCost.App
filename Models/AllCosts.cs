@@ -1,11 +1,11 @@
 ﻿using System.Collections.ObjectModel;
-using FastCost.DAL;
+using Mapster;
 
 namespace FastCost.Models
 {
     public class AllCosts
     {
-        public ObservableCollection<Cost> Costs { get; set; } = new();
+        public ObservableCollection<CostModel> Costs { get; set; } = new();
 
         public AllCosts()
         {
@@ -15,9 +15,10 @@ namespace FastCost.Models
         {
             Costs.Clear();
 
-            var costs = await App.CostRepository.GetCostsAsync();
-
-            foreach (Cost cost in costs.OrderBy(cost => cost.Date)) 
+            var results = await App.CostRepository.GetCostsAsync();
+            var costs = results.Adapt<List<CostModel>>();
+            
+            foreach (CostModel cost in costs.OrderBy(cost => cost.Date)) 
                 Costs.Add(cost);
         }
     }

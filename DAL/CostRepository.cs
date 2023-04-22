@@ -1,9 +1,9 @@
-﻿using FastCost.Models;
+﻿using FastCost.DAL.Entities;
 using SQLite;
 
 namespace FastCost.DAL
 {
-    public class CostRepository
+    public class CostRepository : ICostRepository
     {
         SQLiteAsyncConnection Database;
 

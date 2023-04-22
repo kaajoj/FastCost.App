@@ -2,7 +2,7 @@
 
 namespace FastCost.DAL.Entities
 {
-    [Table("cost")]
+    [Table("costs")]
     public class Cost
     {
         [PrimaryKey, AutoIncrement]

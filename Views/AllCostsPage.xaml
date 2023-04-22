@@ -24,11 +24,11 @@
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <StackLayout>
-                    <HorizontalStackLayout Spacing="10">
-                        <Label Text="{Binding Value}" FontSize="20"/>
-                        <Label Text="{Binding Description}" FontSize="16" VerticalTextAlignment="Center"/>
+                    <HorizontalStackLayout Spacing="30">
+                        <Label Text="{Binding FormattedDate}" FontSize="16" HorizontalTextAlignment="End" TextColor="Silver"/>
+                        <Label Text="{Binding Value}" FontSize="16" HorizontalTextAlignment="End"/>
+                        <Label Text="{Binding Description}" FontSize="16" HorizontalTextAlignment="Start"/>
                     </HorizontalStackLayout>
-                    <Label Text="{Binding Date}" FontSize="12" TextColor="Silver"/>
                 </StackLayout>
             </DataTemplate>
         </CollectionView.ItemTemplate>
