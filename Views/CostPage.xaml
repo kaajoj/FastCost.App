@@ -5,7 +5,7 @@
              x:Class="FastCost.Views.CostPage"
              Title="Cost">
     <ContentPage.BindingContext>
-        <models:Cost />
+        <models:CostModel />
     </ContentPage.BindingContext>
 
 

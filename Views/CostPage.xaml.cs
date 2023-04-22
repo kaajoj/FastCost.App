@@ -1,4 +1,8 @@
-﻿namespace FastCost.Views;
+﻿using FastCost.DAL.Entities;
+using FastCost.Models;
+using Mapster;
+
+namespace FastCost.Views;
 
 [QueryProperty(nameof(ItemId), nameof(ItemId))]
 [QueryProperty(nameof(CostValue), nameof(CostValue))]
@@ -55,7 +59,8 @@ public partial class CostPage : ContentPage
 
     private async Task LoadCostAsync(string id)
     {
-        var costModel = await App.CostRepository.GetCostAsync(Int32.Parse(id));
+        var cost = await App.CostRepository.GetCostAsync(Int32.Parse(id));
+        var costModel = cost.Adapt<CostModel>();
 
         // var costModel = new Models.Cost
         // {
@@ -75,11 +80,13 @@ public partial class CostPage : ContentPage
 
     private async void SaveButton_Clicked(object sender, EventArgs e)
     {
-        if (BindingContext is Models.CostModel cost)
+        if (BindingContext is Models.CostModel costModel)
         {
             // File.WriteAllText(cost.FileName, DescriptionEditor.Text);
             // File.WriteAllText(cost.FileName, CostValueEditor.Text);
-            cost.Date = DateTime.UtcNow;
+            costModel.Date = DateTime.UtcNow;
+
+            var cost = costModel.Adapt<Cost>();
             await App.CostRepository.SaveCostAsync(cost);
         }
         
@@ -89,8 +96,9 @@ public partial class CostPage : ContentPage
 
     private async void DeleteButton_Clicked(object sender, EventArgs e)
     {
-        if (BindingContext is Models.CostModel cost)
+        if (BindingContext is Models.CostModel costModel)
         {
+            var cost = costModel.Adapt<Cost>();
             await App.CostRepository.DeleteCostAsync(cost);
             // if (File.Exists(cost.FileName))
             //     File.Delete(cost.FileName);
