@@ -1,6 +1,6 @@
 ﻿namespace FastCost.Models
 {
-    public class Cost
+    public class CostModel
     {
         public int Id { get; set; }
 
