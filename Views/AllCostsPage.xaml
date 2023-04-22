@@ -25,10 +25,10 @@
             <DataTemplate>
                 <StackLayout>
                     <HorizontalStackLayout Spacing="10">
+                        <Label Text="{Binding FormattedDate}" FontSize="12" VerticalTextAlignment="Center" TextColor="Silver"/>
                         <Label Text="{Binding Value}" FontSize="20"/>
                         <Label Text="{Binding Description}" FontSize="16" VerticalTextAlignment="Center"/>
                     </HorizontalStackLayout>
-                    <Label Text="{Binding FormattedDate}" FontSize="12" TextColor="Silver"/>
                 </StackLayout>
             </DataTemplate>
         </CollectionView.ItemTemplate>
