@@ -5,7 +5,7 @@ namespace FastCost.Models
 {
     public class AllCosts
     {
-        public ObservableCollection<Cost> Costs { get; set; } = new();
+        public ObservableCollection<CostModel> Costs { get; set; } = new();
 
         public AllCosts()
         {
@@ -17,7 +17,7 @@ namespace FastCost.Models
 
             var costs = await App.CostRepository.GetCostsAsync();
 
-            foreach (Cost cost in costs.OrderBy(cost => cost.Date)) 
+            foreach (CostModel cost in costs.OrderBy(cost => cost.Date)) 
                 Costs.Add(cost);
         }
     }
