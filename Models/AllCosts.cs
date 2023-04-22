@@ -1,5 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using FastCost.DAL;
+using Mapster;
 
 namespace FastCost.Models
 {
@@ -15,8 +15,9 @@ namespace FastCost.Models
         {
             Costs.Clear();
 
-            var costs = await App.CostRepository.GetCostsAsync();
-
+            var results = await App.CostRepository.GetCostsAsync();
+            var costs = results.Adapt<List<CostModel>>();
+            
             foreach (CostModel cost in costs.OrderBy(cost => cost.Date)) 
                 Costs.Add(cost);
         }
