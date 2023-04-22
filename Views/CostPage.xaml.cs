@@ -33,6 +33,17 @@ public partial class CostPage : ContentPage
     //     }
     // }
 
+    public CostPage() 
+    {
+        InitializeComponent();
+
+        // string appDataPath = FileSystem.AppDataDirectory; 
+        // string randomFileName = $"{Path.GetRandomFileName()}.costs.txt";
+
+        // LoadCost(Path.Combine(appDataPath, randomFileName));
+        // LoadCost("");
+    }
+
     protected override void OnNavigatedTo(NavigatedToEventArgs state)
     {
         // base.OnNavigatedTo(state);
@@ -44,17 +55,6 @@ public partial class CostPage : ContentPage
         }
         CostValueEditor.Text = CostValue;
         CostValueEditor.Text = (((Models.CostModel)BindingContext).Value).ToString();
-    }
-
-    public CostPage() 
-    {
-        InitializeComponent();
-
-        // string appDataPath = FileSystem.AppDataDirectory; 
-        // string randomFileName = $"{Path.GetRandomFileName()}.costs.txt";
-
-        // LoadCost(Path.Combine(appDataPath, randomFileName));
-        // LoadCost("");
     }
 
     private async Task LoadCostAsync(string id)
