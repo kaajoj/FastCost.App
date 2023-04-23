@@ -4,6 +4,7 @@
              xmlns:models="clr-namespace:FastCost.Models"
              x:Class="FastCost.Views.CostPage"
              Title="Cost">
+
     <ContentPage.BindingContext>
         <models:CostModel />
     </ContentPage.BindingContext>
