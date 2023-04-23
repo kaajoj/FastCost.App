@@ -13,16 +13,19 @@
 
     <TabBar 
         Route="tabs">
-        <ShellContent
-            Title="Add cost"
-            ContentTemplate="{DataTemplate views:MainPage}"
-            Icon="{OnPlatform 'icon_notes.png'}"
-            Route="mainPage" />
-        <ShellContent
-            Title="All costs"
-            ContentTemplate="{DataTemplate views:AllCostsPage}"
-            Icon="{OnPlatform 'icon_about.png'}"
-            Route="allCosts" />
+        <Tab Title="Add cost"
+             Icon="{OnPlatform 'icon_notes.png'}">
+            <ShellContent
+                ContentTemplate="{DataTemplate views:MainPage}"
+                Route="mainPage" />
+        </Tab>
+        <Tab Title="All costs"
+             Icon="{OnPlatform 'icon_about.png'}">
+            <ShellContent
+                ContentTemplate="{DataTemplate views:AllCostsPage}"
+                Route="allCosts" />
+        </Tab>
+
         <!-- TODO: change MainPage to new analysis page -->
         <!-- <ShellContent -->
         <!--     Title="Analysis" -->
