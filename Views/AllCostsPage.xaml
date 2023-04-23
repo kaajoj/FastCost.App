@@ -6,7 +6,7 @@
 
     <!-- Add an item to the toolbar -->
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="Add_Clicked" IconImageSource="{FontImage Glyph='+', Color=White, Size=22}" />
+        <ToolbarItem Text="" Clicked="Add_Clicked" IconImageSource="{FontImage Glyph='+', Color=White, Size=22}" />
     </ContentPage.ToolbarItems>
 
     <!-- Display costs in a list -->
