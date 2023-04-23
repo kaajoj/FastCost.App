@@ -2,7 +2,6 @@
 
 public partial class MainPage : ContentPage
 {
-	decimal _allCosts = 0;
     public decimal CostValue { get; private set; }
 
     public MainPage()

@@ -1,4 +1,3 @@
-using FastCost.DAL;
 using FastCost.Models;
 
 namespace FastCost.Views;
@@ -9,7 +8,7 @@ public partial class AllCostsPage : ContentPage
 	{
         InitializeComponent();
 
-        BindingContext = new Models.AllCosts();
+        BindingContext = new AllCosts();
     }
 
     protected override void OnAppearing()
