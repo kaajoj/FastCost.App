@@ -57,35 +57,35 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Label x:Name="lblCatC0R0" Text="🌅" FontSize="68" Grid.Column="0" Grid.Row="0" />
-            <Label x:Name="lblCatC1R0" Text="☀️" FontSize="68" Grid.Column="1" Grid.Row="0" />
-            <Label x:Name="lblCatC2R0" Text="🌇" FontSize="68" Grid.Column="2" Grid.Row="0" />
-            <Label x:Name="lblCatC3R0" Text="🌅" FontSize="68" Grid.Column="3" Grid.Row="0" />
+            <Label x:Name="LblCatC0R0" Text="🌅" FontSize="68" Grid.Column="0" Grid.Row="0" />
+            <Label x:Name="LblCatC1R0" Text="☀️" FontSize="68" Grid.Column="1" Grid.Row="0" />
+            <Label x:Name="LblCatC2R0" Text="🌇" FontSize="68" Grid.Column="2" Grid.Row="0" />
+            <Label x:Name="LblCatC3R0" Text="🌅" FontSize="68" Grid.Column="3" Grid.Row="0" />
 
-            <Label x:Name="lblCatTextC0R1" Text="Sunrise" FontAttributes="Bold" Grid.Column="0" Grid.Row="1" HorizontalTextAlignment="Center" />
-            <Label x:Name="lblCatTextC1R1" Text="Daylight" FontAttributes="Bold" Grid.Column="1" Grid.Row="1" HorizontalTextAlignment="Center" />
-            <Label x:Name="lblCatTextC2R1" Text="Sunset" FontAttributes="Bold" Grid.Column="2" Grid.Row="1" HorizontalTextAlignment="Center" />
-            <Label x:Name="lblCatTextC3R1" Text="Sunset2" FontAttributes="Bold" Grid.Column="3" Grid.Row="1" HorizontalTextAlignment="Center" />
+            <Label x:Name="LblCatTextC0R1" Text="Sunrise" FontAttributes="Bold" Grid.Column="0" Grid.Row="1" HorizontalTextAlignment="Center" />
+            <Label x:Name="LblCatTextC1R1" Text="Daylight" FontAttributes="Bold" Grid.Column="1" Grid.Row="1" HorizontalTextAlignment="Center" />
+            <Label x:Name="LblCatTextC2R1" Text="Sunset" FontAttributes="Bold" Grid.Column="2" Grid.Row="1" HorizontalTextAlignment="Center" />
+            <Label x:Name="LblCatTextC3R1" Text="Sunset2" FontAttributes="Bold" Grid.Column="3" Grid.Row="1" HorizontalTextAlignment="Center" />
 
-            <Label x:Name="lblCatC0R2" Text="🌅" FontSize="68" Grid.Column="0" Grid.Row="2" />
-            <Label x:Name="lblCatC1R2" Text="☀️" FontSize="68" Grid.Column="1" Grid.Row="2" />
-            <Label x:Name="lblCatC2R2" Text="🌇" FontSize="68" Grid.Column="2" Grid.Row="2" />
-            <Label x:Name="lblCatC3R2" Text="🌅" FontSize="68" Grid.Column="3" Grid.Row="2" />
+            <Label x:Name="LblCatC0R2" Text="🌅" FontSize="68" Grid.Column="0" Grid.Row="2" />
+            <Label x:Name="LblCatC1R2" Text="☀️" FontSize="68" Grid.Column="1" Grid.Row="2" />
+            <Label x:Name="LblCatC2R2" Text="🌇" FontSize="68" Grid.Column="2" Grid.Row="2" />
+            <Label x:Name="LblCatC3R2" Text="🌅" FontSize="68" Grid.Column="3" Grid.Row="2" />
 
-            <Label x:Name="lblCatTextC0R3" Text="Sunrise" FontAttributes="Bold" Grid.Column="0" Grid.Row="3" HorizontalTextAlignment="Center" />
-            <Label x:Name="lblCatTextC1R3" Text="Daylight" FontAttributes="Bold" Grid.Column="1" Grid.Row="3" HorizontalTextAlignment="Center" />
-            <Label x:Name="lblCatTextC2R3" Text="Sunset" FontAttributes="Bold" Grid.Column="2" Grid.Row="3" HorizontalTextAlignment="Center" />
-            <Label x:Name="lblCatTextC3R3" Text="Sunset2" FontAttributes="Bold" Grid.Column="3" Grid.Row="3" HorizontalTextAlignment="Center" />
+            <Label x:Name="LblCatTextC0R3" Text="Sunrise" FontAttributes="Bold" Grid.Column="0" Grid.Row="3" HorizontalTextAlignment="Center" />
+            <Label x:Name="LblCatTextC1R3" Text="Daylight" FontAttributes="Bold" Grid.Column="1" Grid.Row="3" HorizontalTextAlignment="Center" />
+            <Label x:Name="LblCatTextC2R3" Text="Sunset" FontAttributes="Bold" Grid.Column="2" Grid.Row="3" HorizontalTextAlignment="Center" />
+            <Label x:Name="LblCatTextC3R3" Text="Sunset2" FontAttributes="Bold" Grid.Column="3" Grid.Row="3" HorizontalTextAlignment="Center" />
 
-            <Label x:Name="lblCatC0R4" Text="🌅" FontSize="68" Grid.Column="0" Grid.Row="4" />
-            <Label x:Name="lblCatC1R4" Text="☀️" FontSize="68" Grid.Column="1" Grid.Row="4" />
-            <Label x:Name="lblCatC2R4" Text="🌇" FontSize="68" Grid.Column="2" Grid.Row="4" />
-            <Label x:Name="lblCatC3R4" Text="🌅" FontSize="68" Grid.Column="3" Grid.Row="4" />
+            <Label x:Name="LblCatC0R4" Text="🌅" FontSize="68" Grid.Column="0" Grid.Row="4" />
+            <Label x:Name="LblCatC1R4" Text="☀️" FontSize="68" Grid.Column="1" Grid.Row="4" />
+            <Label x:Name="LblCatC2R4" Text="🌇" FontSize="68" Grid.Column="2" Grid.Row="4" />
+            <Label x:Name="LblCatC3R4" Text="🌅" FontSize="68" Grid.Column="3" Grid.Row="4" />
 
-            <Label x:Name="lblCatTextC0R5" Text="Sunrise" FontAttributes="Bold" Grid.Column="0" Grid.Row="5" HorizontalTextAlignment="Center" />
-            <Label x:Name="lblCatTextC1R5" Text="Daylight" FontAttributes="Bold" Grid.Column="1" Grid.Row="5" HorizontalTextAlignment="Center" />
-            <Label x:Name="lblCatTextC2R5" Text="Sunset" FontAttributes="Bold" Grid.Column="2" Grid.Row="5" HorizontalTextAlignment="Center" />
-            <Label x:Name="lblCatTextC3R5" Text="Sunset2" FontAttributes="Bold" Grid.Column="3" Grid.Row="5" HorizontalTextAlignment="Center" />
+            <Label x:Name="LblCatTextC0R5" Text="Sunrise" FontAttributes="Bold" Grid.Column="0" Grid.Row="5" HorizontalTextAlignment="Center" />
+            <Label x:Name="LblCatTextC1R5" Text="Daylight" FontAttributes="Bold" Grid.Column="1" Grid.Row="5" HorizontalTextAlignment="Center" />
+            <Label x:Name="LblCatTextC2R5" Text="Sunset" FontAttributes="Bold" Grid.Column="2" Grid.Row="5" HorizontalTextAlignment="Center" />
+            <Label x:Name="LblCatTextC3R5" Text="Sunset2" FontAttributes="Bold" Grid.Column="3" Grid.Row="5" HorizontalTextAlignment="Center" />
         </Grid>
 
     </VerticalStackLayout>
