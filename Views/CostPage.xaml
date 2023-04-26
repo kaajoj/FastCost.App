@@ -41,7 +41,7 @@
 
         <Label Text="Select category level 1:" FontSize="28" Padding="15" HorizontalTextAlignment="Center" />
 
-        <Grid  RowSpacing="10" ColumnSpacing="5" Padding="5">
+        <Grid  RowSpacing="5" ColumnSpacing="10" Padding="5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -57,35 +57,35 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Label Text="🌅" FontSize="72" Grid.Column="0" Grid.Row="0" />
-            <Label Text="☀️" FontSize="72" Grid.Column="1" Grid.Row="0" />
-            <Label Text="🌇" FontSize="72" Grid.Column="2" Grid.Row="0" />
-            <Label Text="🌅" FontSize="72" Grid.Column="3" Grid.Row="0" />
+            <Label Text="🌅" FontSize="68" Grid.Column="0" Grid.Row="0" />
+            <Label Text="☀️" FontSize="68" Grid.Column="1" Grid.Row="0" />
+            <Label Text="🌇" FontSize="68" Grid.Column="2" Grid.Row="0" />
+            <Label Text="🌅" FontSize="68" Grid.Column="3" Grid.Row="0" />
 
             <Label Text="Sunrise" FontAttributes="Bold" Grid.Column="0" Grid.Row="1" HorizontalTextAlignment="Center" />
             <Label Text="Daylight" FontAttributes="Bold" Grid.Column="1" Grid.Row="1" HorizontalTextAlignment="Center" />
             <Label Text="Sunset" FontAttributes="Bold" Grid.Column="2" Grid.Row="1" HorizontalTextAlignment="Center" />
             <Label Text="Sunset2" FontAttributes="Bold" Grid.Column="3" Grid.Row="1" HorizontalTextAlignment="Center" />
 
-            <Label Text="🌅" FontSize="72" Grid.Column="0" Grid.Row="2" />
-            <Label Text="☀️" FontSize="72" Grid.Column="1" Grid.Row="2" />
-            <Label Text="🌇" FontSize="72" Grid.Column="2" Grid.Row="2" />
-            <Label Text="🌅" FontSize="72" Grid.Column="3" Grid.Row="2" />
+            <Label Text="🌅" FontSize="68" Grid.Column="0" Grid.Row="2" />
+            <Label Text="☀️" FontSize="68" Grid.Column="1" Grid.Row="2" />
+            <Label Text="🌇" FontSize="68" Grid.Column="2" Grid.Row="2" />
+            <Label Text="🌅" FontSize="68" Grid.Column="3" Grid.Row="2" />
 
             <Label Text="Sunrise" FontAttributes="Bold" Grid.Column="0" Grid.Row="3" HorizontalTextAlignment="Center" />
             <Label Text="Daylight" FontAttributes="Bold" Grid.Column="1" Grid.Row="3" HorizontalTextAlignment="Center" />
             <Label Text="Sunset" FontAttributes="Bold" Grid.Column="2" Grid.Row="3" HorizontalTextAlignment="Center" />
             <Label Text="Sunset2" FontAttributes="Bold" Grid.Column="3" Grid.Row="3" HorizontalTextAlignment="Center" />
 
-            <Label Text="🌅" FontSize="72" Grid.Column="0" Grid.Row="3" />
-            <Label Text="☀️" FontSize="72" Grid.Column="1" Grid.Row="3" />
-            <Label Text="🌇" FontSize="72" Grid.Column="2" Grid.Row="3" />
-            <Label Text="🌅" FontSize="72" Grid.Column="3" Grid.Row="3" />
+            <Label Text="🌅" FontSize="68" Grid.Column="0" Grid.Row="4" />
+            <Label Text="☀️" FontSize="68" Grid.Column="1" Grid.Row="4" />
+            <Label Text="🌇" FontSize="68" Grid.Column="2" Grid.Row="4" />
+            <Label Text="🌅" FontSize="68" Grid.Column="3" Grid.Row="4" />
 
-            <Label Text="Sunrise" FontAttributes="Bold" Grid.Column="0" Grid.Row="4" HorizontalTextAlignment="Center" />
-            <Label Text="Daylight" FontAttributes="Bold" Grid.Column="1" Grid.Row="4" HorizontalTextAlignment="Center" />
-            <Label Text="Sunset" FontAttributes="Bold" Grid.Column="2" Grid.Row="4" HorizontalTextAlignment="Center" />
-            <Label Text="Sunset2" FontAttributes="Bold" Grid.Column="3" Grid.Row="4" HorizontalTextAlignment="Center" />
+            <Label Text="Sunrise" FontAttributes="Bold" Grid.Column="0" Grid.Row="5" HorizontalTextAlignment="Center" />
+            <Label Text="Daylight" FontAttributes="Bold" Grid.Column="1" Grid.Row="5" HorizontalTextAlignment="Center" />
+            <Label Text="Sunset" FontAttributes="Bold" Grid.Column="2" Grid.Row="5" HorizontalTextAlignment="Center" />
+            <Label Text="Sunset2" FontAttributes="Bold" Grid.Column="3" Grid.Row="5" HorizontalTextAlignment="Center" />
 
             <!-- <Label x:Name="lblSunrise" WidthRequest="100" FontAttributes="None" Grid.Column="0" Grid.Row="2" HorizontalTextAlignment="Center" /> -->
             <!-- <Label x:Name="lblDaylight" WidthRequest="150" FontAttributes="None" Grid.Column="1" Grid.Row="2" HorizontalTextAlignment="Center" /> -->
