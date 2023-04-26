@@ -92,22 +92,5 @@
             <!-- <Label x:Name="lblSunset" WidthRequest="100" FontAttributes="None" Grid.Column="2" Grid.Row="2" HorizontalTextAlignment="Center" /> -->
             <!-- <Label x:Name="lblSunset2" WidthRequest="100" FontAttributes="None" Grid.Column="3" Grid.Row="2" HorizontalTextAlignment="Center" /> -->
         </Grid>
-
-        <!-- <HorizontalStackLayout Spacing="10"> -->
-        <!-- -->
-        <!-- </HorizontalStackLayout> -->
-        <!-- <HorizontalStackLayout> -->
-        <!--     <Label Text="🌅" FontSize="72" Grid.Column="0" /> -->
-        <!--     <Label Text="☀️" FontSize="72" Grid.Column="1" /> -->
-        <!--     <Label Text="🌇" FontSize="72" Grid.Column="2" /> -->
-        <!--     ~1~ <Label Text="🌅" FontSize="72" Grid.Column="3" /> @1@ -->
-        <!-- </HorizontalStackLayout> -->
-        <!-- <HorizontalStackLayout> -->
-        <!--     <Label Text="🌅" FontSize="72" Grid.Column="0" /> -->
-        <!--     <Label Text="☀️" FontSize="72" Grid.Column="1" /> -->
-        <!--     <Label Text="🌇" FontSize="72" Grid.Column="2" /> -->
-        <!--     ~1~ <Label Text="🌅" FontSize="72" Grid.Column="3" /> @1@ -->
-        <!-- </HorizontalStackLayout> -->
-
     </VerticalStackLayout>
 </ContentPage>
