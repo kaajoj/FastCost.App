@@ -11,7 +11,8 @@
     <!--     ContentTemplate="{DataTemplate views:MainPage}" -->
     <!--     Route="MainPage" /> -->
 
-    <TabBar 
+    
+    <TabBar
         Route="tabs">
         <Tab Title="Add cost" Icon="{OnPlatform 'icon_notes.png'}">
             <ShellContent
@@ -25,6 +26,13 @@
         </Tab>
     </TabBar>
 
+
+    <!-- <Shell.FlyoutHeader> -->
+    <!--     <Grid HeightRequest="100" BackgroundColor="DarkSlateBlue"> -->
+    <!--         <Image Source="moon.png"/> -->
+    <!--     </Grid> -->
+    <!-- </Shell.FlyoutHeader> -->
+    <!-- -->
     <!-- <FlyoutItem Title="Add cost" Icon="{OnPlatform 'icon_notes.png'}"> -->
     <!--     <ShellContent -->
     <!--             ContentTemplate="{DataTemplate views:MainPage}" -->
