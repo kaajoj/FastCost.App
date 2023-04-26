@@ -80,12 +80,12 @@
             <Label Text="🌅" FontSize="72" Grid.Column="0" Grid.Row="3" />
             <Label Text="☀️" FontSize="72" Grid.Column="1" Grid.Row="3" />
             <Label Text="🌇" FontSize="72" Grid.Column="2" Grid.Row="3" />
-            <Label Text="🌅" FontSize="72" Grid.Column="3" Grid.Row="4" />
+            <Label Text="🌅" FontSize="72" Grid.Column="3" Grid.Row="3" />
 
-            <Label Text="Sunrise" FontAttributes="Bold" Grid.Column="0" Grid.Row="4" />
-            <Label Text="Daylight" FontAttributes="Bold" Grid.Column="1" Grid.Row="4" />
-            <Label Text="Sunset" FontAttributes="Bold" Grid.Column="2" Grid.Row="4" />
-            <Label Text="Sunset2" FontAttributes="Bold" Grid.Column="2" Grid.Row="4" />
+            <Label Text="Sunrise" FontAttributes="Bold" Grid.Column="0" Grid.Row="4" HorizontalTextAlignment="Center" />
+            <Label Text="Daylight" FontAttributes="Bold" Grid.Column="1" Grid.Row="4" HorizontalTextAlignment="Center" />
+            <Label Text="Sunset" FontAttributes="Bold" Grid.Column="2" Grid.Row="4" HorizontalTextAlignment="Center" />
+            <Label Text="Sunset2" FontAttributes="Bold" Grid.Column="3" Grid.Row="4" HorizontalTextAlignment="Center" />
 
             <!-- <Label x:Name="lblSunrise" WidthRequest="100" FontAttributes="None" Grid.Column="0" Grid.Row="2" HorizontalTextAlignment="Center" /> -->
             <!-- <Label x:Name="lblDaylight" WidthRequest="150" FontAttributes="None" Grid.Column="1" Grid.Row="2" HorizontalTextAlignment="Center" /> -->
