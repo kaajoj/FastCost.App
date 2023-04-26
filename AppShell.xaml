@@ -3,12 +3,12 @@
     x:Class="FastCost.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:views="clr-namespace:FastCost.Views"
-    FlyoutBehavior="Disabled">
+    xmlns:views="clr-namespace:FastCost.Views">
+    <!-- FlyoutBehavior=""> -->
 
     <!-- <ShellContent -->
     <!--     Title="FastCost" -->
-    <!--     ContentTemplate="{DataTemplate local:MainPage}" -->
+    <!--     ContentTemplate="{DataTemplate views:MainPage}" -->
     <!--     Route="MainPage" /> -->
 
     <TabBar 
@@ -23,12 +23,24 @@
                 ContentTemplate="{DataTemplate views:AllCostsPage}"
                 Route="allCosts" />
         </Tab>
-
-        <!-- TODO: change MainPage to new analysis page -->
-        <!-- <ShellContent -->
-        <!--     Title="Analysis" -->
-        <!--     ContentTemplate="{DataTemplate views:MainPage}" -->
-        <!-- Icon="{OnPlatform 'icon_about.png'}" /> -->
     </TabBar>
+
+    <!-- <FlyoutItem Title="Add cost" Icon="{OnPlatform 'icon_notes.png'}"> -->
+    <!--     <ShellContent -->
+    <!--             ContentTemplate="{DataTemplate views:MainPage}" -->
+    <!--             Route="mainPage" /> -->
+    <!-- </FlyoutItem> -->
+    <!-- <FlyoutItem Title="All costs" Icon="{OnPlatform 'icon_about.png'}"> -->
+    <!--     <ShellContent -->
+    <!--             ContentTemplate="{DataTemplate views:AllCostsPage}" -->
+    <!--             Route="allCosts" /> -->
+    <!-- </FlyoutItem> -->
+
+    <!-- TODO: change MainPage to new analysis page -->
+    <!-- <ShellContent -->
+    <!--     Title="Analysis" -->
+    <!--     ContentTemplate="{DataTemplate views:MainPage}" -->
+    <!-- Icon="{OnPlatform 'icon_about.png'}" /> -->
+    <!-- </FlyoutItem> -->
 
 </Shell>
