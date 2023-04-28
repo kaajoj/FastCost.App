@@ -33,16 +33,16 @@
     <!--     </Grid> -->
     <!-- </Shell.FlyoutHeader> -->
     <!-- -->
-    <FlyoutItem Title="Add cost" Icon="{OnPlatform 'icon_notes.png'}">
-        <ShellContent
-                ContentTemplate="{DataTemplate views:MainPage}"
-                Route="mainPage" />
-    </FlyoutItem>
-    <FlyoutItem Title="All costs" Icon="{OnPlatform 'icon_about.png'}">
-        <ShellContent
-                ContentTemplate="{DataTemplate views:AllCostsPage}"
-                Route="allCosts" />
-    </FlyoutItem>
+    <!-- <FlyoutItem Title="Add cost" Icon="{OnPlatform 'icon_notes.png'}"> -->
+    <!--     <ShellContent -->
+    <!--             ContentTemplate="{DataTemplate views:MainPage}" -->
+    <!--             Route="mainPage" /> -->
+    <!-- </FlyoutItem> -->
+    <!-- <FlyoutItem Title="All costs" Icon="{OnPlatform 'icon_about.png'}"> -->
+    <!--     <ShellContent -->
+    <!--             ContentTemplate="{DataTemplate views:AllCostsPage}" -->
+    <!--             Route="allCosts" /> -->
+    <!-- </FlyoutItem> -->
 
     <!-- TODO: change MainPage to new analysis page -->
     <!-- <ShellContent -->
