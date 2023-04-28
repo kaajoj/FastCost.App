@@ -12,7 +12,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Label">
-                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="HorizontalOptions" Value="Center" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
