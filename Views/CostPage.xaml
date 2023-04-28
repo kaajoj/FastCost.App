@@ -44,6 +44,7 @@
 
             <Button Grid.Column="1"
                     Text="Delete"
+                    BackgroundColor="Orange"
                     Clicked="DeleteButton_Clicked" />
         </Grid>
 
