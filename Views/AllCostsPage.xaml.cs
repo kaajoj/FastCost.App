@@ -26,7 +26,7 @@ public partial class AllCostsPage : ContentPage
         if (e.CurrentSelection.Count != 0)
         {
             // Get the cost model
-            var cost = (Models.CostModel)e.CurrentSelection[0];
+            var cost = (CostModel)e.CurrentSelection[0];
 
             // Should navigate to "CostPage?ItemId=path\on\device\XYZ.costs.txt"
             await Shell.Current.GoToAsync($"{nameof(CostPage)}?{nameof(CostPage.ItemId)}={cost.Id}");
