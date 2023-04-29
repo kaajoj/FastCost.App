@@ -62,10 +62,15 @@ public partial class CostPage : ContentPage
             ((CostModel)BindingContext).Value = decimal.Parse(CostValue);
             ((CostModel)BindingContext).Date = DateTime.UtcNow;
         }
-        CostValueEditor.Text = CostValue;
 
         if (((CostModel)BindingContext).Value != 0)
+        {
             CostValueEditor.Text = ((CostModel)BindingContext).Value.ToString(CultureInfo.InvariantCulture);
+        }
+        else
+        {
+            CostValueEditor.Text = CostValue;
+        }
     }
 
     private async Task LoadCostAsync(string id)
