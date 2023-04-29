@@ -37,6 +37,13 @@
                 FontAttributes="Bold"
                 HorizontalTextAlignment="Center" />
 
+        <Editor x:Name="DateEditor"
+                Placeholder="enter date"
+                Text="{Binding Date}"
+                FontSize="26"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center" />
+
         <Grid ColumnDefinitions="*,*" ColumnSpacing="10" Margin="5">
             <Button Grid.Column="0"
                     Text="Save"
