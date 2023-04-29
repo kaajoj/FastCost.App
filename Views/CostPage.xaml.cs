@@ -1,4 +1,5 @@
-﻿using FastCost.DAL.Entities;
+﻿using System.Globalization;
+using FastCost.DAL.Entities;
 using FastCost.Models;
 using Mapster;
 
@@ -62,7 +63,9 @@ public partial class CostPage : ContentPage
             ((CostModel)BindingContext).Date = DateTime.UtcNow;
         }
         CostValueEditor.Text = CostValue;
-        CostValueEditor.Text = (((CostModel)BindingContext).Value).ToString();
+
+        if (((CostModel)BindingContext).Value != 0)
+            CostValueEditor.Text = ((CostModel)BindingContext).Value.ToString(CultureInfo.InvariantCulture);
     }
 
     private async Task LoadCostAsync(string id)
