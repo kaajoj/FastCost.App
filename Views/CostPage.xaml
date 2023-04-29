@@ -39,7 +39,7 @@
 
         <Editor x:Name="DateEditor"
                 Placeholder="enter date"
-                Text="{Binding Date}"
+                Text="{Binding Date, StringFormat='{0:d}'}"
                 FontSize="26"
                 FontAttributes="Bold"
                 HorizontalTextAlignment="Center" />
