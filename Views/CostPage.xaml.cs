@@ -45,12 +45,6 @@ public partial class CostPage : ContentPage
     public CostPage() 
     {
         InitializeComponent();
-
-        // string appDataPath = FileSystem.AppDataDirectory; 
-        // string randomFileName = $"{Path.GetRandomFileName()}.costs.txt";
-
-        // LoadCost(Path.Combine(appDataPath, randomFileName));
-        // LoadCost("");
     }
 
     protected override void OnNavigatedTo(NavigatedToEventArgs state)
@@ -78,19 +72,6 @@ public partial class CostPage : ContentPage
         var cost = await App.CostRepository.GetCostAsync(Int32.Parse(id));
         var costModel = cost.Adapt<CostModel>();
 
-        // var costModel = new Models.Cost
-        // {
-        //     // FileName = fileName
-        //     // Id = Int32.Parse(id)
-        // };
-        //
-        // if (File.Exists(fileName))
-        // {
-        //     costModel.Date = File.GetCreationTime(fileName);
-        //     costModel.Description = File.ReadAllText(fileName);
-        //     costModel.Value = decimal.Parse(File.ReadAllText(fileName));
-        // }
-
         BindingContext = costModel;
     }
 
@@ -98,9 +79,7 @@ public partial class CostPage : ContentPage
     {
         if (BindingContext is CostModel costModel)
         {
-            // File.WriteAllText(cost.FileName, DescriptionEditor.Text);
-            // File.WriteAllText(cost.FileName, CostValueEditor.Text);
-            costModel.Date = DateTime.UtcNow;
+            // costModel.Date = DateTime.UtcNow;
 
             var cost = costModel.Adapt<Cost>();
             await App.CostRepository.SaveCostAsync(cost);
@@ -116,8 +95,6 @@ public partial class CostPage : ContentPage
         {
             var cost = costModel.Adapt<Cost>();
             await App.CostRepository.DeleteCostAsync(cost);
-            // if (File.Exists(cost.FileName))
-            //     File.Delete(cost.FileName);
         }
 
         await Shell.Current.GoToAsync("..");
