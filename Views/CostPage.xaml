@@ -17,7 +17,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <VerticalStackLayout Spacing="10" Margin="10">
+    <VerticalStackLayout Spacing="5" Margin="5">
         <!-- // test -->
         <!-- <Label FontSize="22" FontAttributes="Bold" Text="{Binding Title}" VerticalOptions="End" /> -->
         <!-- <Label FontSize="22" Text="{Binding Version}" VerticalOptions="End" /> -->
@@ -47,17 +47,19 @@
         <Grid ColumnDefinitions="*,*" ColumnSpacing="10" Margin="5">
             <Button Grid.Column="0"
                     Text="Save"
+                    FontAttributes="Bold"
                     Clicked="SaveButton_Clicked" />
 
             <Button Grid.Column="1"
                     Text="Delete"
                     BackgroundColor="Orange"
+                    FontAttributes="Bold"
                     Clicked="DeleteButton_Clicked" />
         </Grid>
 
-        <Label Text="Select category:" FontSize="28" Padding="0" Margin="10" />
+        <Label Text="Select category:" FontSize="26" Padding="5" Margin="0" />
 
-        <Grid  RowSpacing="5" ColumnSpacing="10" Padding="5">
+        <Grid  RowSpacing="5" ColumnSpacing="10" Padding="0" Margin="0" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
