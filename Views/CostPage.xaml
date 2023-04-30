@@ -37,12 +37,17 @@
                 FontAttributes="Bold"
                 HorizontalTextAlignment="Center" />
 
-        <Editor x:Name="DateEditor"
-                Placeholder="enter date"
-                Text="{Binding Date, StringFormat='{0:d}'}"
-                FontSize="26"
-                FontAttributes="Bold"
+        <Label x:Name="DateLabel"
+                Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}"
+                FontSize="24"
                 HorizontalTextAlignment="Center" />
+
+        <!-- <Editor x:Name="DateEditor" -->
+        <!--         Placeholder="enter date" -->
+        <!--         Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" -->
+        <!--         FontSize="26" -->
+        <!--         FontAttributes="Bold" -->
+        <!--         HorizontalTextAlignment="Center" /> -->
 
         <Grid ColumnDefinitions="*,*" ColumnSpacing="10" Margin="5">
             <Button Grid.Column="0"
