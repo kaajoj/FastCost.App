@@ -45,7 +45,7 @@
         <!-- <Editor x:Name="DateEditor" -->
         <!--         Placeholder="enter date" -->
         <!--         Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" -->
-        <!--         FontSize="26" -->
+        <!--         FontSize="24" -->
         <!--         FontAttributes="Bold" -->
         <!--         HorizontalTextAlignment="Center" /> -->
 
