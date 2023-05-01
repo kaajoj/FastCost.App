@@ -7,7 +7,7 @@ namespace FastCost.Models
     {
         public int Id { get; set; }
 
-        public decimal Value { get; set; }
+        public decimal? Value { get; set; } = null;
 
         public string Description { get; set; }
 
@@ -26,6 +26,7 @@ namespace FastCost.Models
                 }
             }
         }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
 

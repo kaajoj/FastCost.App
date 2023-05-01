@@ -57,13 +57,13 @@ public partial class CostPage : ContentPage
             ((CostModel)BindingContext).Date = DateTime.UtcNow;
         }
 
-        if (((CostModel)BindingContext).Value != 0)
+        if (((CostModel)BindingContext).Value >= 0)
         {
-            CostValueEditor.Text = ((CostModel)BindingContext).Value.ToString(CultureInfo.InvariantCulture);
+            CostValueEditor.Text = ((CostModel)BindingContext).Value.ToString();
         }
         else
         {
-            CostValueEditor.Text = CostValue;
+            CostValueEditor.Text = string.Empty;
             ((CostModel)BindingContext).Date = DateTime.UtcNow;
         }
     }
