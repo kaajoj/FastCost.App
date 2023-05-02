@@ -27,7 +27,7 @@
                 <StackLayout>
                     <HorizontalStackLayout Spacing="30">
                         <Label Text="{Binding FormattedDate}" FontSize="16" HorizontalTextAlignment="End" TextColor="Silver"/>
-                        <Label Text="{Binding Value}" FontSize="16" MinimumWidthRequest="40" HorizontalTextAlignment="Start"/>
+                        <Label Text="{Binding Value}" FontSize="16" MinimumWidthRequest="40" HorizontalTextAlignment="End"/>
                         <Label Text="{Binding Category.Name}" FontSize="16" HorizontalTextAlignment="Start"/>
                         <Label Text="{Binding Description}" FontSize="16" HorizontalTextAlignment="Start"/>
                     </HorizontalStackLayout>
