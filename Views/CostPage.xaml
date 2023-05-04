@@ -80,30 +80,30 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Label x:Name="LblCatC0R0" Text="🌅" FontSize="68" Grid.Column="0" Grid.Row="0" />
-            <Label x:Name="LblCatC1R0" Text="☀️" FontSize="68" Grid.Column="1" Grid.Row="0" />
-            <Label x:Name="LblCatC2R0" Text="🌇" FontSize="68" Grid.Column="2" Grid.Row="0" />
-            <Label x:Name="LblCatC3R0" Text="🌅" FontSize="68" Grid.Column="3" Grid.Row="0" />
+            <Label x:Name="LblCatC0R0" Text="🍕" FontSize="68" Grid.Column="0" Grid.Row="0" />
+            <Label x:Name="LblCatC1R0" Text="🏠" FontSize="68" Grid.Column="1" Grid.Row="0" />
+            <Label x:Name="LblCatC2R0" Text="🛒" FontSize="68" Grid.Column="2" Grid.Row="0" />
+            <Label x:Name="LblCatC3R0" Text="🚗" FontSize="68" Grid.Column="3" Grid.Row="0" />
 
-            <Label x:Name="LblTextCatC0R1" Text="CatC0R1" FontAttributes="Bold" Grid.Column="0" Grid.Row="1" />
-            <Label x:Name="LblTextCatC1R1" Text="CatC1R1" FontAttributes="Bold" Grid.Column="1" Grid.Row="1" />
-            <Label x:Name="LblTextCatC2R1" Text="CatC2R1" FontAttributes="Bold" Grid.Column="2" Grid.Row="1" />
-            <Label x:Name="LblTextCatC3R1" Text="CatC3R1" FontAttributes="Bold" Grid.Column="3" Grid.Row="1" />
+            <Label x:Name="LblTextCatC0R1" Text="food" FontAttributes="Bold" Grid.Column="0" Grid.Row="1" />
+            <Label x:Name="LblTextCatC1R1" Text="apartment" FontAttributes="Bold" Grid.Column="1" Grid.Row="1" />
+            <Label x:Name="LblTextCatC2R1" Text="shopping" FontAttributes="Bold" Grid.Column="2" Grid.Row="1" />
+            <Label x:Name="LblTextCatC3R1" Text="transport" FontAttributes="Bold" Grid.Column="3" Grid.Row="1" />
 
-            <Label x:Name="LblCatC0R2" Text="🌅" FontSize="68" Grid.Column="0" Grid.Row="2" />
-            <Label x:Name="LblCatC1R2" Text="☀️" FontSize="68" Grid.Column="1" Grid.Row="2" />
-            <Label x:Name="LblCatC2R2" Text="🌇" FontSize="68" Grid.Column="2" Grid.Row="2" />
-            <Label x:Name="LblCatC3R2" Text="🌅" FontSize="68" Grid.Column="3" Grid.Row="2" />
+            <Label x:Name="LblCatC0R2" Text="🏖" FontSize="68" Grid.Column="0" Grid.Row="2" />
+            <Label x:Name="LblCatC1R2" Text="🏦" FontSize="68" Grid.Column="1" Grid.Row="2" />
+            <Label x:Name="LblCatC2R2" Text="💼" FontSize="68" Grid.Column="2" Grid.Row="2" />
+            <Label x:Name="LblCatC3R2" Text="💸" FontSize="68" Grid.Column="3" Grid.Row="2" />
 
-            <Label x:Name="LblTextCatC0R3" Text="CatC0R3" FontAttributes="Bold" Grid.Column="0" Grid.Row="3" />
-            <Label x:Name="LblTextCatC1R3" Text="CatC1R3" FontAttributes="Bold" Grid.Column="1" Grid.Row="3" />
-            <Label x:Name="LblTextCatC2R3" Text="CatC2R3" FontAttributes="Bold" Grid.Column="2" Grid.Row="3" />
-            <Label x:Name="LblTextCatC3R3" Text="CatC3R3" FontAttributes="Bold" Grid.Column="3" Grid.Row="3" />
+            <Label x:Name="LblTextCatC0R3" Text="trip" FontAttributes="Bold" Grid.Column="0" Grid.Row="3" />
+            <Label x:Name="LblTextCatC1R3" Text="bank" FontAttributes="Bold" Grid.Column="1" Grid.Row="3" />
+            <Label x:Name="LblTextCatC2R3" Text="company" FontAttributes="Bold" Grid.Column="2" Grid.Row="3" />
+            <Label x:Name="LblTextCatC3R3" Text="other" FontAttributes="Bold" Grid.Column="3" Grid.Row="3" />
 
             <Label x:Name="LblCatC0R4" Text="🌅" FontSize="68" Grid.Column="0" Grid.Row="4" />
             <Label x:Name="LblCatC1R4" Text="☀️" FontSize="68" Grid.Column="1" Grid.Row="4" />
             <Label x:Name="LblCatC2R4" Text="🌇" FontSize="68" Grid.Column="2" Grid.Row="4" />
-            <Label x:Name="LblCatC3R4" Text="🌅" FontSize="68" Grid.Column="3" Grid.Row="4" />
+            <Label x:Name="LblCatC3R4" Text="💳" FontSize="68" Grid.Column="3" Grid.Row="4" />
 
             <Label x:Name="LblTextCatC0R5" Text="CatC0R5" FontAttributes="Bold" Grid.Column="0" Grid.Row="5" />
             <Label x:Name="LblTextCatC1R5" Text="CatC1R5" FontAttributes="Bold" Grid.Column="1" Grid.Row="5" />
