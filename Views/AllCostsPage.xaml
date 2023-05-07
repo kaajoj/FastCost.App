@@ -12,7 +12,7 @@
     <!-- Display costs in a list -->
     <CollectionView x:Name="costsCollection"
                     ItemsSource="{Binding Costs}"
-                    Header="Date            Value            Category            Description"
+                    Header="Date            Value        Category        Description"
                     Margin="20"
                     SelectionMode="Single"
                     SelectionChanged="costsCollection_SelectionChanged">

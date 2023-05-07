@@ -18,6 +18,7 @@ namespace FastCost.DAL
 
             Database = new SQLiteAsyncConnection(ConfigDb.DatabasePath, ConfigDb.Flags);
             await Database.CreateTableAsync<Category>();
+            await InitCategoriesAsync();
         }
 
         public async Task<List<Category>> GetCategoriesAsync()
@@ -54,6 +55,23 @@ namespace FastCost.DAL
         {
             await Init();
             return await Database.DeleteAsync(category);
+        }
+
+        private async Task InitCategoriesAsync()
+        {
+            var categories = new List<Category>()
+            {
+                new() { Id = 1, Name = "food" },
+                new() { Id = 2, Name = "apartment" },
+                new() { Id = 2, Name = "shopping" },
+                new() { Id = 2, Name = "transport" },
+                new() { Id = 2, Name = "trip" },
+                new() { Id = 2, Name = "bank" },
+                new() { Id = 2, Name = "company" },
+                new() { Id = 2, Name = "other" }
+            };
+
+            await Database.InsertAllAsync(categories);
         }
     }
 }
