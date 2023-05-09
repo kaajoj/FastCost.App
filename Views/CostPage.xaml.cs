@@ -42,6 +42,8 @@ public partial class CostPage : ContentPage
     //     }
     // }
 
+    private string selectedCategory;
+
     public CostPage() 
     {
         InitializeComponent();
@@ -99,5 +101,14 @@ public partial class CostPage : ContentPage
         }
 
         await Shell.Current.GoToAsync("..");
+    }
+
+    private void OnCategorySelected(object sender, TappedEventArgs args)
+    {
+        selectedCategory = args.Parameter?.ToString();
+        Label selectedLabel = (Label)sender;
+        selectedLabel.BackgroundColor = Color.Parse("CadetBlue"); 
+
+        // przesłanie wartości wybranej kategorii do bazy danych
     }
 }

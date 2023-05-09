@@ -80,8 +80,16 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Label x:Name="LblCatC0R0" Text="🍕" FontSize="68" Grid.Column="0" Grid.Row="0" />
-            <Label x:Name="LblCatC1R0" Text="🏠" FontSize="68" Grid.Column="1" Grid.Row="0" />
+            <Label x:Name="LblCatC0R0" Text="🍕" FontSize="68" Grid.Column="0" Grid.Row="0">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnCategorySelected" CommandParameter="food"/>
+                </Label.GestureRecognizers>
+            </Label> 
+            <Label x:Name="LblCatC1R0" Text="🏠" FontSize="68" Grid.Column="1" Grid.Row="0">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnCategorySelected" CommandParameter="apartment"/>
+                </Label.GestureRecognizers>
+            </Label>
             <Label x:Name="LblCatC2R0" Text="🛒" FontSize="68" Grid.Column="2" Grid.Row="0" />
             <Label x:Name="LblCatC3R0" Text="🚗" FontSize="68" Grid.Column="3" Grid.Row="0" />
 
