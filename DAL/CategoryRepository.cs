@@ -59,6 +59,12 @@ namespace FastCost.DAL
 
         private async Task InitCategoriesAsync()
         {
+            var categoriesDb = await Database.Table<Category>().ToListAsync();
+            if (categoriesDb.Any())
+            {
+                return;
+            }
+
             var categories = new List<Category>()
             {
                 new() { Id = 1, Name = "food" },
