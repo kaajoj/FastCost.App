@@ -111,7 +111,6 @@ public partial class CostPage : ContentPage
 
         _selectedCategory = args.Parameter?.ToString();
 
-        // przesłanie wartości wybranej kategorii do bazy danych
         if (_selectedCategory != null) 
             ((CostModel)BindingContext).CategoryId = int.Parse(_selectedCategory);
 
