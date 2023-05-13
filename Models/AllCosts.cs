@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using FastCost.DAL.Entities;
 using Mapster;
 
 namespace FastCost.Models
@@ -24,6 +25,10 @@ namespace FastCost.Models
             foreach (var cost in costs)
             {
                 cost.Category = categories.SingleOrDefault(cat => cat.Id == cost.CategoryId);
+                if (cost.Category is null)
+                {
+                    cost.Category = new Category() { Name = "no category" };
+                }
             }
 
             foreach (CostModel cost in costs.OrderBy(cost => cost.Date)) 
