@@ -42,11 +42,12 @@ public partial class CostPage : ContentPage
     //     }
     // }
 
-    private string selectedCategory;
+    private string _selectedCategory;
 
     public CostPage() 
     {
         InitializeComponent();
+        // this.categoriesGrid.SelectionChanged += OnCategorySelected;
     }
 
     protected override void OnNavigatedTo(NavigatedToEventArgs state)
@@ -105,10 +106,16 @@ public partial class CostPage : ContentPage
 
     private void OnCategorySelected(object sender, TappedEventArgs args)
     {
-        selectedCategory = args.Parameter?.ToString();
         Label selectedLabel = (Label)sender;
-        selectedLabel.BackgroundColor = Color.Parse("CadetBlue"); 
+        selectedLabel.BackgroundColor = Color.Parse("CadetBlue");
+
+        _selectedCategory = args.Parameter?.ToString();
 
         // przesłanie wartości wybranej kategorii do bazy danych
+        if (_selectedCategory != null) 
+            ((CostModel)BindingContext).CategoryId = int.Parse(_selectedCategory);
+
+        // var id = selectedLabel.Id;
+        // var text = selectedLabel.Text;
     }
 }
