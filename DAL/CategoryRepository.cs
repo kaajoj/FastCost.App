@@ -63,12 +63,12 @@ namespace FastCost.DAL
             {
                 new() { Id = 1, Name = "food" },
                 new() { Id = 2, Name = "apartment" },
-                new() { Id = 2, Name = "shopping" },
-                new() { Id = 2, Name = "transport" },
-                new() { Id = 2, Name = "trip" },
-                new() { Id = 2, Name = "bank" },
-                new() { Id = 2, Name = "company" },
-                new() { Id = 2, Name = "other" }
+                new() { Id = 3, Name = "shopping" },
+                new() { Id = 4, Name = "transport" },
+                new() { Id = 5, Name = "trip" },
+                new() { Id = 6, Name = "bank" },
+                new() { Id = 7, Name = "company" },
+                new() { Id = 8, Name = "other" }
             };
 
             await Database.InsertAllAsync(categories);
