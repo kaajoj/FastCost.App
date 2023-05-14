@@ -6,15 +6,39 @@
 
     <!-- Add an item to the toolbar -->
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="" Clicked="Add_Clicked" IconImageSource="{FontImage Glyph='+', Color=White, Size=22}" />
+        <ToolbarItem Text="" Clicked="Add_Clicked" IconImageSource="{FontImage Glyph='+', Size=32}" />
     </ContentPage.ToolbarItems>
 
     <!-- Display costs in a list -->
     <CollectionView x:Name="costsCollection"
                     ItemsSource="{Binding Costs}"
+                    Header="Date            Value         Category                  Description"
                     Margin="20"
                     SelectionMode="Single"
                     SelectionChanged="costsCollection_SelectionChanged">
+
+        <CollectionView.HeaderTemplate>
+            <DataTemplate>
+                <StackLayout BackgroundColor="White" Orientation="Horizontal" Spacing="20">
+                    <Label Margin="0,0,0,0"
+                           Text="Date"
+                           FontSize="16"
+                           FontAttributes="Bold" />                    
+                    <Label Margin="10,0,0,0"
+                           Text="Value"
+                           FontSize="16"
+                           FontAttributes="Bold" />                    
+                    <Label Margin="10,0,0,0"
+                           Text="Category"
+                           FontSize="16"
+                           FontAttributes="Bold" />                    
+                    <Label Margin="10,0,0,0"
+                           Text="Description"
+                           FontSize="16"
+                           FontAttributes="Bold" />
+                </StackLayout>
+            </DataTemplate>
+        </CollectionView.HeaderTemplate>
 
         <!-- Designate how the collection of items are laid out -->
         <CollectionView.ItemsLayout>
@@ -25,13 +49,15 @@
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <StackLayout>
-                    <HorizontalStackLayout Spacing="30">
-                        <Label Text="{Binding FormattedDate}" FontSize="16" HorizontalTextAlignment="End" TextColor="Silver"/>
-                        <Label Text="{Binding Value}" FontSize="16" HorizontalTextAlignment="End"/>
-                        <Label Text="{Binding Description}" FontSize="16" HorizontalTextAlignment="Start"/>
+                    <HorizontalStackLayout Spacing="40">
+                        <Label Text="{Binding FormattedDate}" FontSize="16" HorizontalTextAlignment="End"/>
+                        <Label Text="{Binding Value}" FontSize="16" MinimumWidthRequest="25" HorizontalTextAlignment="End"/>
+                        <Label Text="{Binding Category.Name}" FontSize="16" MinimumWidthRequest="90" HorizontalTextAlignment="End"/>
+                        <Label Text="{Binding Description}" FontSize="16" MinimumWidthRequest="0" HorizontalTextAlignment="End"/>
                     </HorizontalStackLayout>
                 </StackLayout>
             </DataTemplate>
         </CollectionView.ItemTemplate>
+
     </CollectionView>
 </ContentPage>
