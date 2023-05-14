@@ -12,7 +12,7 @@
     <!-- Display costs in a list -->
     <CollectionView x:Name="costsCollection"
                     ItemsSource="{Binding Costs}"
-                    Header="Date            Value        Category        Description"
+                    Header="Date            Value         Category                  Description"
                     Margin="20"
                     SelectionMode="Single"
                     SelectionChanged="costsCollection_SelectionChanged">
@@ -49,11 +49,11 @@
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <StackLayout>
-                    <HorizontalStackLayout Spacing="30">
+                    <HorizontalStackLayout Spacing="40">
                         <Label Text="{Binding FormattedDate}" FontSize="16" HorizontalTextAlignment="End"/>
-                        <Label Text="{Binding Value}" FontSize="16" MinimumWidthRequest="40" HorizontalTextAlignment="End"/>
-                        <Label Text="{Binding Category.Name}" FontSize="16" HorizontalTextAlignment="Start"/>
-                        <Label Text="{Binding Description}" FontSize="16" HorizontalTextAlignment="Start"/>
+                        <Label Text="{Binding Value}" FontSize="16" MinimumWidthRequest="25" HorizontalTextAlignment="End"/>
+                        <Label Text="{Binding Category.Name}" FontSize="16" MinimumWidthRequest="90" HorizontalTextAlignment="End"/>
+                        <Label Text="{Binding Description}" FontSize="16" MinimumWidthRequest="0" HorizontalTextAlignment="End"/>
                     </HorizontalStackLayout>
                 </StackLayout>
             </DataTemplate>

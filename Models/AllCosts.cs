@@ -27,7 +27,7 @@ namespace FastCost.Models
                 cost.Category = categories.SingleOrDefault(cat => cat.Id == cost.CategoryId);
                 if (cost.Category is null)
                 {
-                    cost.Category = new Category() { Name = "no category" };
+                    cost.Category = new Category { Name = "no category" };
                 }
             }
 

@@ -13,7 +13,7 @@
         <ResourceDictionary>
             <Style TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Center" />
-                
+
                 <!-- <Setter Property="GestureRecognizers"> -->
                 <!--     <Setter.Value> -->
                 <!--         <TapGestureRecognizer Command="{Binding CategoryId}" CommandParameter="{Binding Source={x:Reference this}, Path=Name}" /> -->
