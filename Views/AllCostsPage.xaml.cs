@@ -5,31 +5,19 @@ namespace FastCost.Views;
 public partial class AllCostsPage : ContentPage
 {
     private AllCosts _allCosts;
-    private List<CostModel> _costs;
 
     public AllCostsPage()
 	{
         InitializeComponent();
-
-        _allCosts = new AllCosts();
-        BindingContext = _allCosts;
-
-        ((AllCosts)BindingContext)?.LoadCosts();
-        _costs = _allCosts.GetCosts();
-
-        var currentMonth = DateTime.UtcNow.Date.Month;
-        var costsInCurrentMonth = _costs.Where(c => c.Date.Month == currentMonth).Sum(c => c.Value);
-        SumText.Text = $"{costsInCurrentMonth}";
+        BindingContext = new AllCosts();
     }
 
-    protected override void OnAppearing()
+    protected override void OnNavigatedTo(NavigatedToEventArgs state)
     {
-        ((AllCosts)BindingContext)?.LoadCosts();
-        _costs = _allCosts.GetCosts();
+        // base.OnNavigatedTo(state);
 
-        var currentMonth = DateTime.UtcNow.Date.Month;
-        var costsInCurrentMonth = _costs.Where(c => c.Date.Month == currentMonth).Sum(c => c.Value);
-        SumText.Text = $"{costsInCurrentMonth}";
+        ((AllCosts)BindingContext)?.LoadCosts();
+        SumText.Text = $"Sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum().Result.ToString()).Result}";
     }
 
     private async void Add_Clicked(object sender, EventArgs e)

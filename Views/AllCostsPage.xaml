@@ -9,7 +9,9 @@
         <ToolbarItem Text="" Clicked="Add_Clicked" IconImageSource="{FontImage Glyph='+', Size=32}" />
     </ContentPage.ToolbarItems>
 
-    <!-- Display costs in a list -->
+    <VerticalStackLayout Spacing="5" Margin="5">
+
+        <!-- Display costs in a list -->
     <CollectionView x:Name="costsCollection"
                     ItemsSource="{Binding Costs}"
                     Header="Date            Value         Category                  Description"
@@ -60,7 +62,7 @@
         </CollectionView.ItemTemplate>
 
         <CollectionView.Footer >
-            <Label x:Name = "SumText" FontSize="16" HorizontalTextAlignment="End"/>
+            <Label x:Name = "SumText" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Start" Padding="35, 0"/>
         </CollectionView.Footer>
     </CollectionView>
     </VerticalStackLayout>
