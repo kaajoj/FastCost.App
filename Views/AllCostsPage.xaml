@@ -63,6 +63,5 @@
             <Label x:Name = "SumText" FontSize="16" HorizontalTextAlignment="End"/>
         </CollectionView.Footer>
     </CollectionView>
-
-
+    </VerticalStackLayout>
 </ContentPage>
