@@ -16,14 +16,18 @@ public partial class CostPage : ContentPage
 
     public string CostValue { get; set; }
 
-    // string amount;
+    // [ObservableProperty]
+    // public string Test { get; set; }
+
+    // string _amount;
     // public string Amount
     // {
-    //     get => amount;
+    //     get => _amount;
     //     set
     //     {
-    //         amount = value;
-    //         // OnPropertyChanged();
+    //         OnPropertyChanged();
+    //         _amount = value;
+    //         OnPropertyChanged();
     //     }
     // }
 

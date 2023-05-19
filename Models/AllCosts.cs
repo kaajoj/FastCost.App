@@ -8,6 +8,8 @@ namespace FastCost.Models
     {
         public ObservableCollection<CostModel> Costs { get; set; } = new();
 
+        public decimal Sum { get; set; }
+
         public AllCosts()
         {
         }
@@ -33,6 +35,17 @@ namespace FastCost.Models
 
             foreach (CostModel cost in costs.OrderBy(cost => cost.Date)) 
                 Costs.Add(cost);
+        }
+
+        public async Task<decimal> GetSum()
+        {
+            var currentMonth = DateTime.UtcNow.Date.Month;
+            var results = await App.CostRepository.GetCostsAsync();
+            var costs = results.Adapt<List<CostModel>>();
+
+            var costsInCurrentMonth = costs.Where(c => c.Date.Month == currentMonth).Sum(c => c.Value);
+            Sum = (decimal)costsInCurrentMonth;
+            return Sum;
         }
     }
 }
