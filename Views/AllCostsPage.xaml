@@ -17,7 +17,8 @@
                 Date="{Binding SelectedDate}"
                 Format="MM/yyyy"
                 FontSize="20"
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center"
+                DateSelected="MyDatePicker_DateSelected"/>
 
         <!-- Display costs in a list -->
     <CollectionView x:Name="costsCollection"

@@ -1,4 +1,4 @@
-using FastCost.Models;
+﻿using FastCost.Models;
 
 namespace FastCost.Views;
 
@@ -38,5 +38,12 @@ public partial class AllCostsPage : ContentPage
             // Unselect the UI
             costsCollection.SelectedItem = null;
         }
+    }
+
+    private void MyDatePicker_DateSelected(object sender, DateChangedEventArgs e)
+    {
+        DateTime selectedDate = e.NewDate;
+
+        // viewModel.SelectedDate = selectedDate;
     }
 }
