@@ -9,13 +9,14 @@
         <ToolbarItem Text="" Clicked="Add_Clicked" IconImageSource="{FontImage Glyph='+', Size=32}" />
     </ContentPage.ToolbarItems>
 
-    <VerticalStackLayout Spacing="5" Margin="5">
+    <VerticalStackLayout Spacing="0" Margin="5">
 
     <DatePicker x:Name="allCostsDatePicker" 
                 MinimumDate="{Binding MinDate}"
                 MaximumDate="{Binding MaxDate}"
                 Date="{Binding SelectedDate}"
                 Format="dd/MM/yyyy"
+                FontSize="20"
                 HorizontalOptions="Center" />
 
         <!-- Display costs in a list -->
