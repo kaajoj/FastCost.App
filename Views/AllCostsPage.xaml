@@ -11,8 +11,12 @@
 
     <VerticalStackLayout Spacing="5" Margin="5">
 
-    <DatePicker MinimumDate="01/01/2023"
-                Date="06/21/2022" />
+    <DatePicker x:Name="allCostsDatePicker" 
+                MinimumDate="{Binding MinDate}"
+                MaximumDate="{Binding MaxDate}"
+                Date="{Binding SelectedDate}"
+                Format="dd/MM/yyyy"
+                HorizontalOptions="Center" />
 
         <!-- Display costs in a list -->
     <CollectionView x:Name="costsCollection"
