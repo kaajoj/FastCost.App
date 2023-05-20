@@ -15,7 +15,7 @@
                 MinimumDate="{Binding MinDate}"
                 MaximumDate="{Binding MaxDate}"
                 Date="{Binding SelectedDate}"
-                Format="dd/MM/yyyy"
+                Format="MM/yyyy"
                 FontSize="20"
                 HorizontalOptions="Center" />
 
