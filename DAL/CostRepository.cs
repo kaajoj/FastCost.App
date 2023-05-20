@@ -1,4 +1,5 @@
 ﻿using FastCost.DAL.Entities;
+using Mapster;
 using SQLite;
 
 namespace FastCost.DAL
@@ -24,6 +25,14 @@ namespace FastCost.DAL
         {
             await Init();
             return await Database.Table<Cost>().ToListAsync();
+        }
+
+        public async Task<List<Cost>> GetCostsByMonth(DateTime date)
+        {
+            await Init();
+
+            var month = date.Date.Month;
+            return await Database.Table<Cost>().Where(c => c.Date.Month == month).ToListAsync();
         }
 
         // public async Task<List<Cost>> GetCostsNotDoneAsync()
