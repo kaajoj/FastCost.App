@@ -25,7 +25,7 @@ public partial class AllCostsPage : ContentPage
         await Shell.Current.GoToAsync(nameof(CostPage));
     }
 
-    private async void costsCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private async void CostsCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (e.CurrentSelection.Count != 0)
         {

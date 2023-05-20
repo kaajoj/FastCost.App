@@ -25,7 +25,7 @@
                     Header="Date            Value         Category                  Description"
                     Margin="20"
                     SelectionMode="Single"
-                    SelectionChanged="costsCollection_SelectionChanged">
+                    SelectionChanged="CostsCollection_SelectionChanged">
 
         <CollectionView.HeaderTemplate>
             <DataTemplate>
