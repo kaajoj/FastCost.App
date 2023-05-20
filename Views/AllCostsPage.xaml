@@ -11,6 +11,9 @@
 
     <VerticalStackLayout Spacing="5" Margin="5">
 
+    <DatePicker MinimumDate="01/01/2023"
+                Date="06/21/2022" />
+
         <!-- Display costs in a list -->
     <CollectionView x:Name="costsCollection"
                     ItemsSource="{Binding Costs}"
