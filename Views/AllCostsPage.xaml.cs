@@ -4,8 +4,6 @@ namespace FastCost.Views;
 
 public partial class AllCostsPage : ContentPage
 {
-    private AllCosts _allCosts;
-
     public AllCostsPage()
 	{
         InitializeComponent();
