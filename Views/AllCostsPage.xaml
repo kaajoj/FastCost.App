@@ -60,10 +60,10 @@
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <StackLayout>
-                    <HorizontalStackLayout Spacing="40">
+                    <HorizontalStackLayout Spacing="35">
                         <Label Text="{Binding FormattedDate}" FontSize="16" HorizontalTextAlignment="End"/>
                         <Label Text="{Binding Value}" FontSize="16" MinimumWidthRequest="25" HorizontalTextAlignment="End"/>
-                        <Label Text="{Binding Category.Name}" FontSize="16" MinimumWidthRequest="90" HorizontalTextAlignment="End"/>
+                        <Label Text="{Binding Category.Name}" FontSize="16" MinimumWidthRequest="70" HorizontalTextAlignment="End"/>
                         <Label Text="{Binding Description}" FontSize="16" MinimumWidthRequest="0" HorizontalTextAlignment="End"/>
                     </HorizontalStackLayout>
                 </StackLayout>
@@ -71,7 +71,7 @@
         </CollectionView.ItemTemplate>
 
         <CollectionView.Footer >
-            <Label x:Name = "SumText" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Start" Padding="35, 0"/>
+            <Label x:Name = "SumText" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Start" Padding="30, 0"/>
         </CollectionView.Footer>
     </CollectionView>
     </VerticalStackLayout>

@@ -18,7 +18,6 @@ public partial class AllCostsPage : ContentPage
         // base.OnNavigatedTo(state);
 
         var currentMonth = DateTime.UtcNow.Date.Month;
-        // var currentMonth = 4;
         ((AllCosts)BindingContext)?.LoadCostsByMonth(currentMonth);
         // ((AllCosts)BindingContext)?.LoadCosts();
 
