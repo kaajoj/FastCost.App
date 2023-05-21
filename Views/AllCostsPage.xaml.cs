@@ -4,10 +4,13 @@ namespace FastCost.Views;
 
 public partial class AllCostsPage : ContentPage
 {
+    private AllCosts _allCosts;
+
     public AllCostsPage()
 	{
         InitializeComponent();
-        BindingContext = new AllCosts();
+        _allCosts = new AllCosts();
+        BindingContext = _allCosts;
     }
 
     protected override void OnNavigatedTo(NavigatedToEventArgs state)
@@ -42,10 +45,9 @@ public partial class AllCostsPage : ContentPage
         }
     }
 
-    private void MyDatePicker_DateSelected(object sender, DateChangedEventArgs e)
+    private async void MyDatePicker_DateSelected(object sender, DateChangedEventArgs e)
     {
         DateTime selectedDate = e.NewDate;
-
-        // viewModel.SelectedDate = selectedDate;
+        await _allCosts.LoadCostsByMonth(selectedDate.Month);
     }
 }
