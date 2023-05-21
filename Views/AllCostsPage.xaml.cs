@@ -49,5 +49,6 @@ public partial class AllCostsPage : ContentPage
     {
         DateTime selectedDate = e.NewDate;
         await _allCosts.LoadCostsByMonth(selectedDate.Month);
+        SumText.Text = $"Sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(selectedDate.Month).Result.ToString()).Result}";
     }
 }

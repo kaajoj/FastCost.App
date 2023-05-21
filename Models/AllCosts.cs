@@ -8,7 +8,7 @@ namespace FastCost.Models
     {
         public ObservableCollection<CostModel> Costs { get; set; } = new();
 
-        // public decimal Sum { get; set; }
+        public decimal Sum { get; set; }
 
         public AllCosts()
         {
@@ -40,6 +40,7 @@ namespace FastCost.Models
         public async Task LoadCostsByMonth(int month)
         {
             Costs.Clear();
+            Sum = 0;
 
             var results = await App.CostRepository.GetCostsByMonth(month);
             var costs = results.Adapt<List<CostModel>>();
@@ -67,9 +68,9 @@ namespace FastCost.Models
             var costs = results.Adapt<List<CostModel>>();
 
             var costsInCurrentMonth = costs.Sum(c => c.Value);
-            return (decimal)costsInCurrentMonth;
-            // Sum = (decimal)costsInCurrentMonth;
-            // return Sum;
+            // return (decimal)costsInCurrentMonth;
+            Sum = (decimal)costsInCurrentMonth;
+            return Sum;
         }
     }
 }
