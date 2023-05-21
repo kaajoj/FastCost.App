@@ -8,7 +8,7 @@ namespace FastCost.Models
     {
         public ObservableCollection<CostModel> Costs { get; set; } = new();
 
-        public decimal Sum { get; set; }
+        // public decimal Sum { get; set; }
 
         public AllCosts()
         {
@@ -44,8 +44,9 @@ namespace FastCost.Models
             var costs = results.Adapt<List<CostModel>>();
 
             var costsInCurrentMonth = costs.Where(c => c.Date.Month == currentMonth).Sum(c => c.Value);
-            Sum = (decimal)costsInCurrentMonth;
-            return Sum;
+            return (decimal)costsInCurrentMonth;
+            // Sum = (decimal)costsInCurrentMonth;
+            // return Sum;
         }
     }
 }
