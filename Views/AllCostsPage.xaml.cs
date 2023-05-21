@@ -14,13 +14,12 @@ public partial class AllCostsPage : ContentPage
     {
         // base.OnNavigatedTo(state);
 
-
         var currentMonth = DateTime.UtcNow.Date.Month;
         // var currentMonth = 4;
         ((AllCosts)BindingContext)?.LoadCostsByMonth(currentMonth);
         // ((AllCosts)BindingContext)?.LoadCosts();
 
-        SumText.Text = $"Sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum().Result.ToString()).Result}";
+        SumText.Text = $"Sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(currentMonth).Result.ToString()).Result}";
     }
 
     private async void Add_Clicked(object sender, EventArgs e)

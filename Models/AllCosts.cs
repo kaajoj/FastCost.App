@@ -60,13 +60,13 @@ namespace FastCost.Models
                 Costs.Add(cost);
         }
 
-        public async Task<decimal> GetSum()
+        public async Task<decimal> GetSum(int month)
         {
-            var currentMonth = DateTime.UtcNow.Date.Month;
-            var results = await App.CostRepository.GetCostsAsync();
+            // var currentMonth = DateTime.UtcNow.Date.Month;
+            var results = await App.CostRepository.GetCostsByMonth(month);
             var costs = results.Adapt<List<CostModel>>();
 
-            var costsInCurrentMonth = costs.Where(c => c.Date.Month == currentMonth).Sum(c => c.Value);
+            var costsInCurrentMonth = costs.Sum(c => c.Value);
             return (decimal)costsInCurrentMonth;
             // Sum = (decimal)costsInCurrentMonth;
             // return Sum;
