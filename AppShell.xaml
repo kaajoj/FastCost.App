@@ -24,6 +24,11 @@
                 ContentTemplate="{DataTemplate views:AllCostsPage}"
                 Route="allCosts" />
         </Tab>
+        <Tab Title="Analysis" Icon="{OnPlatform 'icon_about.png'}">
+            <ShellContent
+                ContentTemplate="{DataTemplate views:AnalysisPage}"
+                Route="analysis" />
+        </Tab>
     </TabBar>
 
 
@@ -42,13 +47,6 @@
     <!--     <ShellContent -->
     <!--             ContentTemplate="{DataTemplate views:AllCostsPage}" -->
     <!--             Route="allCosts" /> -->
-    <!-- </FlyoutItem> -->
-
-    <!-- TODO: change MainPage to new analysis page -->
-    <!-- <ShellContent -->
-    <!--     Title="Analysis" -->
-    <!--     ContentTemplate="{DataTemplate views:MainPage}" -->
-    <!-- Icon="{OnPlatform 'icon_about.png'}" /> -->
     <!-- </FlyoutItem> -->
 
 </Shell>
