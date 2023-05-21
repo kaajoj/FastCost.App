@@ -11,13 +11,12 @@ public partial class MainPage : ContentPage
     
     protected override async void OnAppearing()
     {
-        var costs = await App.CostRepository.GetCostsAsync();
-        // var sum = costs.Sum(c => c.Value);
-
         var currentMonth = DateTime.UtcNow.Date.Month;
-        var currentMonthName = DateTime.UtcNow.Date.ToString("MMMM");
-        var costsInCurrentMonth = costs.Where(c => c.Date.Month == currentMonth).Sum(c => c.Value);
+        var costs = await App.CostRepository.GetCostsByMonth(currentMonth);
 
+        var costsInCurrentMonth = costs.Sum(c => c.Value);
+
+        var currentMonthName = DateTime.UtcNow.Date.ToString("MMMM");
         SummaryText.Text = $"Expenses in {currentMonthName}: {costsInCurrentMonth}";
     }
 
