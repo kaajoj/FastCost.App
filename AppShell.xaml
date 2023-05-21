@@ -14,17 +14,17 @@
     
     <TabBar
         Route="tabs">
-        <Tab Title="Add cost" Icon="{OnPlatform 'icon_notes.png'}">
+        <Tab Title="Add cost" Icon="{OnPlatform 'icon_estimate.png'}">
             <ShellContent
                 ContentTemplate="{DataTemplate views:MainPage}"
                 Route="mainPage" />
         </Tab>
-        <Tab Title="All costs" Icon="{OnPlatform 'icon_about.png'}">
+        <Tab Title="All costs" Icon="{OnPlatform 'icon_all_costs.png'}">
             <ShellContent
                 ContentTemplate="{DataTemplate views:AllCostsPage}"
                 Route="allCosts" />
         </Tab>
-        <Tab Title="Analysis" Icon="{OnPlatform 'icon_about.png'}">
+        <Tab Title="Analysis" Icon="{OnPlatform 'icon_analysis.png'}">
             <ShellContent
                 ContentTemplate="{DataTemplate views:AnalysisPage}"
                 Route="analysis" />
