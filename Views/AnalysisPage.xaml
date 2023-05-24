@@ -6,6 +6,97 @@
              Title="Analysis">
 
     <ContentPage.Content>
-        
+
+        <VerticalStackLayout Spacing="0" Margin="5">
+
+            <!-- <DatePicker x:Name="allCostsDatePicker"  -->
+            <!--     MinimumDate="{Binding MinDate}" -->
+            <!--     MaximumDate="{Binding MaxDate}" -->
+            <!--     Date="{Binding SelectedDate}" -->
+            <!--     Format="MM/yyyy" -->
+            <!--     FontSize="20" -->
+            <!--     HorizontalOptions="Center" -->
+            <!--     DateSelected="MyDatePicker_DateSelected"/> -->
+
+            <!-- Display costs in a list -->
+            <CollectionView x:Name="costsCollection"
+                    ItemsSource="{Binding Costs}"
+                    Margin="20">
+                <!-- Header="Date            Value         Category                  Description" -->
+                <!-- SelectionMode="Single" -->
+                    <!-- SelectionChanged="CostsCollection_SelectionChanged"> -->
+
+                <!-- <CollectionView.HeaderTemplate> -->
+                <!--     <DataTemplate> -->
+                <!--         <StackLayout BackgroundColor="White" Orientation="Horizontal" Spacing="20"> -->
+                <!--             <Label Margin="0,0,0,0" -->
+                <!--            Text="Date" -->
+                <!--            FontSize="16" -->
+                <!--            FontAttributes="Bold" /> -->
+                <!--             <Label Margin="10,0,0,0" -->
+                <!--            Text="Value" -->
+                <!--            FontSize="16" -->
+                <!--            FontAttributes="Bold" /> -->
+                <!--             <Label Margin="10,0,0,0" -->
+                <!--            Text="Category" -->
+                <!--            FontSize="16" -->
+                <!--            FontAttributes="Bold" /> -->
+                <!--             <Label Margin="10,0,0,0" -->
+                <!--            Text="Description" -->
+                <!--            FontSize="16" -->
+                <!--            FontAttributes="Bold" /> -->
+                <!--         </StackLayout> -->
+                <!--     </DataTemplate> -->
+                <!-- </CollectionView.HeaderTemplate> -->
+
+                <!-- Designate how the collection of items are laid out -->
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+
+                <!-- Define the appearance of each item in the list -->
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <HorizontalStackLayout Spacing="35">
+                                <Label Text="{Binding FormattedDate}" FontSize="16" HorizontalTextAlignment="End"/>
+                                <Label Text="{Binding Value}" FontSize="16" MinimumWidthRequest="25" HorizontalTextAlignment="End"/>
+                                <Label Text="{Binding Category.Name}" FontSize="16" MinimumWidthRequest="70" HorizontalTextAlignment="End"/>
+                                <Label Text="{Binding Description}" FontSize="16" MinimumWidthRequest="0" HorizontalTextAlignment="End"/>
+                            </HorizontalStackLayout>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+                <!-- <CollectionView.Footer > -->
+                <!--     <Label x:Name = "SumText" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Start" Padding="30, 0"/> -->
+                <!-- </CollectionView.Footer> -->
+            </CollectionView>
+
+            <StackLayout>
+                <ListView ItemsSource="{Binding Costs}"
+                          IsGroupingEnabled="True">
+                    <ListView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Label Text="{Binding Category}"
+                                       BackgroundColor="LightGray"
+                                       FontSize="18"
+                                       FontAttributes="Bold" />
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.GroupHeaderTemplate>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Category.Name}" Detail="{Binding Value}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+
+        </VerticalStackLayout>
+
+
     </ContentPage.Content>
 </ContentPage>
