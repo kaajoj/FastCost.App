@@ -12,7 +12,17 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
+        
         <VerticalStackLayout Spacing="10" Margin="20">
+
+            <DatePicker x:Name="analysisPageDatePicker"
+                        MinimumDate="{Binding MinDate}"
+                        MaximumDate="{Binding MaxDate}"
+                        Date="{Binding SelectedDate}"
+                        Format="MM/yyyy"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        DateSelected="DatePicker_DateSelected"/>
 
             <CollectionView ItemsSource="{Binding GroupCosts}"
                             IsGrouped="True"
@@ -26,20 +36,10 @@
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" Text="{Binding Value}" />
                             <Label Grid.Column="1" Text="{Binding Description}" />
-                            <!-- Dodaj inne pola tutaj -->
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
-            <!-- <DatePicker x:Name="allCostsDatePicker"  -->
-            <!--     MinimumDate="{Binding MinDate}" -->
-            <!--     MaximumDate="{Binding MaxDate}" -->
-            <!--     Date="{Binding SelectedDate}" -->
-            <!--     Format="MM/yyyy" -->
-            <!--     FontSize="20" -->
-            <!--     HorizontalOptions="Center" -->
-            <!--     DateSelected="MyDatePicker_DateSelected"/> -->
 
             <!-- Display costs in a list -->
             <!-- <CollectionView x:Name="costsCollection" -->

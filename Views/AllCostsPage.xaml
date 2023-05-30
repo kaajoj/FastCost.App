@@ -4,7 +4,6 @@
              x:Class="FastCost.Views.AllCostsPage"
              Title="All Costs">
 
-    <!-- Add an item to the toolbar -->
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="" Clicked="Add_Clicked" IconImageSource="{FontImage Glyph='+', Size=32}" />
     </ContentPage.ToolbarItems>
