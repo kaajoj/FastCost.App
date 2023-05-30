@@ -72,5 +72,25 @@ namespace FastCost.Models
             Sum = (decimal)costsInCurrentMonth;
             return Sum;
         }
+
+        public async Task<IEnumerable<IGrouping<Category, CostModel>>> GetCostsByMonthGroupByCategory(int month)
+        {
+            // var currentMonth = DateTime.UtcNow.Date.Month;
+            var results = await App.CostRepository.GetCostsByMonth(month);
+            var costs = results.Adapt<List<CostModel>>();
+            var costsByCategory = costs.GroupBy(cost => cost.Category);
+
+            var categories = await App.CategoryRepository.GetCategoriesAsync();
+            foreach (var cost in costs)
+            {
+                cost.Category = categories.SingleOrDefault(cat => cat.Id == cost.CategoryId);
+                if (cost.Category is null)
+                {
+                    cost.Category = new Category { Name = "no category" };
+                }
+            }
+
+            return costsByCategory;
+        }
     }
 }
