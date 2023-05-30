@@ -5,9 +5,32 @@
              x:Class="FastCost.Views.AnalysisPage"
              Title="Analysis">
 
-    <ContentPage.Content>
+    <ContentPage.Resources>
+        <DataTemplate x:Key="GroupHeaderTemplate">
+            <Label Text="{Binding Key}" FontAttributes="Bold" />
+        </DataTemplate>
+    </ContentPage.Resources>
 
+    <ContentPage.Content>
         <VerticalStackLayout Spacing="0" Margin="5">
+
+            <CollectionView ItemsSource="{Binding GroupCosts}"
+                            IsGrouped="True"
+                            GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="{Binding Value}" />
+                            <Label Grid.Column="1" Text="{Binding Description}" />
+                            <!-- Dodaj inne pola tutaj -->
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
             <!-- <DatePicker x:Name="allCostsDatePicker"  -->
             <!--     MinimumDate="{Binding MinDate}" -->
@@ -19,9 +42,9 @@
             <!--     DateSelected="MyDatePicker_DateSelected"/> -->
 
             <!-- Display costs in a list -->
-            <CollectionView x:Name="costsCollection"
-                    ItemsSource="{Binding Costs}"
-                    Margin="20">
+            <!-- <CollectionView x:Name="costsCollection" -->
+            <!--         ItemsSource="{Binding Costs}" -->
+            <!--         Margin="20"> -->
                 <!-- Header="Date            Value         Category                  Description" -->
                 <!-- SelectionMode="Single" -->
                     <!-- SelectionChanged="CostsCollection_SelectionChanged"> -->
@@ -50,53 +73,30 @@
                 <!-- </CollectionView.HeaderTemplate> -->
 
                 <!-- Designate how the collection of items are laid out -->
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
-                </CollectionView.ItemsLayout>
-
-                <!-- Define the appearance of each item in the list -->
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout>
-                            <HorizontalStackLayout Spacing="35">
-                                <Label Text="{Binding FormattedDate}" FontSize="16" HorizontalTextAlignment="End"/>
-                                <Label Text="{Binding Value}" FontSize="16" MinimumWidthRequest="25" HorizontalTextAlignment="End"/>
-                                <Label Text="{Binding Category.Name}" FontSize="16" MinimumWidthRequest="70" HorizontalTextAlignment="End"/>
-                                <Label Text="{Binding Description}" FontSize="16" MinimumWidthRequest="0" HorizontalTextAlignment="End"/>
-                            </HorizontalStackLayout>
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
+                <!-- <CollectionView.ItemsLayout> -->
+                <!--     <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" /> -->
+                <!-- </CollectionView.ItemsLayout> -->
+                <!-- -->
+                <!-- ~1~ Define the appearance of each item in the list @1@ -->
+                <!-- <CollectionView.ItemTemplate> -->
+                <!--     <DataTemplate> -->
+                <!--         <StackLayout> -->
+                <!--             <HorizontalStackLayout Spacing="35"> -->
+                <!--                 <Label Text="{Binding FormattedDate}" FontSize="16" HorizontalTextAlignment="End"/> -->
+                <!--                 <Label Text="{Binding Value}" FontSize="16" MinimumWidthRequest="25" HorizontalTextAlignment="End"/> -->
+                <!--                 <Label Text="{Binding Category.Name}" FontSize="16" MinimumWidthRequest="70" HorizontalTextAlignment="End"/> -->
+                <!--                 <Label Text="{Binding Description}" FontSize="16" MinimumWidthRequest="0" HorizontalTextAlignment="End"/> -->
+                <!--             </HorizontalStackLayout> -->
+                <!--         </StackLayout> -->
+                <!--     </DataTemplate> -->
+                <!-- </CollectionView.ItemTemplate> -->
 
                 <!-- <CollectionView.Footer > -->
                 <!--     <Label x:Name = "SumText" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Start" Padding="30, 0"/> -->
                 <!-- </CollectionView.Footer> -->
-            </CollectionView>
-
-            <StackLayout>
-                <ListView ItemsSource="{Binding Costs}"
-                          IsGroupingEnabled="True">
-                    <ListView.GroupHeaderTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Label Text="{Binding Category}"
-                                       BackgroundColor="LightGray"
-                                       FontSize="18"
-                                       FontAttributes="Bold" />
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.GroupHeaderTemplate>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell Text="{Binding Category.Name}" Detail="{Binding Value}" />
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
-
+            <!-- </CollectionView> -->
 
         </VerticalStackLayout>
-
 
     </ContentPage.Content>
 </ContentPage>
