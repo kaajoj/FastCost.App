@@ -13,12 +13,12 @@ public partial class AllCostsPage : ContentPage
         BindingContext = _allCosts;
     }
 
-    protected override void OnNavigatedTo(NavigatedToEventArgs state)
+    protected override async void OnNavigatedTo(NavigatedToEventArgs state)
     {
         // base.OnNavigatedTo(state);
 
         var currentMonth = DateTime.UtcNow.Date.Month;
-        ((AllCosts)BindingContext)?.LoadCostsByMonth(currentMonth);
+        await ((AllCosts)BindingContext)?.LoadCostsByMonth(currentMonth);
         // ((AllCosts)BindingContext)?.LoadCosts();
 
         SumText.Text = $"Sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(currentMonth).Result.ToString()).Result}";
