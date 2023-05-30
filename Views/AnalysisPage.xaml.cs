@@ -13,8 +13,6 @@ public partial class AnalysisPage : ContentPage
     {
         InitializeComponent();
 
-        // _allCosts = new AllCosts();
-        // BindingContext = _allCosts;
         BindingContext = new AllCosts();
 
         // BindingContext = this;
