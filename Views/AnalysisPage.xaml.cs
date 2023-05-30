@@ -5,8 +5,6 @@ namespace FastCost.Views;
 
 public partial class AnalysisPage : ContentPage
 {
-    private AllCosts _allCosts;
-
     public IEnumerable<IGrouping<Category, CostModel>> GroupCosts { get; set; }
 
     public AnalysisPage()
@@ -23,24 +21,8 @@ public partial class AnalysisPage : ContentPage
         // base.OnNavigatedTo(state);
 
         var currentMonth = DateTime.UtcNow.Date.Month;
-        await ((AllCosts)BindingContext)?.LoadCostsByMonth(currentMonth);
-        // ((AllCosts)BindingContext)?.LoadCosts();
-        // var costsByCategory = _allCosts.Costs.GroupBy(cost => cost.Category.Name);
         // IEnumerable<IGrouping<Category, CostModel>>[] costsByCategory = { Task.Run(() => ((AllCosts)BindingContext)?.GetCostsByMonthAndCategory(currentMonth).Result).Result};
-        var costsByCategory = await ((AllCosts)BindingContext)?.GetCostsByMonthGroupByCategory(currentMonth);
-        // GroupCosts = costsByCategory;
-        foreach (var entry in costsByCategory)
-        {
-            // Display the category name.
-            var category = entry.Key;
-            await Console.Out.WriteLineAsync(category.Name);
-            foreach (var cost in entry)
-            {
-                // Display the cost information.
-                Console.WriteLine($"Cost: {cost.Value}, Description: {cost.Description}, Date: {cost.Date}");
-            }
-        }
-        GroupCosts = costsByCategory;
+        GroupCosts = await ((AllCosts)BindingContext)?.GetCostsByMonthGroupByCategory(currentMonth);
 
         BindingContext = this;
 
