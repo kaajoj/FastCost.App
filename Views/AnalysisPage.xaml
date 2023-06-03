@@ -7,7 +7,7 @@
 
     <ContentPage.Resources>
         <DataTemplate x:Key="GroupHeaderTemplate">
-            <Label Text="{Binding Key.Name}" FontAttributes="Bold" />
+            <Label Text="{Binding Key.Name}"  FontSize="16" FontAttributes="Bold" />
         </DataTemplate>
     </ContentPage.Resources>
 
@@ -15,7 +15,7 @@
         
         <VerticalStackLayout Spacing="10" Margin="20">
 
-            <DatePicker x:Name="analysisPageDatePicker"
+            <DatePicker x:Name="AnalysisPageDatePicker"
                         MinimumDate="{Binding MinDate}"
                         MaximumDate="{Binding MaxDate}"
                         Date="{Binding SelectedDate}"
@@ -33,9 +33,11 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Text="{Binding Value}" />
-                            <Label Grid.Column="1" Text="{Binding Description}" />
+                            <Label Grid.Column="0" Text="{Binding Value}" FontSize="16" />
+                            <Label Grid.Column="1" Text="{Binding Description}" FontSize="16" />
+                            <Label Grid.Column="2" x:Name = "SumTextByCategory" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Start" Padding="30, 0"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
