@@ -42,7 +42,8 @@ public partial class AnalysisPage : ContentPage
     private async void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
     {
         DateTime selectedDate = e.NewDate;
-        // await _allCosts.LoadCostsByMonth(selectedDate.Month);
-        // SumText.Text = $"Sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(selectedDate.Month).Result.ToString()).Result}";
+        GroupCosts = await ((AllCosts)BindingContext)?.GetCostsByMonthGroupByCategory(selectedDate.Month);
+        SumText.Text = $"Total sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(selectedDate.Month).Result.ToString()).Result}";
+
     }
 }
