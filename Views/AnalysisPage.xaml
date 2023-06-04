@@ -9,8 +9,8 @@
         <DataTemplate x:Key="GroupHeaderTemplate">
             <Label Text="{Binding Key.Name}"  FontSize="16" FontAttributes="Bold" />
         </DataTemplate>
-        <DataTemplate x:Name="GroupFooterTemplate" x:Key="GroupFooterTemplate">
-            <Label x:Name="GroupSumText" Text="{Binding Key.SumValue}"  FontSize="16" FontAttributes="Bold" />
+        <DataTemplate x:Key="GroupFooterTemplate">
+            <Label Text="{Binding Key.SumValue}"  FontSize="16" FontAttributes="Bold" />
         </DataTemplate>
     </ContentPage.Resources>
 
