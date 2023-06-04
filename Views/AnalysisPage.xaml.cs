@@ -6,6 +6,7 @@ namespace FastCost.Views;
 public partial class AnalysisPage : ContentPage
 {
     public IEnumerable<IGrouping<Category, CostModel>> GroupCosts { get; set; }
+    public IEnumerable<IGrouping<CategoryModel, CostModel>> GroupCosts2 { get; set; }
 
     public AnalysisPage()
     {
@@ -21,12 +22,19 @@ public partial class AnalysisPage : ContentPage
         // base.OnNavigatedTo(state);
 
         var currentMonth = DateTime.UtcNow.Date.Month;
-        // IEnumerable<IGrouping<Category, CostModel>>[] costsByCategory = { Task.Run(() => ((AllCosts)BindingContext)?.GetCostsByMonthAndCategory(currentMonth).Result).Result};
         GroupCosts = await ((AllCosts)BindingContext)?.GetCostsByMonthGroupByCategory(currentMonth);
 
-        BindingContext = this;
+        foreach (var costGroup in GroupCosts)
+        {
+            decimal? sum = decimal.Zero;
+            foreach (var cost in costGroup)
+            {
+                sum += cost.Value;
+            }
+            costGroup.Key.SumValue = sum;
+        }
 
-        // SumText.Text = $"Sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(currentMonth).Result.ToString()).Result}";
+        BindingContext = this;
     }
 
     private async void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
