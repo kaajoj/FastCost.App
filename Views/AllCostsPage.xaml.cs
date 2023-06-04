@@ -21,7 +21,7 @@ public partial class AllCostsPage : ContentPage
         await ((AllCosts)BindingContext)?.LoadCostsByMonth(currentMonth);
         // ((AllCosts)BindingContext)?.LoadCosts();
 
-        SumText.Text = $"Sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(currentMonth).Result.ToString()).Result}";
+        SumText.Text = $"Total sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(currentMonth).Result.ToString()).Result}";
     }
 
     private async void Add_Clicked(object sender, EventArgs e)
