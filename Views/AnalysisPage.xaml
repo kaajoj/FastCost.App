@@ -9,6 +9,9 @@
         <DataTemplate x:Key="GroupHeaderTemplate">
             <Label Text="{Binding Key.Name}"  FontSize="16" FontAttributes="Bold" />
         </DataTemplate>
+        <DataTemplate x:Name="GroupFooterTemplate" x:Key="GroupFooterTemplate">
+            <Label x:Name="GroupSumText" Text="{Binding Key.SumValue}"  FontSize="16" FontAttributes="Bold" />
+        </DataTemplate>
     </ContentPage.Resources>
 
     <ContentPage.Content>
@@ -24,9 +27,11 @@
                         HorizontalOptions="Center"
                         DateSelected="DatePicker_DateSelected"/>
 
-            <CollectionView ItemsSource="{Binding GroupCosts}"
+            <CollectionView x:Name="CollectionViewGroup"
+                            ItemsSource="{Binding GroupCosts}"
                             IsGrouped="True"
-                            GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}">
+                            GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}"
+                            GroupFooterTemplate="{StaticResource GroupFooterTemplate}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid ColumnSpacing="15">
