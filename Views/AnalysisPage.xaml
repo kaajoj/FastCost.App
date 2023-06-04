@@ -46,7 +46,7 @@
                 </CollectionView.ItemTemplate>
 
                 <CollectionView.Footer >
-                    <Label x:Name = "SumText" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Start" Padding="30, 0"/>
+                    <Label x:Name = "SumText" FontSize="16" FontAttributes="Bold" TextColor="CadetBlue" HorizontalTextAlignment="Start" Padding="0, 0"/>
                 </CollectionView.Footer>
 
             </CollectionView>

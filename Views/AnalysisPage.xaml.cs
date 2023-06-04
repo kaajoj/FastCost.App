@@ -34,6 +34,8 @@ public partial class AnalysisPage : ContentPage
             costGroup.Key.SumValue = sum;
         }
 
+        SumText.Text = $"Total sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(currentMonth).Result.ToString()).Result}";
+
         BindingContext = this;
     }
 
