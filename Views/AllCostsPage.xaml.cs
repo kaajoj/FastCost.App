@@ -4,13 +4,13 @@ namespace FastCost.Views;
 
 public partial class AllCostsPage : ContentPage
 {
-    private AllCosts _allCosts;
+    // private AllCosts _allCosts;
 
     public AllCostsPage()
 	{
         InitializeComponent();
-        _allCosts = new AllCosts();
-        BindingContext = _allCosts;
+        // _allCosts = new AllCosts();
+        // BindingContext = _allCosts;
     }
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs state)
@@ -47,7 +47,7 @@ public partial class AllCostsPage : ContentPage
     private async void MyDatePicker_DateSelected(object sender, DateChangedEventArgs e)
     {
         DateTime selectedDate = e.NewDate;
-        await _allCosts.LoadCostsByMonth(selectedDate.Month);
+        await ((AllCosts)BindingContext)?.LoadCostsByMonth(selectedDate.Month);
         SumText.Text = $"Sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(selectedDate.Month).Result.ToString()).Result}";
     }
 }
