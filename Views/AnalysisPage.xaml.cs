@@ -6,7 +6,6 @@ namespace FastCost.Views;
 public partial class AnalysisPage : ContentPage
 {
     public IEnumerable<IGrouping<Category, CostModel>> GroupCosts { get; set; }
-    // public IEnumerable<IGrouping<CategoryModel, CostModel>> GroupCosts2 { get; set; }
 
     public AnalysisPage()
     {
@@ -16,13 +15,12 @@ public partial class AnalysisPage : ContentPage
         // BindingContext = this;
     }
 
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-
-        // Wykonaj operacje resetujące stan widoku
-        ResetView();
-    }
+    // protected override void OnAppearing()
+    // {
+    //     base.OnAppearing();
+    //
+    //     // ResetView();
+    // }
 
     private void ResetView()
     {
@@ -31,7 +29,9 @@ public partial class AnalysisPage : ContentPage
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs state)
     {
-        base.OnNavigatedTo(state);
+        // base.OnNavigatedTo(state);
+
+        ResetView();
 
         var currentMonth = DateTime.UtcNow.Date.Month;
         GroupCosts = await ((AllCosts)BindingContext)?.GetCostsByMonthGroupByCategory(currentMonth);
