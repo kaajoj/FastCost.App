@@ -74,8 +74,8 @@
             </DataTemplate>
         </CollectionView.ItemTemplate>
 
-        <CollectionView.Footer >
-            <Label x:Name = "SumText" FontSize="16" FontAttributes="Bold" TextColor="CadetBlue" HorizontalTextAlignment="Start" Padding="0, 0"/>
+        <CollectionView.Footer>
+            <Label x:Name = "SumText" FontSize="16" FontAttributes="Bold" TextColor="CadetBlue" HorizontalTextAlignment="Start" Padding="0, 0" />
         </CollectionView.Footer>
     </CollectionView>
     </VerticalStackLayout>

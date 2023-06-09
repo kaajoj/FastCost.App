@@ -7,12 +7,14 @@ namespace FastCost.Models
     public class AllCosts
     {
         public ObservableCollection<CostModel> Costs { get; set; } = new();
+        // public ObservableCollection<IGrouping<Category, CostModel>> GroupCosts { get; set; }
+        public IEnumerable<IGrouping<Category, CostModel>> GroupCosts { get; set; }
 
         public decimal Sum { get; set; }
 
-        public AllCosts()
-        {
-        }
+        // public AllCosts()
+        // {
+        // }
 
         public async Task LoadCosts()
         {
@@ -40,7 +42,6 @@ namespace FastCost.Models
         public async Task LoadCostsByMonth(int month)
         {
             Costs.Clear();
-            Sum = 0;
 
             var results = await App.CostRepository.GetCostsByMonth(month);
             var costs = results.Adapt<List<CostModel>>();
@@ -63,6 +64,8 @@ namespace FastCost.Models
 
         public async Task<decimal> GetSum(int month)
         {
+            Sum = 0;
+
             // var currentMonth = DateTime.UtcNow.Date.Month;
             var results = await App.CostRepository.GetCostsByMonth(month);
             var costs = results.Adapt<List<CostModel>>();
@@ -78,7 +81,9 @@ namespace FastCost.Models
             // var currentMonth = DateTime.UtcNow.Date.Month;
             var results = await App.CostRepository.GetCostsByMonth(month);
             var costs = results.Adapt<List<CostModel>>();
-            var costsByCategory = costs.GroupBy(cost => cost.Category);
+
+            IEnumerable<IGrouping<Category, CostModel>> costsByCategory = null;
+            costsByCategory = costs.GroupBy(cost => cost.Category);
 
             var categories = await App.CategoryRepository.GetCategoriesAsync();
             foreach (var cost in costs)
@@ -90,7 +95,22 @@ namespace FastCost.Models
                 }
             }
 
-            return costsByCategory;
+            GroupCosts = costsByCategory;
+            // GroupCosts = new ObservableCollection<IGrouping<Category, CostModel>>(costsByCategory);
+            // GroupCosts.Add((IGrouping<Category, CostModel>)costsByCategory);// = new ObservableCollection<IGrouping<Category, CostModel>>(costsByCategory);
+            // GroupCosts.Add(costsByCategory);// = new ObservableCollection<IGrouping<Category, CostModel>>(costsByCategory);
+
+            foreach (var costGroup in GroupCosts)
+            {
+                decimal? sum = decimal.Zero;
+                foreach (var cost in costGroup)
+                {
+                    sum += cost.Value;
+                }
+                costGroup.Key.SumValue = sum;
+            }
+
+            return GroupCosts;
         }
     }
 }

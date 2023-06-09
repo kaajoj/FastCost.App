@@ -5,7 +5,7 @@ namespace FastCost.Views;
 
 public partial class AnalysisPage : ContentPage
 {
-    // public IEnumerable<IGrouping<Category, CostModel>> GroupCosts { get; set; }
+    public IEnumerable<IGrouping<Category, CostModel>> GroupCosts { get; set; }
     // public IEnumerable<IGrouping<CategoryModel, CostModel>> GroupCosts2 { get; set; }
 
     public AnalysisPage()
@@ -17,12 +17,28 @@ public partial class AnalysisPage : ContentPage
         // BindingContext = this;
     }
 
-    protected async override void OnNavigatedTo(NavigatedToEventArgs state)
+    protected override void OnAppearing()
     {
-        // base.OnNavigatedTo(state);
+        base.OnAppearing();
 
-        var currentMonth = DateTime.UtcNow.Date.Month;
-        await ((AllCosts)BindingContext)?.GetCostsByMonthGroupByCategory(currentMonth);
+        // Wykonaj operacje resetujące stan widoku
+        ResetView();
+    }
+
+    private void ResetView()
+    {
+        // Przywróć początkowy stan widoku
+        // Wyzeruj zmienne, czyszczenie danych itp.
+        BindingContext = new AllCosts();
+    }
+
+    protected override async void OnNavigatedTo(NavigatedToEventArgs state)
+    {
+        base.OnNavigatedTo(state);
+
+        var currentMonth = DateTime.UtcNow.Date.Month;  
+        var test = await ((AllCosts)BindingContext)?.GetCostsByMonthGroupByCategory(currentMonth);
+        GroupCosts = test;
 
         // foreach (var costGroup in GroupCosts)
         // {
@@ -44,6 +60,5 @@ public partial class AnalysisPage : ContentPage
         DateTime selectedDate = e.NewDate;
         await ((AllCosts)BindingContext)?.GetCostsByMonthGroupByCategory(selectedDate.Month);
         SumText.Text = $"Total sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(selectedDate.Month).Result.ToString()).Result}";
-
     }
 }
