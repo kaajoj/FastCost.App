@@ -12,9 +12,6 @@ namespace FastCost.Models
 
         public decimal Sum { get; set; }
 
-        // public AllCosts()
-        // {
-        // }
 
         public async Task LoadCosts()
         {
@@ -82,8 +79,7 @@ namespace FastCost.Models
             var results = await App.CostRepository.GetCostsByMonth(month);
             var costs = results.Adapt<List<CostModel>>();
 
-            IEnumerable<IGrouping<Category, CostModel>> costsByCategory = null;
-            costsByCategory = costs.GroupBy(cost => cost.Category);
+            var costsByCategory = costs.GroupBy(cost => cost.Category);
 
             var categories = await App.CategoryRepository.GetCategoriesAsync();
             foreach (var cost in costs)
@@ -97,8 +93,6 @@ namespace FastCost.Models
 
             GroupCosts = costsByCategory;
             // GroupCosts = new ObservableCollection<IGrouping<Category, CostModel>>(costsByCategory);
-            // GroupCosts.Add((IGrouping<Category, CostModel>)costsByCategory);// = new ObservableCollection<IGrouping<Category, CostModel>>(costsByCategory);
-            // GroupCosts.Add(costsByCategory);// = new ObservableCollection<IGrouping<Category, CostModel>>(costsByCategory);
 
             foreach (var costGroup in GroupCosts)
             {

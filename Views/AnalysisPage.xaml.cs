@@ -13,7 +13,6 @@ public partial class AnalysisPage : ContentPage
         InitializeComponent();
 
         // BindingContext = new AllCosts();
-
         // BindingContext = this;
     }
 
@@ -27,8 +26,6 @@ public partial class AnalysisPage : ContentPage
 
     private void ResetView()
     {
-        // Przywróć początkowy stan widoku
-        // Wyzeruj zmienne, czyszczenie danych itp.
         BindingContext = new AllCosts();
     }
 
@@ -36,19 +33,8 @@ public partial class AnalysisPage : ContentPage
     {
         base.OnNavigatedTo(state);
 
-        var currentMonth = DateTime.UtcNow.Date.Month;  
-        var test = await ((AllCosts)BindingContext)?.GetCostsByMonthGroupByCategory(currentMonth);
-        GroupCosts = test;
-
-        // foreach (var costGroup in GroupCosts)
-        // {
-        //     decimal? sum = decimal.Zero;
-        //     foreach (var cost in costGroup)
-        //     {
-        //         sum += cost.Value;
-        //     }
-        //     costGroup.Key.SumValue = sum;
-        // }
+        var currentMonth = DateTime.UtcNow.Date.Month;
+        GroupCosts = await ((AllCosts)BindingContext)?.GetCostsByMonthGroupByCategory(currentMonth);
 
         SumText.Text = $"Total sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(currentMonth).Result.ToString()).Result}";
 
