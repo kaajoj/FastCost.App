@@ -11,12 +11,15 @@ public partial class AllCostsPage : ContentPage
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs state)
     {
-        // base.OnNavigatedTo(state);
+        base.OnNavigatedTo(state);
 
         var currentMonth = DateTime.UtcNow.Date.Month;
         await ((AllCosts)BindingContext)?.LoadCostsByMonth(currentMonth);
 
-        SumText.Text = $"Total sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(currentMonth).Result.ToString()).Result}";
+
+        var sum = await ((AllCosts)BindingContext)?.GetSum(currentMonth);
+        SumText.Text = $"Total sum: {sum}";
+        // SumText.Text = $"Total sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(currentMonth).Result.ToString()).Result}";
     }
 
     private async void Add_Clicked(object sender, EventArgs e)
@@ -42,6 +45,9 @@ public partial class AllCostsPage : ContentPage
     {
         DateTime selectedDate = e.NewDate;
         await ((AllCosts)BindingContext)?.LoadCostsByMonth(selectedDate.Month);
-        SumText.Text = $"Sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(selectedDate.Month).Result.ToString()).Result}";
+
+        // SumText.Text = $"Sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(selectedDate.Month).Result.ToString()).Result}";
+        var sum = await ((AllCosts)BindingContext)?.GetSum(selectedDate.Month);
+        SumText.Text = $"Total sum: {sum}";
     }
 }

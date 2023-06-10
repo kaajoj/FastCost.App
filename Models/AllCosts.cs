@@ -1,17 +1,38 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using FastCost.DAL.Entities;
 using Mapster;
 
 namespace FastCost.Models
 {
-    public class AllCosts
+    public class AllCosts : INotifyPropertyChanged
     {
         public ObservableCollection<CostModel> Costs { get; set; } = new();
         // public ObservableCollection<IGrouping<Category, CostModel>> GroupCosts { get; set; }
         public IEnumerable<IGrouping<Category, CostModel>> GroupCosts { get; set; }
 
-        public decimal Sum { get; set; }
+        // public decimal Sum { get; set; }
+        private decimal sum;
+        public decimal Sum
+        {
+            get { return sum; }
+            set
+            {
+                if (sum != value)
+                {
+                    sum = value;
+                    OnPropertyChanged(nameof(Sum));
+                }
+            }
+        }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         public async Task LoadCosts()
         {

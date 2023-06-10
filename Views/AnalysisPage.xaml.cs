@@ -15,12 +15,12 @@ public partial class AnalysisPage : ContentPage
         // BindingContext = this;
     }
 
-    // protected override void OnAppearing()
-    // {
-    //     base.OnAppearing();
-    //
-    //     // ResetView();
-    // }
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+    
+        ResetView();
+    }
 
     private void ResetView()
     {
@@ -29,9 +29,9 @@ public partial class AnalysisPage : ContentPage
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs state)
     {
-        // base.OnNavigatedTo(state);
+        base.OnNavigatedTo(state);
 
-        ResetView();
+        // ResetView();
 
         var currentMonth = DateTime.UtcNow.Date.Month;
         GroupCosts = await ((AllCosts)BindingContext)?.GetCostsByMonthGroupByCategory(currentMonth);
@@ -44,7 +44,14 @@ public partial class AnalysisPage : ContentPage
     private async void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
     {
         DateTime selectedDate = e.NewDate;
-        await ((AllCosts)BindingContext)?.GetCostsByMonthGroupByCategory(selectedDate.Month);
-        SumText.Text = $"Total sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(selectedDate.Month).Result.ToString()).Result}";
+
+        // ResetView();
+        BindingContext = new AllCosts();
+        GroupCosts = await ((AllCosts)BindingContext)?.GetCostsByMonthGroupByCategory(selectedDate.Month);
+
+        var sum = await ((AllCosts)BindingContext)?.GetSum(selectedDate.Month);
+        SumText.Text = $"Total sum: {sum}";
+
+        BindingContext = this;
     }
 }
