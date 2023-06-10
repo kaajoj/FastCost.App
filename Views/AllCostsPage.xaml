@@ -34,7 +34,7 @@
 
         <CollectionView.HeaderTemplate>
             <DataTemplate>
-                <StackLayout BackgroundColor="White" Orientation="Horizontal" Spacing="20">
+                <StackLayout Orientation="Horizontal" Spacing="20">
                     <Label Margin="0,0,0,0"
                            Text="Date"
                            FontSize="16"
