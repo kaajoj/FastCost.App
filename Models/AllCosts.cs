@@ -12,6 +12,20 @@ namespace FastCost.Models
         // public ObservableCollection<IGrouping<Category, CostModel>> GroupCosts { get; set; }
         public IEnumerable<IGrouping<Category, CostModel>> GroupCosts { get; set; }
 
+        public DateTime selectedDate { get; set; } = DateTime.Now;
+        public DateTime SelectedDate
+        {
+            get { return selectedDate; }
+            set
+            {
+                if (selectedDate != value)
+                {
+                    selectedDate = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         // public decimal Sum { get; set; }
         private decimal sum;
         public decimal Sum
@@ -22,7 +36,7 @@ namespace FastCost.Models
                 if (sum != value)
                 {
                     sum = value;
-                    OnPropertyChanged(nameof(Sum));
+                    OnPropertyChanged();
                 }
             }
         }
