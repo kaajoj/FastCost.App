@@ -51,9 +51,29 @@ public partial class AllCostsPage : ContentPage
         SumText.Text = $"Total sum: {sum}";
     }
 
-    private void OnExportClicked(object sender, EventArgs e)
+    private async void OnExportClicked(object sender, EventArgs e)
     {
-            
+        var costs = await ((AllCosts)BindingContext)?.LoadCostsBackUp();
+
+        var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "dane.csv");
+
+        var lines = new List<string>();
+        lines.Add("Id,Value,Description,Date,CategoryId");
+        foreach (var cost in costs)
+        {
+            lines.Add($"{cost.Id},{cost.Value},{cost.Description},{cost.Date},{cost.CategoryId}");
+        }
+
+        if(!File.Exists(filePath))
+            File.Create(filePath);
+        
+        File.WriteAllLines(filePath, lines);
+
+        string readText = File.ReadAllText(filePath);
+        Console.WriteLine(readText);
+
+        DisplayAlert("Success", "Costs data exported to file.", "OK");
+
         ExportBtn.Text = $"Costs data exported to file";
 
         SemanticScreenReader.Announce(ExportBtn.Text);
