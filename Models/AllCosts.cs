@@ -12,7 +12,8 @@ namespace FastCost.Models
         // public ObservableCollection<IGrouping<Category, CostModel>> GroupCosts { get; set; }
         public IEnumerable<IGrouping<Category, CostModel>> GroupCosts { get; set; }
 
-        public DateTime selectedDate { get; set; } = DateTime.Now;
+        // public DateTime selectedDate { get; set; } = DateTime.Now;
+        public DateTime selectedDate = DateTime.Now;
         public DateTime SelectedDate
         {
             get { return selectedDate; }
@@ -69,6 +70,12 @@ namespace FastCost.Models
 
             foreach (CostModel cost in costs.OrderBy(cost => cost.Date)) 
                 Costs.Add(cost);
+        }
+
+        public async Task<List<Cost>> LoadCostsBackUp()
+        {
+            var results = await App.CostRepository.GetCostsAsync();
+            return results;
         }
 
         public async Task LoadCostsByMonth(int month)
