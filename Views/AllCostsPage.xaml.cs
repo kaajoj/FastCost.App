@@ -50,4 +50,12 @@ public partial class AllCostsPage : ContentPage
         var sum = await ((AllCosts)BindingContext)?.GetSum(selectedDate.Month);
         SumText.Text = $"Total sum: {sum}";
     }
+
+    private void OnExportClicked(object sender, EventArgs e)
+    {
+            
+        ExportBtn.Text = $"Costs data exported to file";
+
+        SemanticScreenReader.Announce(ExportBtn.Text);
+    }
 }
