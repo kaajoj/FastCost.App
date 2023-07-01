@@ -76,5 +76,12 @@
             <Label x:Name = "SumText" FontSize="16" FontAttributes="Bold" TextColor="CadetBlue" HorizontalTextAlignment="Start" Padding="0, 0" />
         </CollectionView.Footer>
     </CollectionView>
+
+    <Button
+        x:Name="ExportBtn"
+        Text="Export data to file"
+        SemanticProperties.Hint="Counts the number of times you click"
+        HorizontalOptions="Center" />
+
     </VerticalStackLayout>
 </ContentPage>
