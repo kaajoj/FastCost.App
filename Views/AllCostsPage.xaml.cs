@@ -64,17 +64,9 @@ public partial class AllCostsPage : ContentPage
             lines.Add($"{cost.Id},{cost.Value},{cost.Description},{cost.Date},{cost.CategoryId}");
         }
 
-        if(!File.Exists(filePath))
-            File.Create(filePath);
-        
         File.WriteAllLines(filePath, lines);
 
-        string readText = File.ReadAllText(filePath);
-        Console.WriteLine(readText);
-
-        DisplayAlert("Success", "Costs data exported to file.", "OK");
-
-        ExportBtn.Text = $"Costs data exported to file";
+        await DisplayAlert("Success", "Costs data exported to file.", "OK");
 
         SemanticScreenReader.Announce(ExportBtn.Text);
     }
