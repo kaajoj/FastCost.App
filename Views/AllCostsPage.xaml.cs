@@ -55,7 +55,7 @@ public partial class AllCostsPage : ContentPage
     {
         var costs = await ((AllCosts)BindingContext)?.LoadCostsBackUp();
 
-        var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "dane.csv");
+        var filePath = Path.Combine(FileSystem.AppDataDirectory, "costsBackUp.csv");
 
         var lines = new List<string>();
         lines.Add("Id,Value,Description,Date,CategoryId");
