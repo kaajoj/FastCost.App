@@ -24,8 +24,6 @@
         <VerticalStackLayout Spacing="10" Margin="20">
 
             <DatePicker x:Name="AnalysisPageDatePicker"
-                        MinimumDate="{Binding MinDate}"
-                        MaximumDate="{Binding MaxDate}"
                         Date="{Binding SelectedDate}"
                         Format="MM/yyyy"
                         FontSize="20"
