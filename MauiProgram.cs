@@ -19,8 +19,6 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<CostRepository>();
         builder.Services.AddSingleton<CategoryRepository>();
-        // builder.Services.AddTransient<CostPage>();
-        // builder.Services.AddTransient<AllCostsPage>();
 
 #if DEBUG
         builder.Logging.AddDebug();

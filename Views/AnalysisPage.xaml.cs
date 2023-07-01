@@ -10,9 +10,6 @@ public partial class AnalysisPage : ContentPage
     public AnalysisPage()
     {
         InitializeComponent();
-
-        // BindingContext = new AllCosts();
-        // BindingContext = this;
     }
 
     protected override void OnAppearing()
@@ -31,7 +28,7 @@ public partial class AnalysisPage : ContentPage
     {
         base.OnNavigatedTo(state);
 
-        // ResetView();
+        ResetView();
 
         var currentMonth = DateTime.UtcNow.Date.Month;
         GroupCosts = await ((AllCosts)BindingContext)?.GetCostsByMonthGroupByCategory(currentMonth);
@@ -45,12 +42,12 @@ public partial class AnalysisPage : ContentPage
     {
         DateTime selectedDate = e.NewDate;
 
-        // ResetView();
-        BindingContext = new AllCosts();
+        ResetView();
+
         GroupCosts = await ((AllCosts)BindingContext)?.GetCostsByMonthGroupByCategory(selectedDate.Month);
 
-        var sum = await ((AllCosts)BindingContext)?.GetSum(selectedDate.Month);
-        SumText.Text = $"Total sum: {sum}";
+        // var sum = await ((AllCosts)BindingContext)?.GetSum(selectedDate.Month);
+        // SumText.Text = $"Total sum: {sum}";
 
         BindingContext = this;
     }
