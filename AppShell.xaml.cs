@@ -5,7 +5,7 @@ namespace FastCost;
 
 public partial class AppShell : Shell
 {
-    public ICommand MyCommand { get; private set; }
+    public ICommand ExportCommand { get; private set; }
 
     public AppShell()
 	{
@@ -13,7 +13,7 @@ public partial class AppShell : Shell
 
         Routing.RegisterRoute(nameof(Views.CostPage), typeof(Views.CostPage));
 
-        MyCommand = new Command(ExportData);
+        ExportCommand = new Command(ExportData);
         BindingContext = this;
     }
 

@@ -39,7 +39,7 @@
 
     <MenuItem Text="Export costs data"
               IconImageSource="icon_notes.png"
-              Command="{Binding MyCommand}" />
+              Command="{Binding ExportCommand}" />
 
     <!--<FlyoutItem Title="Add cost" Icon="{OnPlatform 'icon_notes.png'}"> 
          <ShellContent 
