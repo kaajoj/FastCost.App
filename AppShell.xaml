@@ -11,7 +11,6 @@
     <!--     ContentTemplate="{DataTemplate views:MainPage}" -->
     <!--     Route="MainPage" /> -->
 
-    
     <TabBar
         Route="tabs">
         <Tab Title="Add cost" Icon="{OnPlatform 'icon_estimate.png'}">
@@ -32,21 +31,25 @@
     </TabBar>
 
 
-    <!-- <Shell.FlyoutHeader> -->
-    <!--     <Grid HeightRequest="100" BackgroundColor="DarkSlateBlue"> -->
-    <!--         <Image Source="moon.png"/> -->
-    <!--     </Grid> -->
-    <!-- </Shell.FlyoutHeader> -->
-    <!-- -->
-    <!-- <FlyoutItem Title="Add cost" Icon="{OnPlatform 'icon_notes.png'}"> -->
-    <!--     <ShellContent -->
-    <!--             ContentTemplate="{DataTemplate views:MainPage}" -->
-    <!--             Route="mainPage" /> -->
-    <!-- </FlyoutItem> -->
-    <!-- <FlyoutItem Title="All costs" Icon="{OnPlatform 'icon_about.png'}"> -->
-    <!--     <ShellContent -->
-    <!--             ContentTemplate="{DataTemplate views:AllCostsPage}" -->
-    <!--             Route="allCosts" /> -->
-    <!-- </FlyoutItem> -->
+     <!--<Shell.FlyoutHeader> 
+         <Grid HeightRequest="100" BackgroundColor="DarkSlateBlue"> 
+             <Image Source="moon.png"/> 
+         </Grid> 
+     </Shell.FlyoutHeader>-->
+
+    <MenuItem Text="Export costs data"
+              IconImageSource="icon_notes.png"
+              Command="{Binding MyCommand}" />
+
+    <!--<FlyoutItem Title="Add cost" Icon="{OnPlatform 'icon_notes.png'}"> 
+         <ShellContent 
+                 ContentTemplate="{DataTemplate views:MainPage}" 
+                 Route="mainPage" /> 
+     </FlyoutItem> 
+     <FlyoutItem Title="All costs" Icon="{OnPlatform 'icon_about.png'}"> 
+         <ShellContent 
+                 ContentTemplate="{DataTemplate views:AllCostsPage}" 
+                 Route="allCosts" /> 
+     </FlyoutItem>--> 
 
 </Shell>
