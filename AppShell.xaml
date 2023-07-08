@@ -6,6 +6,13 @@
     xmlns:views="clr-namespace:FastCost.Views"
     FlyoutBehavior="Flyout">
 
+    <Shell.FlyoutHeader>
+        <Grid HeightRequest="55" BackgroundColor="CadetBlue" Padding="5">
+            <Label Text="Settings" FontSize="Large" FontAttributes="Bold" VerticalTextAlignment="Center" Padding="5,0,0,0" />
+            <!--<Image Source="icon_estimate.png" HorizontalOptions="Start"/>-->
+        </Grid>
+    </Shell.FlyoutHeader>
+
     <!-- <ShellContent -->
     <!--     Title="FastCost" -->
     <!--     ContentTemplate="{DataTemplate views:MainPage}" -->
@@ -29,16 +36,10 @@
                 Route="analysis" />
         </Tab>
     </TabBar>
-
-
-     <!--<Shell.FlyoutHeader> 
-         <Grid HeightRequest="100" BackgroundColor="DarkSlateBlue"> 
-             <Image Source="moon.png"/> 
-         </Grid> 
-     </Shell.FlyoutHeader>-->
+    
 
     <MenuItem Text="Export costs data"
-              IconImageSource="icon_notes.png"
+              IconImageSource="icon_all_costs.png"
               Command="{Binding ExportCommand}" />
 
     <!--<FlyoutItem Title="Add cost" Icon="{OnPlatform 'icon_notes.png'}"> 
