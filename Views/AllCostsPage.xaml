@@ -77,12 +77,5 @@
         </CollectionView.Footer>
     </CollectionView>
 
-    <Button
-        x:Name="ExportBtn"
-        Text="Export data to file"
-        SemanticProperties.Hint="Export data to file"
-        Clicked="OnExportClicked"
-        HorizontalOptions="Center" />
-
     </VerticalStackLayout>
 </ContentPage>

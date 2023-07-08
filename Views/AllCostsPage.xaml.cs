@@ -50,24 +50,4 @@ public partial class AllCostsPage : ContentPage
         var sum = await ((AllCosts)BindingContext)?.GetSum(selectedDate.Month);
         SumText.Text = $"Total sum: {sum}";
     }
-
-    private async void OnExportClicked(object sender, EventArgs e)
-    {
-        var costs = await ((AllCosts)BindingContext)?.LoadCostsBackUp();
-
-        var filePath = Path.Combine(FileSystem.AppDataDirectory, "costsBackUp.csv");
-
-        var lines = new List<string>();
-        lines.Add("Id,Value,Description,Date,CategoryId");
-        foreach (var cost in costs)
-        {
-            lines.Add($"{cost.Id},{cost.Value},{cost.Description},{cost.Date},{cost.CategoryId}");
-        }
-
-        File.WriteAllLines(filePath, lines);
-
-        await DisplayAlert("Success", "Costs data exported to file.", "OK");
-
-        SemanticScreenReader.Announce(ExportBtn.Text);
-    }
 }
