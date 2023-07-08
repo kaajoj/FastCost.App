@@ -33,6 +33,6 @@ public partial class AppShell : Shell
 
         File.WriteAllLines(filePath, lines);
 
-        await DisplayAlert("Success", "Costs data exported to file.", "OK");
+        await DisplayAlert("Success", $"Costs data exported to file. File path: {filePath}", "OK");
     }
 }
