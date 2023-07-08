@@ -36,9 +36,9 @@
                 Route="analysis" />
         </Tab>
     </TabBar>
-    
 
-    <MenuItem Text="Export costs data"
+
+    <MenuItem Text="Export costs data (Backup)"
               IconImageSource="icon_all_costs.png"
               Command="{Binding ExportCommand}" />
 
