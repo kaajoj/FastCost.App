@@ -20,39 +20,40 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        
-        <VerticalStackLayout Spacing="10" Margin="20">
+        <ScrollView>
+            <VerticalStackLayout Spacing="10" Margin="20">
 
-            <DatePicker x:Name="AnalysisPageDatePicker"
+                <DatePicker x:Name="AnalysisPageDatePicker"
                         Date="{Binding SelectedDate}"
                         Format="MM/yyyy"
                         FontSize="20"
                         HorizontalOptions="Center"
                         DateSelected="DatePicker_DateSelected"/>
 
-            <CollectionView x:Name="CollectionViewGroup"
+                <CollectionView x:Name="CollectionViewGroup"
                             ItemsSource="{Binding GroupCosts}"
                             IsGrouped="True"
                             GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}"
                             GroupFooterTemplate="{StaticResource GroupFooterTemplate}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid ColumnSpacing="15">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Text="{Binding Value}" FontSize="16" Margin="1,0,0,0" />
-                            <Label Grid.Column="1" Text="{Binding Description}" FontSize="16" Margin="1,0,0,0" />
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnSpacing="15">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding Value}" FontSize="16" Margin="1,0,0,0" />
+                                <Label Grid.Column="1" Text="{Binding Description}" FontSize="16" Margin="1,0,0,0" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
 
-                <CollectionView.Footer >
-                    <Label x:Name = "SumText" FontSize="16" FontAttributes="Bold" TextColor="CadetBlue" HorizontalTextAlignment="Start" Padding="0, 0"/>
-                </CollectionView.Footer>
+                    <CollectionView.Footer >
+                        <Label x:Name = "SumText" FontSize="16" FontAttributes="Bold" TextColor="CadetBlue" HorizontalTextAlignment="Start" Padding="0, 0"/>
+                    </CollectionView.Footer>
 
-            </CollectionView>
-        </VerticalStackLayout>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
