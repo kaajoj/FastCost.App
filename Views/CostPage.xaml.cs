@@ -48,6 +48,7 @@ public partial class CostPage : ContentPage
     private string _selectedCategory;
 
     private Label _previousSelectedLabel;
+    private Color _previousSelectedLabelColor;
 
 
     public CostPage() 
@@ -114,10 +115,13 @@ public partial class CostPage : ContentPage
     {
         if (_previousSelectedLabel != null && _previousSelectedLabel.BackgroundColor == Color.Parse("CadetBlue"))
         {
-            _previousSelectedLabel.BackgroundColor = Color.Parse("White");
+            _previousSelectedLabel.BackgroundColor = _previousSelectedLabelColor;
         }
 
         Label selectedLabel = (Label)sender;
+        _previousSelectedLabel = selectedLabel;
+        _previousSelectedLabelColor = selectedLabel.BackgroundColor;
+
         selectedLabel.BackgroundColor = Color.Parse("CadetBlue");
 
         _selectedCategory = args.Parameter?.ToString();
@@ -127,7 +131,5 @@ public partial class CostPage : ContentPage
 
         // var id = selectedLabel.Id;
         // var text = selectedLabel.Text;
-
-        _previousSelectedLabel = selectedLabel;
     }
 }
