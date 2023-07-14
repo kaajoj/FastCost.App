@@ -33,6 +33,9 @@ public partial class AppShell : Shell
 
         File.WriteAllLines(filePath, lines);
 
+        if (!File.Exists(filePath))
+            await DisplayAlert("Failure", $"Error writing to file. File path: {filePath}", "OK");
+
         await DisplayAlert("Success", $"Costs data exported to file. File path: {filePath}", "OK");
     }
 }
