@@ -47,6 +47,9 @@ public partial class CostPage : ContentPage
 
     private string _selectedCategory;
 
+    private Label _previousSelectedLabel;
+
+
     public CostPage() 
     {
         InitializeComponent();
@@ -109,6 +112,11 @@ public partial class CostPage : ContentPage
 
     private void OnCategorySelected(object sender, TappedEventArgs args)
     {
+        if (_previousSelectedLabel != null && _previousSelectedLabel.BackgroundColor == Color.Parse("CadetBlue"))
+        {
+            _previousSelectedLabel.BackgroundColor = Color.Parse("White");
+        }
+
         Label selectedLabel = (Label)sender;
         selectedLabel.BackgroundColor = Color.Parse("CadetBlue");
 
@@ -119,5 +127,7 @@ public partial class CostPage : ContentPage
 
         // var id = selectedLabel.Id;
         // var text = selectedLabel.Text;
+
+        _previousSelectedLabel = selectedLabel;
     }
 }
