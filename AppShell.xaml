@@ -4,14 +4,15 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:FastCost.Views"
-    FlyoutBehavior="Flyout">
+    >
+    <!--FlyoutBehavior="Flyout">-->
 
-    <Shell.FlyoutHeader>
+    <!--<Shell.FlyoutHeader>
         <Grid HeightRequest="55" BackgroundColor="CadetBlue" Padding="5">
-            <Label Text="Settings" FontSize="Large" FontAttributes="Bold" VerticalTextAlignment="Center" Padding="5,0,0,0" />
-            <!--<Image Source="icon_estimate.png" HorizontalOptions="Start"/>-->
+            <Label Text="..." FontSize="Large" FontAttributes="Bold" VerticalTextAlignment="Center" Padding="5,0,0,0" />
+            --><!--<Image Source="icon_estimate.png" HorizontalOptions="Start"/>--><!--
         </Grid>
-    </Shell.FlyoutHeader>
+    </Shell.FlyoutHeader>-->
 
     <!-- <ShellContent -->
     <!--     Title="FastCost" -->
@@ -38,9 +39,9 @@
     </TabBar>
 
 
-    <MenuItem Text="Export costs data (Backup)"
+    <!--<MenuItem Text="Export costs data (Backup)"
               IconImageSource="icon_all_costs.png"
-              Command="{Binding ExportCommand}" />
+              Command="{Binding ExportCommand}" />-->
 
     <!--<FlyoutItem Title="Add cost" Icon="{OnPlatform 'icon_notes.png'}"> 
          <ShellContent 
