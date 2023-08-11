@@ -103,16 +103,14 @@ public partial class CostPage : ContentPage
 
     private async void DeleteButton_Clicked(object sender, EventArgs e)
     {
+        if (BindingContext is CostModel costModel)
+        {
+            var cost = costModel.Adapt<Cost>();
 
-            if (BindingContext is CostModel costModel)
+            if (await DisplayAlert("Delete cost", "Do you want to remove the cost with the value: " + cost.Value + "?", "Yes", "No"))
             {
-                var cost = costModel.Adapt<Cost>();
-            if (await DisplayAlert("Delete cost",
-                "Would you like to delete cost " + cost.Value + cost.Description + "?",
-                "Yes", "No"))
-            {
-                    await App.CostRepository.DeleteCostAsync(cost);
-                    await Shell.Current.GoToAsync("..");
+                await App.CostRepository.DeleteCostAsync(cost);
+                await Shell.Current.GoToAsync("..");
             }
         }
     }
