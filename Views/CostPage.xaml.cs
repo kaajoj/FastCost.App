@@ -116,6 +116,7 @@ public partial class CostPage : ContentPage
         if (_previousSelectedLabel != null && _previousSelectedLabel.BackgroundColor == Color.Parse("CadetBlue"))
         {
             _previousSelectedLabel.BackgroundColor = _previousSelectedLabelColor;
+            _previousSelectedLabel.Handler.UpdateValue("Background");
         }
 
         Label selectedLabel = (Label)sender;
@@ -123,6 +124,7 @@ public partial class CostPage : ContentPage
         _previousSelectedLabelColor = selectedLabel.BackgroundColor;
 
         selectedLabel.BackgroundColor = Color.Parse("CadetBlue");
+        selectedLabel.Handler.UpdateValue("Background");
 
         _selectedCategory = args.Parameter?.ToString();
 
