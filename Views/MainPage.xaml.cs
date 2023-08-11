@@ -26,13 +26,14 @@ public partial class MainPage : ContentPage
         {
             if (!string.IsNullOrEmpty(e.NewTextValue))
             {
-                Decimal.TryParse(e.NewTextValue, out var enteredCost);
+                decimal.TryParse(e.NewTextValue, out var enteredCost);
                 // var enteredCost = Convert.ToDecimal(e.NewTextValue);
                 
                 if (enteredCost > 0)
                 {
                     CostBtn.IsEnabled = true;
                     CostBtn.BackgroundColor = Color.Parse("Lime");
+                    CostBtn.Handler.UpdateValue("Background");
                 }
                 else
                 {
@@ -44,7 +45,7 @@ public partial class MainPage : ContentPage
                 CostText.Text = string.Empty;
                 CostBtn.IsEnabled = false;
                 CostBtn.BackgroundColor = Color.Parse("LightGray");
-                // DisplayAlert("Information", "Entered amount is lower than 0", "OK");
+                CostBtn.Handler.UpdateValue("Background");
             }
         }
         catch (Exception ex)
