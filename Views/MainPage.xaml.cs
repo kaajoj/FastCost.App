@@ -29,15 +29,11 @@ public partial class MainPage : ContentPage
                 decimal.TryParse(e.NewTextValue, out var enteredCost);
                 // var enteredCost = Convert.ToDecimal(e.NewTextValue);
                 
-                if (enteredCost > 0)
+                if (enteredCost != 0)
                 {
                     CostBtn.IsEnabled = true;
                     CostBtn.BackgroundColor = Color.Parse("Lime");
                     CostBtn.Handler.UpdateValue("Background");
-                }
-                else
-                {
-                    // enteredCost = 0;
                 }
             }
             else
