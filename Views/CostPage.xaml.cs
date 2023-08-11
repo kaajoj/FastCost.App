@@ -67,7 +67,7 @@ public partial class CostPage : ContentPage
             ((CostModel)BindingContext).Date = DateTime.UtcNow;
         }
 
-        if (((CostModel)BindingContext).Value >= 0)
+        if (((CostModel)BindingContext).Value != 0)
         {
             CostValueEditor.Text = ((CostModel)BindingContext).Value.ToString();
         }
