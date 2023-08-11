@@ -1,5 +1,4 @@
-﻿using Android.Content;
-using FastCost.DAL.Entities;
+﻿using FastCost.DAL.Entities;
 using FastCost.Models;
 using Mapster;
 
