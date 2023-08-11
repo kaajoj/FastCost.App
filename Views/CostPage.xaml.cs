@@ -96,7 +96,6 @@ public partial class CostPage : ContentPage
             await App.CostRepository.SaveCostAsync(cost);
         }
         
-        // await Shell.Current.GoToAsync("..");
         await Shell.Current.GoToAsync($"//allCosts", true);
     }
 
