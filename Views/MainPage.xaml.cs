@@ -54,11 +54,6 @@ public partial class MainPage : ContentPage
 	{
         SemanticScreenReader.Announce(CostBtn.Text);
 
-        // if (await DisplayAlert(
-        //         "Add cost",
-        //         "Would you like to add cost " + CostText.Text + "?",
-        //         "Yes",
-        //         "No"))
         {
             try
             {

@@ -1,4 +1,5 @@
-﻿using FastCost.DAL.Entities;
+﻿using Android.Content;
+using FastCost.DAL.Entities;
 using FastCost.Models;
 using Mapster;
 
@@ -102,13 +103,18 @@ public partial class CostPage : ContentPage
 
     private async void DeleteButton_Clicked(object sender, EventArgs e)
     {
-        if (BindingContext is CostModel costModel)
-        {
-            var cost = costModel.Adapt<Cost>();
-            await App.CostRepository.DeleteCostAsync(cost);
-        }
 
-        await Shell.Current.GoToAsync("..");
+            if (BindingContext is CostModel costModel)
+            {
+                var cost = costModel.Adapt<Cost>();
+            if (await DisplayAlert("Delete cost",
+                "Would you like to delete cost " + cost.Value + cost.Description + "?",
+                "Yes", "No"))
+            {
+                    await App.CostRepository.DeleteCostAsync(cost);
+                    await Shell.Current.GoToAsync("..");
+            }
+        }
     }
 
     private void OnCategorySelected(object sender, TappedEventArgs args)
