@@ -2,8 +2,6 @@
 
 public partial class MainPage : ContentPage
 {
-    public decimal CostValue { get; private set; }
-
     public MainPage()
 	{
 		InitializeComponent();
@@ -52,15 +50,15 @@ public partial class MainPage : ContentPage
 
     private async void OnCostEntered(object sender, EventArgs e)
 	{
-        SemanticScreenReader.Announce(CostBtn.Text);
+        SemanticScreenReader.Announce(CostText.Text);
 
         {
             try
             {
-                var enteredCost = Convert.ToDecimal(CostText.Text);
+                string costToParse = CostText.Text.Replace(",", ".");
+                var enteredCost = Convert.ToDecimal(costToParse);
                 CostText.Text = string.Empty;
-                CostValue = enteredCost;
-                await Shell.Current.GoToAsync($"{nameof(CostPage)}?{nameof(CostPage.CostValue)}={CostValue.ToString()}", true);
+                await Shell.Current.GoToAsync($"{nameof(CostPage)}?{nameof(CostPage.CostValue)}={enteredCost}", true);
             }
             catch (ArgumentNullException)
             {
