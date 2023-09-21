@@ -42,7 +42,8 @@
                 Text="{Binding Value}"
                 FontSize="26" 
                 FontAttributes="Bold"
-                HorizontalTextAlignment="Center" />
+                HorizontalTextAlignment="Center"
+                Keyboard="Numeric" />
 
         <Editor x:Name="DescriptionEditor"
                 Placeholder="enter description"
