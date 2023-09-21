@@ -27,7 +27,6 @@ public partial class MainPage : ContentPage
             if (!string.IsNullOrEmpty(e.NewTextValue))
             {
                 decimal.TryParse(e.NewTextValue, out var enteredCost);
-                // var enteredCost = Convert.ToDecimal(e.NewTextValue);
                 
                 if (enteredCost != 0)
                 {
@@ -58,7 +57,6 @@ public partial class MainPage : ContentPage
             try
             {
                 string costToParse = CostText.Text.Replace(",", ".");
-                //var enteredCost = Convert.ToDecimal(costToParse);
                 var enteredCost = decimal.Parse(costToParse, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture);
                 CostText.Text = string.Empty;
                 await Shell.Current.GoToAsync($"{nameof(CostPage)}?{nameof(CostPage.CostValue)}={enteredCost}", true);
