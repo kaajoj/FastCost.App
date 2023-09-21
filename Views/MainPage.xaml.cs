@@ -63,12 +63,10 @@ public partial class MainPage : ContentPage
             catch (ArgumentNullException)
             {
                 await DisplayAlert("Unable to add cost", "Cost value was not valid.", "OK");
-                throw;
             }
             catch (Exception)
             {
                 await DisplayAlert("Unable to add cost", "Cost adding failed.", "OK");
-                throw;
             }
         }
     }
