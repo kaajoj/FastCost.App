@@ -1,4 +1,6 @@
-﻿namespace FastCost.Views;
+﻿using System.Globalization;
+
+namespace FastCost.Views;
 
 public partial class MainPage : ContentPage
 {
@@ -56,7 +58,8 @@ public partial class MainPage : ContentPage
             try
             {
                 string costToParse = CostText.Text.Replace(",", ".");
-                var enteredCost = Convert.ToDecimal(costToParse);
+                //var enteredCost = Convert.ToDecimal(costToParse);
+                var enteredCost = decimal.Parse(costToParse, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture);
                 CostText.Text = string.Empty;
                 await Shell.Current.GoToAsync($"{nameof(CostPage)}?{nameof(CostPage.CostValue)}={enteredCost}", true);
             }
