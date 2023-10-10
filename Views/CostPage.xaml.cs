@@ -89,26 +89,37 @@ public partial class CostPage : ContentPage
 
     private async void SaveButton_Clicked(object sender, EventArgs e)
     {
-        var indexOfDot = CostValueEditor.Text.IndexOf('.');
-        var indexOfComma = CostValueEditor.Text.IndexOf(',');
-        var numberFormat = new NumberFormatInfo
+        try
         {
-            NumberDecimalSeparator = indexOfComma > indexOfDot ? "," : ".",
-            NumberGroupSeparator = indexOfComma > indexOfDot ? "." : ","
-        };
+            var indexOfDot = CostValueEditor.Text.IndexOf('.');
+            var indexOfComma = CostValueEditor.Text.IndexOf(',');
+            var numberFormat = new NumberFormatInfo
+            {
+                NumberDecimalSeparator = indexOfComma > indexOfDot ? "," : ".",
+                NumberGroupSeparator = indexOfComma > indexOfDot ? "." : ","
+            };
 
-        decimal.TryParse(CostValueEditor.Text, NumberStyles.Number, numberFormat, out var enteredCost);
+            decimal.TryParse(CostValueEditor.Text, NumberStyles.Number, numberFormat, out var enteredCost);
 
-        if (BindingContext is CostModel costModel)
-        {
-            costModel.Value = enteredCost;
-            costModel.Date = DateTime.UtcNow;
+            if (BindingContext is CostModel costModel)
+            {
+                costModel.Value = enteredCost;
+                costModel.Date = DateTime.UtcNow;
 
-            var cost = costModel.Adapt<Cost>();
-            await App.CostRepository.SaveCostAsync(cost);
+                var cost = costModel.Adapt<Cost>();
+                await App.CostRepository.SaveCostAsync(cost);
+            }
+
+            await Shell.Current.GoToAsync($"//allCosts", true);
         }
-        
-        await Shell.Current.GoToAsync($"//allCosts", true);
+        catch (ArgumentNullException)
+        {
+            await DisplayAlert("Unable to add cost", "Cost value was not valid.", "OK");
+        }
+        catch (Exception)
+        {
+            await DisplayAlert("Unable to add cost", "Cost adding failed.", "OK");
+        }
     }
 
     private async void DeleteButton_Clicked(object sender, EventArgs e)
