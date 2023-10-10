@@ -26,7 +26,15 @@ public partial class MainPage : ContentPage
         {
             if (!string.IsNullOrEmpty(e.NewTextValue))
             {
-                decimal.TryParse(e.NewTextValue, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out var enteredCost);
+                var indexOfDot = e.NewTextValue.IndexOf('.');
+                var indexOfComma = e.NewTextValue.IndexOf(',');
+                var numberFormat = new NumberFormatInfo
+                {
+                    NumberDecimalSeparator = indexOfComma > indexOfDot ? "," : ".",
+                    NumberGroupSeparator = indexOfComma > indexOfDot ? "." : ","
+                };
+
+                decimal.TryParse(e.NewTextValue, NumberStyles.Number, numberFormat, out var enteredCost);
                 
                 if (enteredCost != 0)
                 {
@@ -56,8 +64,15 @@ public partial class MainPage : ContentPage
         {
             try
             {
-                string costToParse = CostText.Text.Replace(",", ".");
-                decimal.TryParse(costToParse, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out var enteredCost);
+                var indexOfDot = CostText.Text.IndexOf('.');
+                var indexOfComma = CostText.Text.IndexOf(',');
+                var numberFormat = new NumberFormatInfo
+                {
+                    NumberDecimalSeparator = indexOfComma > indexOfDot ? "," : ".",
+                    NumberGroupSeparator = indexOfComma > indexOfDot ? "." : ","
+                };
+
+                decimal.TryParse(CostText.Text, NumberStyles.Number, numberFormat, out var enteredCost);
                 CostText.Text = string.Empty;
                 await Shell.Current.GoToAsync($"{nameof(CostPage)}?{nameof(CostPage.CostValue)}={enteredCost}", true);
             }
