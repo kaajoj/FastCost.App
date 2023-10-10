@@ -44,7 +44,7 @@
                 FontAttributes="Bold"
                 HorizontalTextAlignment="Center"
                 Keyboard="Numeric" />
-
+        
         <Editor x:Name="DescriptionEditor"
                 Placeholder="enter description"
                 Text="{Binding Description}"

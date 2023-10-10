@@ -1,6 +1,7 @@
 ﻿using FastCost.DAL.Entities;
 using FastCost.Models;
 using Mapster;
+using System.Globalization;
 
 namespace FastCost.Views;
 
@@ -88,8 +89,19 @@ public partial class CostPage : ContentPage
 
     private async void SaveButton_Clicked(object sender, EventArgs e)
     {
+        var indexOfDot = CostValueEditor.Text.IndexOf('.');
+        var indexOfComma = CostValueEditor.Text.IndexOf(',');
+        var numberFormat = new NumberFormatInfo
+        {
+            NumberDecimalSeparator = indexOfComma > indexOfDot ? "," : ".",
+            NumberGroupSeparator = indexOfComma > indexOfDot ? "." : ","
+        };
+
+        decimal.TryParse(CostValueEditor.Text, NumberStyles.Number, numberFormat, out var enteredCost);
+
         if (BindingContext is CostModel costModel)
         {
+            costModel.Value = enteredCost;
             costModel.Date = DateTime.UtcNow;
 
             var cost = costModel.Adapt<Cost>();
