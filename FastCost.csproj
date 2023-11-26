@@ -16,7 +16,6 @@
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.fastcost</ApplicationId>
-		<ApplicationIdGuid>cd124765-b4dd-4b81-968f-094c63dfc4de</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0.3</ApplicationDisplayVersion>
