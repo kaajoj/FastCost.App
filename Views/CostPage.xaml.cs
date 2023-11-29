@@ -60,7 +60,7 @@ public partial class CostPage : ContentPage
 
     protected override void OnNavigatedTo(NavigatedToEventArgs state)
     {
-        // base.OnNavigatedTo(state);
+         base.OnNavigatedTo(state);
 
         if (!string.IsNullOrEmpty(CostValue))
         {
