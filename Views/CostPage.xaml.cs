@@ -70,6 +70,10 @@ public partial class CostPage : ContentPage
 
         if (((CostModel)BindingContext).Value != 0)
         {
+            if(((CostModel)BindingContext).Date.Year != DateTime.UtcNow.Year)
+            {
+                ((CostModel)BindingContext).Date = DateTime.UtcNow;
+            }
             CostValueEditor.Text = ((CostModel)BindingContext).Value.ToString();
         }
         else
@@ -104,7 +108,6 @@ public partial class CostPage : ContentPage
             if (BindingContext is CostModel costModel)
             {
                 costModel.Value = enteredCost;
-                //costModel.Date = DateTime.UtcNow;
 
                 var cost = costModel.Adapt<Cost>();
                 await App.CostRepository.SaveCostAsync(cost);
