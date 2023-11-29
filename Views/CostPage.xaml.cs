@@ -104,7 +104,7 @@ public partial class CostPage : ContentPage
             if (BindingContext is CostModel costModel)
             {
                 costModel.Value = enteredCost;
-                costModel.Date = DateTime.UtcNow;
+                //costModel.Date = DateTime.UtcNow;
 
                 var cost = costModel.Adapt<Cost>();
                 await App.CostRepository.SaveCostAsync(cost);
