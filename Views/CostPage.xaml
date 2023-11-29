@@ -44,25 +44,13 @@
                 FontAttributes="Bold"
                 HorizontalTextAlignment="Center"
                 Keyboard="Numeric" />
-        
+
         <Editor x:Name="DescriptionEditor"
                 Placeholder="enter description"
                 Text="{Binding Description}"
                 FontSize="26"
                 FontAttributes="Bold"
                 HorizontalTextAlignment="Center" />
-
-        <!--<Label x:Name="DateLabel"
-                Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}"
-                FontSize="24"
-                HorizontalTextAlignment="Center" />
-
-         <Editor x:Name="DateEditor" 
-                 Placeholder="enter date" 
-                 Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" 
-                 FontSize="24" 
-                 FontAttributes="Bold" 
-                 HorizontalTextAlignment="Center" />-->
 
         <DatePicker x:Name="costDatePicker" 
                     Date="{Binding Date}"
