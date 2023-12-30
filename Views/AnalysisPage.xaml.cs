@@ -7,6 +7,23 @@ public partial class AnalysisPage : ContentPage
 {
     public IEnumerable<IGrouping<Category, CostModel>> GroupCosts { get; set; }
 
+    //[ObservableProperty]
+    //public string SelectedDate { get; set; }
+
+    //public DateTime selectedDate = DateTime.Now;
+    //public DateTime SelectedDate
+    //{
+    //    get { return selectedDate; }
+    //    set
+    //    {
+    //        if (selectedDate != value)
+    //        {
+    //            selectedDate = value;
+    //            OnPropertyChanged();
+    //        }
+    //    }
+    //}
+
     public AnalysisPage()
     {
         InitializeComponent();
@@ -31,9 +48,20 @@ public partial class AnalysisPage : ContentPage
         ResetView();
 
         var currentMonth = DateTime.UtcNow.Date.Month;
-        GroupCosts = await ((AllCosts)BindingContext)?.GetCostsByMonthGroupByCategory(currentMonth);
+        GroupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(currentMonth);
+        // GroupCosts = new ObservableCollection<IGrouping<Category, CostModel>>(costsByCategory);
+        foreach (var costGroup in GroupCosts)
+        {
+            decimal? sum = decimal.Zero;
+            foreach (var cost in costGroup)
+            {
+                sum += cost.Value;
+            }
+            costGroup.Key.SumValue = sum;
+        }
 
-        SumText.Text = $"Total sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(currentMonth).Result.ToString()).Result}";
+        //var sum = await App.AllCostsService.GetSum(currentMonth);
+        SumText.Text = $"Total sum:  {Task.Run(() => App.AllCostsService.GetSum(currentMonth).Result.ToString()).Result}";
 
         BindingContext = this;
     }
@@ -44,7 +72,16 @@ public partial class AnalysisPage : ContentPage
 
         ResetView();
 
-        GroupCosts = await ((AllCosts)BindingContext)?.GetCostsByMonthGroupByCategory(selectedDate.Month);
+        GroupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(selectedDate.Month);
+        foreach (var costGroup in GroupCosts)
+        {
+            decimal? sum = decimal.Zero;
+            foreach (var cost in costGroup)
+            {
+                sum += cost.Value;
+            }
+            costGroup.Key.SumValue = sum;
+        }
 
         // var sum = await ((AllCosts)BindingContext)?.GetSum(selectedDate.Month);
         // SumText.Text = $"Total sum: {sum}";

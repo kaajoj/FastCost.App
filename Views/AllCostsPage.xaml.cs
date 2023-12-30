@@ -14,10 +14,16 @@ public partial class AllCostsPage : ContentPage
         base.OnNavigatedTo(state);
 
         var currentMonth = DateTime.UtcNow.Date.Month;
-        await ((AllCosts)BindingContext)?.LoadCostsByMonth(currentMonth);
 
+        ((AllCosts)BindingContext)?.Costs.Clear();
+        var costs = await App.AllCostsService.LoadCostsByMonth(currentMonth);
+        foreach (CostModel cost in costs.OrderBy(cost => cost.Date))
+        {
+            ((AllCosts)BindingContext)?.Costs.Add(cost);
+        }
 
-        var sum = await ((AllCosts)BindingContext)?.GetSum(currentMonth);
+        //((AllCosts)BindingContext)?.Sum = 0;
+        var sum = await App.AllCostsService.GetSum(currentMonth);
         SumText.Text = $"Total sum: {sum}";
         // SumText.Text = $"Total sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(currentMonth).Result.ToString()).Result}";
     }
@@ -44,10 +50,16 @@ public partial class AllCostsPage : ContentPage
     private async void MyDatePicker_DateSelected(object sender, DateChangedEventArgs e)
     {
         DateTime selectedDate = e.NewDate;
-        await ((AllCosts)BindingContext)?.LoadCostsByMonth(selectedDate.Month);
+
+        ((AllCosts)BindingContext)?.Costs.Clear();
+        var costs = await App.AllCostsService.LoadCostsByMonth(selectedDate.Month);
+        foreach (CostModel cost in costs.OrderBy(cost => cost.Date))
+        {
+            ((AllCosts)BindingContext)?.Costs.Add(cost);
+        }
 
         // SumText.Text = $"Sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(selectedDate.Month).Result.ToString()).Result}";
-        var sum = await ((AllCosts)BindingContext)?.GetSum(selectedDate.Month);
+        var sum = await App.AllCostsService.GetSum(selectedDate.Month);
         SumText.Text = $"Total sum: {sum}";
     }
 }
