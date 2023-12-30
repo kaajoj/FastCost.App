@@ -8,7 +8,7 @@ namespace FastCost.Models
     public class AllCosts : INotifyPropertyChanged
     {
         public ObservableCollection<CostModel> Costs { get; set; } = new();
-        // public ObservableCollection<IGrouping<Category, CostModel>> GroupCosts { get; set; }
+        //public ObservableCollection<IGrouping<Category, CostModel>> GroupCosts { get; set; } = new();
         public IEnumerable<IGrouping<Category, CostModel>> GroupCosts { get; set; }
 
         // public DateTime selectedDate { get; set; } = DateTime.Now;
@@ -28,7 +28,7 @@ namespace FastCost.Models
 
 
         //[ObservableProperty]
-        public decimal Sum { get; set; }
+         public decimal Sum { get; set; }
         //private decimal sum;
         //public decimal Sum
         //{
