@@ -20,7 +20,7 @@ public partial class AppShell : Shell
     private async void ExportData()
     {
         var allCosts = new AllCosts();
-        var costs = await allCosts.LoadCostsBackUp();
+        var costs = await App.AllCostsService.LoadCostsBackUp();
 
         var filePath = Path.Combine(FileSystem.AppDataDirectory, "costsBackUp.csv");
 

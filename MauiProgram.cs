@@ -1,4 +1,5 @@
 ﻿using FastCost.DAL;
+using FastCost.Services;
 using FastCost.Views;
 using Microsoft.Extensions.Logging;
 
@@ -19,6 +20,7 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<CostRepository>();
         builder.Services.AddSingleton<CategoryRepository>();
+        builder.Services.AddSingleton<AllCostsService>();
 
 #if DEBUG
         builder.Logging.AddDebug();
