@@ -5,8 +5,12 @@ namespace FastCost.Views;
 
 public partial class AnalysisPage : ContentPage
 {
+
+    public IEnumerable<IGrouping<Category, CostModel>> GroupCosts { get; set; }
+
+
     //[ObservableProperty]
-    //public string SelectedDate { get; set; }
+    public string SelectedDate { get; set; } = string.Empty;
 
     //public DateTime selectedDate = DateTime.Now;
     //public DateTime SelectedDate
@@ -49,8 +53,9 @@ public partial class AnalysisPage : ContentPage
         //GroupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(currentMonth);
         //((AllCosts)BindingContext)?.GroupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(currentMonth);
         var groupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(currentMonth);
-        var test = ((AllCosts)BindingContext)?.GroupCosts;
-        test = groupCosts;
+        //var test = ((AllCosts)BindingContext)?.GroupCosts;
+        GroupCosts = groupCosts;
+        //test = groupCosts;
         foreach (var costGroup in groupCosts)
         {
             decimal? sum = decimal.Zero;
@@ -76,8 +81,9 @@ public partial class AnalysisPage : ContentPage
 
         //GroupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(selectedDate.Month);
         var groupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(selectedDate.Month);
-        var test = ((AllCosts)BindingContext)?.GroupCosts;
-        test = groupCosts;
+        //var test = ((AllCosts)BindingContext)?.GroupCosts;
+        GroupCosts = groupCosts;
+        //test = groupCosts;
         foreach (var costGroup in groupCosts)
         {
             decimal? sum = decimal.Zero;
