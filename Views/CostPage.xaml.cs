@@ -16,38 +16,7 @@ public partial class CostPage : ContentPage
 
     public string CostValue { get; set; }
 
-    // [ObservableProperty]
-    // public string Test { get; set; }
-
-    // string _amount;
-    // public string Amount
-    // {
-    //     get => _amount;
-    //     set
-    //     {
-    //         OnPropertyChanged();
-    //         _amount = value;
-    //         OnPropertyChanged();
-    //     }
-    // }
-
-    // Retrieving data
-    // the first argument for the QueryPropertyAttribute specifies the name of the property that will receive the data,
-    // with the second argument specifying the parameter ID
-    // [QueryProperty(nameof(AstroName), "bodyName")]
-
-    // string astroName;
-    // public string AstroName
-    // {
-    //     get => astroName;
-    //     set
-    //     {
-    //         astroName = value;
-    //     }
-    // }
-
     private string _selectedCategory;
-
     private Label _previousSelectedLabel;
     private Color _previousSelectedLabelColor;
 
