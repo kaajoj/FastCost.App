@@ -1,12 +1,13 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using FastCost.DAL.Entities;
 
 namespace FastCost.Models
 {
-    public class AllCosts : INotifyPropertyChanged
+    public class AllCostsGroup : INotifyPropertyChanged
     {
-        public ObservableCollection<CostModel> Costs { get; set; } = new();
+        public ObservableCollection<IGrouping<Category, CostModel>> GroupCosts { get; set; } = new();
 
         public DateTime selectedDate = DateTime.Now;
         public DateTime SelectedDate

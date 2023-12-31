@@ -7,7 +7,7 @@
              Title="Analysis">
 
     <ContentPage.BindingContext>
-        <models:AllCosts />
+        <models:AllCostsGroup />
     </ContentPage.BindingContext>
 
     <ContentPage.Resources>

@@ -58,7 +58,6 @@ public partial class AllCostsPage : ContentPage
             ((AllCosts)BindingContext)?.Costs.Add(cost);
         }
 
-        // SumText.Text = $"Sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(selectedDate.Month).Result.ToString()).Result}";
         var sum = await App.AllCostsService.GetSum(selectedDate.Month);
         SumText.Text = $"Total sum: {sum}";
     }

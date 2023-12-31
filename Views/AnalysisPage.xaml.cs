@@ -1,12 +1,15 @@
 ﻿using FastCost.DAL.Entities;
 using FastCost.Models;
+using System.Collections.ObjectModel;
 
 namespace FastCost.Views;
 
 public partial class AnalysisPage : ContentPage
 {
 
-    public IEnumerable<IGrouping<Category, CostModel>> GroupCosts { get; set; }
+    //public IEnumerable<IGrouping<Category, CostModel>> GroupCosts { get; set; }
+    public ObservableCollection<IGrouping<Category, CostModel>> GroupCosts { get; set; } = new();
+
 
     private string _selectedDate;
     public string SelectedDate
@@ -35,28 +38,41 @@ public partial class AnalysisPage : ContentPage
 
     private void ResetView()
     {
-        BindingContext = new AllCosts();
+        BindingContext = new AllCostsGroup();
     }
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs state)
     {
         base.OnNavigatedTo(state);
 
-        ResetView();
+        //ResetView();
         var currentMonth = DateTime.UtcNow.Date.Month;
-        GroupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(currentMonth);
-        foreach (var costGroup in GroupCosts)
+
+        //((AllCostsGroup)BindingContext)?.GroupCosts.Clear();
+        GroupCosts.Clear();
+        //var groupCosts = ((AllCostsGroup)BindingContext)?.GroupCosts;
+        var groupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(currentMonth);
+        //GroupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(currentMonth);
+        foreach (var costGroup in groupCosts)
         {
-            decimal? sum = decimal.Zero;
+            decimal? sumGroup = decimal.Zero;
             foreach (var cost in costGroup)
             {
-                sum += cost.Value;
+                sumGroup += cost.Value;
             }
-            costGroup.Key.SumValue = sum;
+            costGroup.Key.SumValue = sumGroup;
+
+            GroupCosts.Add(costGroup);
+            //((AllCostsGroup)BindingContext)?.GroupCosts.Add(costGroup);
         }
 
-        //var sum = await App.AllCostsService.GetSum(currentMonth);
-        SumText.Text = $"Total sum:  {Task.Run(() => App.AllCostsService.GetSum(currentMonth).Result.ToString()).Result}";
+        //foreach (var costGroup in groupCosts)
+        //{
+
+        //}
+
+        var sum = await App.AllCostsService.GetSum(currentMonth);
+        SumText.Text = $"Total sum: {sum}";
 
         BindingContext = this;
     }
@@ -66,8 +82,13 @@ public partial class AnalysisPage : ContentPage
         DateTime selectedDate = e.NewDate;
 
         //ResetView();
-        GroupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(selectedDate.Month);
-        foreach (var costGroup in GroupCosts)
+
+        //((AllCostsGroup)BindingContext)?.GroupCosts.Clear();
+        GroupCosts.Clear();
+        //var groupCosts = ((AllCostsGroup)BindingContext)?.GroupCosts;
+        var groupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(selectedDate.Month);
+        //GroupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(selectedDate.Month);
+        foreach (var costGroup in groupCosts)
         {
             decimal? sumGroup = decimal.Zero;
             foreach (var cost in costGroup)
@@ -76,10 +97,17 @@ public partial class AnalysisPage : ContentPage
             }
             costGroup.Key.SumValue = sumGroup;
 
+            GroupCosts.Add(costGroup);
+            //((AllCostsGroup)BindingContext)?.GroupCosts.Add(costGroup);
         }
 
-        //var sum = await App.AllCostsService.GetSum(selectedDate.Month);
-        // SumText.Text = $"Total sum: {sum}";
+        //foreach (var costGroup in groupCosts)
+        //{
+
+        //}
+
+        var sum = await App.AllCostsService.GetSum(selectedDate.Month);
+        SumText.Text = $"Total sum: {sum}";
 
         BindingContext = this;
     }
