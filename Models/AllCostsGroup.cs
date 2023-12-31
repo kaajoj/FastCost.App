@@ -9,17 +9,16 @@ namespace FastCost.Models
     {
         public ObservableCollection<IGrouping<Category, CostModel>> GroupCosts { get; set; } = new();
 
-        public DateTime selectedDate = DateTime.Now;
-        public DateTime SelectedDate
+        private string _selectedDate;
+        public string SelectedDate
         {
-            get { return selectedDate; }
+            get
+            {
+                return _selectedDate ?? DateTime.Now.ToString();
+            }
             set
             {
-                if (selectedDate != value)
-                {
-                    selectedDate = value;
-                    OnPropertyChanged();
-                }
+                _selectedDate = value;
             }
         }
 
