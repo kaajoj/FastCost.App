@@ -22,10 +22,7 @@ public partial class AllCostsPage : ContentPage
             ((AllCosts)BindingContext)?.Costs.Add(cost);
         }
 
-        //((AllCosts)BindingContext)?.Sum = 0;
-        var sum = await App.AllCostsService.GetSum(currentMonth);
-        SumText.Text = $"Total sum: {sum}";
-        // SumText.Text = $"Total sum:  {Task.Run(() => ((AllCosts)BindingContext)?.GetSum(currentMonth).Result.ToString()).Result}";
+        ((AllCosts)BindingContext).Sum = await App.AllCostsService.GetSum(currentMonth);
     }
 
     private async void Add_Clicked(object sender, EventArgs e)
@@ -58,7 +55,6 @@ public partial class AllCostsPage : ContentPage
             ((AllCosts)BindingContext)?.Costs.Add(cost);
         }
 
-        var sum = await App.AllCostsService.GetSum(selectedDate.Month);
-        SumText.Text = $"Total sum: {sum}";
+        ((AllCosts)BindingContext).Sum = await App.AllCostsService.GetSum(selectedDate.Month);
     }
 }
