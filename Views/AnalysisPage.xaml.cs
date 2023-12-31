@@ -44,9 +44,8 @@ public partial class AnalysisPage : ContentPage
 
         ResetView();
         var currentMonth = DateTime.UtcNow.Date.Month;
-        var groupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(currentMonth);
-        GroupCosts = groupCosts;
-        foreach (var costGroup in groupCosts)
+        GroupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(currentMonth);
+        foreach (var costGroup in GroupCosts)
         {
             decimal? sum = decimal.Zero;
             foreach (var cost in costGroup)
@@ -67,21 +66,19 @@ public partial class AnalysisPage : ContentPage
         DateTime selectedDate = e.NewDate;
 
         //ResetView();
-        //GroupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(selectedDate.Month);
-        var groupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(selectedDate.Month);
-        GroupCosts = groupCosts;
-        foreach (var costGroup in groupCosts)
+        GroupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(selectedDate.Month);
+        foreach (var costGroup in GroupCosts)
         {
-            decimal? sum = decimal.Zero;
+            decimal? sumGroup = decimal.Zero;
             foreach (var cost in costGroup)
             {
-                sum += cost.Value;
+                sumGroup += cost.Value;
             }
-            costGroup.Key.SumValue = sum;
+            costGroup.Key.SumValue = sumGroup;
 
         }
 
-        // var sum = await ((AllCosts)BindingContext)?.GetSum(selectedDate.Month);
+        //var sum = await App.AllCostsService.GetSum(selectedDate.Month);
         // SumText.Text = $"Total sum: {sum}";
 
         BindingContext = this;
