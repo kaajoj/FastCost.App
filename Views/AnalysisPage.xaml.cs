@@ -29,28 +29,14 @@ public partial class AnalysisPage : ContentPage
         InitializeComponent();
     }
 
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-    
-        ResetView();
-    }
-
-    private void ResetView()
-    {
-        BindingContext = new AllCostsGroup();
-    }
-
     protected override async void OnNavigatedTo(NavigatedToEventArgs state)
     {
         base.OnNavigatedTo(state);
 
-        //ResetView();
         var currentMonth = DateTime.UtcNow.Date.Month;
 
         //((AllCostsGroup)BindingContext)?.GroupCosts.Clear();
         GroupCosts.Clear();
-        //var groupCosts = ((AllCostsGroup)BindingContext)?.GroupCosts;
         var groupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(currentMonth);
         //GroupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(currentMonth);
         foreach (var costGroup in groupCosts)
@@ -66,13 +52,8 @@ public partial class AnalysisPage : ContentPage
             //((AllCostsGroup)BindingContext)?.GroupCosts.Add(costGroup);
         }
 
-        //foreach (var costGroup in groupCosts)
-        //{
-
-        //}
-
         var sum = await App.AllCostsService.GetSum(currentMonth);
-        SumText.Text = $"Total sum: {sum}";
+        //SumText.Text = $"Total sum: {sum}";
 
         BindingContext = this;
     }
@@ -81,11 +62,8 @@ public partial class AnalysisPage : ContentPage
     {
         DateTime selectedDate = e.NewDate;
 
-        //ResetView();
-
         //((AllCostsGroup)BindingContext)?.GroupCosts.Clear();
         GroupCosts.Clear();
-        //var groupCosts = ((AllCostsGroup)BindingContext)?.GroupCosts;
         var groupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(selectedDate.Month);
         //GroupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(selectedDate.Month);
         foreach (var costGroup in groupCosts)
@@ -101,13 +79,8 @@ public partial class AnalysisPage : ContentPage
             //((AllCostsGroup)BindingContext)?.GroupCosts.Add(costGroup);
         }
 
-        //foreach (var costGroup in groupCosts)
-        //{
-
-        //}
-
         var sum = await App.AllCostsService.GetSum(selectedDate.Month);
-        SumText.Text = $"Total sum: {sum}";
+        //SumText.Text = $"Total sum: {sum}";
 
         BindingContext = this;
     }
