@@ -44,11 +44,11 @@ public partial class AnalysisPage : ContentPage
     {
         base.OnNavigatedTo(state);
 
-        var currentMonth = DateTime.UtcNow.Date.Month;
+        var currentDate = DateTime.UtcNow.Date;
 
         //((AllCostsGroup)BindingContext)?.GroupCosts.Clear();
         GroupCosts.Clear();
-        var groupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(currentMonth);
+        var groupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(currentDate);
         foreach (var costGroup in groupCosts)
         {
             decimal? sumGroup = decimal.Zero;
@@ -62,7 +62,7 @@ public partial class AnalysisPage : ContentPage
             //((AllCostsGroup)BindingContext)?.GroupCosts.Add(costGroup);
         }
 
-        Sum = await App.AllCostsService.GetSum(currentMonth);
+        Sum = await App.AllCostsService.GetSum(currentDate);
 
         BindingContext = this;
     }
@@ -73,7 +73,7 @@ public partial class AnalysisPage : ContentPage
 
         //((AllCostsGroup)BindingContext)?.GroupCosts.Clear();
         GroupCosts.Clear();
-        var groupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(selectedDate.Month);
+        var groupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(selectedDate);
         foreach (var costGroup in groupCosts)
         {
             decimal? sumGroup = decimal.Zero;
@@ -87,7 +87,7 @@ public partial class AnalysisPage : ContentPage
             //((AllCostsGroup)BindingContext)?.GroupCosts.Add(costGroup);
         }
 
-        Sum = await App.AllCostsService.GetSum(selectedDate.Month);
+        Sum = await App.AllCostsService.GetSum(selectedDate);
 
         BindingContext = this;
     }

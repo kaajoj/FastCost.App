@@ -12,9 +12,9 @@ namespace FastCost.Services
             return results;
         }
 
-        public async Task<List<CostModel>> LoadCostsByMonth(int month)
+        public async Task<List<CostModel>> LoadCostsByMonth(DateTime date)
         {
-            var results = await App.CostRepository.GetCostsByMonth(month);
+            var results = await App.CostRepository.GetCostsByMonth(date);
             var costs = results.Adapt<List<CostModel>>();
 
             // workaround with linking category to cost
@@ -32,18 +32,18 @@ namespace FastCost.Services
             return costs;
         }
 
-        public async Task<decimal> GetSum(int month)
+        public async Task<decimal> GetSum(DateTime date)
         {
-            var results = await App.CostRepository.GetCostsByMonth(month);
+            var results = await App.CostRepository.GetCostsByMonth(date);
             var costs = results.Adapt<List<CostModel>>();
 
             var costsInCurrentMonth = costs.Sum(c => c.Value);
             return (decimal)costsInCurrentMonth;
         }
 
-        public async Task<IEnumerable<IGrouping<Category, CostModel>>> GetCostsByMonthGroupByCategory(int month)
+        public async Task<IEnumerable<IGrouping<Category, CostModel>>> GetCostsByMonthGroupByCategory(DateTime date)
         {
-            var results = await App.CostRepository.GetCostsByMonth(month);
+            var results = await App.CostRepository.GetCostsByMonth(date);
             var costs = results.Adapt<List<CostModel>>();
 
             var costsByCategory = costs.GroupBy(cost => cost.Category);

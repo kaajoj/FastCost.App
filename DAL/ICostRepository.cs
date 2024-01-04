@@ -6,7 +6,7 @@ namespace FastCost.DAL
     {
         Task<List<Cost>> GetCostsAsync();
         Task<Cost> GetCostAsync(int id);
-        Task<List<Cost>> GetCostsByMonth(int month);
+        Task<List<Cost>> GetCostsByMonth(DateTime date);
         Task<int> SaveCostAsync(Cost cost);
         Task<int> DeleteCostAsync(Cost cost);
     }

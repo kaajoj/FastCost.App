@@ -13,16 +13,16 @@ public partial class AllCostsPage : ContentPage
     {
         base.OnNavigatedTo(state);
 
-        var currentMonth = DateTime.UtcNow.Date.Month;
+        var currentDate = DateTime.UtcNow.Date;
 
         ((AllCosts)BindingContext)?.Costs.Clear();
-        var costs = await App.AllCostsService.LoadCostsByMonth(currentMonth);
+        var costs = await App.AllCostsService.LoadCostsByMonth(currentDate);
         foreach (CostModel cost in costs.OrderBy(cost => cost.Date))
         {
             ((AllCosts)BindingContext)?.Costs.Add(cost);
         }
 
-        ((AllCosts)BindingContext).Sum = await App.AllCostsService.GetSum(currentMonth);
+        ((AllCosts)BindingContext).Sum = await App.AllCostsService.GetSum(currentDate);
     }
 
     private async void Add_Clicked(object sender, EventArgs e)
@@ -49,12 +49,12 @@ public partial class AllCostsPage : ContentPage
         DateTime selectedDate = e.NewDate;
 
         ((AllCosts)BindingContext)?.Costs.Clear();
-        var costs = await App.AllCostsService.LoadCostsByMonth(selectedDate.Month);
+        var costs = await App.AllCostsService.LoadCostsByMonth(selectedDate);
         foreach (CostModel cost in costs.OrderBy(cost => cost.Date))
         {
             ((AllCosts)BindingContext)?.Costs.Add(cost);
         }
 
-        ((AllCosts)BindingContext).Sum = await App.AllCostsService.GetSum(selectedDate.Month);
+        ((AllCosts)BindingContext).Sum = await App.AllCostsService.GetSum(selectedDate);
     }
 }

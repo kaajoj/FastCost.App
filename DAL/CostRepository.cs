@@ -27,14 +27,14 @@ namespace FastCost.DAL
             return await Database.Table<Cost>().ToListAsync();
         }
 
-        public async Task<List<Cost>> GetCostsByMonth(int month)
+        public async Task<List<Cost>> GetCostsByMonth(DateTime date)
         {
             await Init();
 
             // var targetDate = new DateTime(DateTime.Now.Year, month, 1);
             // var targetTicks = targetDate.Ticks;
 
-            var startDate = new DateTime(DateTime.Now.Year, month, 1);
+            var startDate = new DateTime(date.Year, date.Month, 1);
             var endDate = startDate.AddMonths(1);
 
             return await Database.Table<Cost>().Where(c => c.Date >= startDate && c.Date < endDate).ToListAsync();

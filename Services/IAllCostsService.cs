@@ -6,8 +6,8 @@ namespace FastCost.Services
     public interface IAllCostsService
     {
         public Task<List<Cost>> LoadCostsBackUp();
-        public Task<List<CostModel>> LoadCostsByMonth(int month);
-        public Task<decimal> GetSum(int month);
-        public Task<IEnumerable<IGrouping<Category, CostModel>>> GetCostsByMonthGroupByCategory(int month);
+        public Task<List<CostModel>> LoadCostsByMonth(DateTime date);
+        public Task<decimal> GetSum(DateTime date);
+        public Task<IEnumerable<IGrouping<Category, CostModel>>> GetCostsByMonthGroupByCategory(DateTime date);
     }
 }
