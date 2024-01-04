@@ -11,8 +11,8 @@ public partial class MainPage : ContentPage
     
     protected override async void OnAppearing()
     {
-        var currentMonth = DateTime.UtcNow.Date.Month;
-        var costs = await App.CostRepository.GetCostsByMonth(currentMonth);
+        var currentDate = DateTime.UtcNow.Date;
+        var costs = await App.CostRepository.GetCostsByMonth(currentDate);
 
         var costsInCurrentMonth = costs.Sum(c => c.Value);
 
