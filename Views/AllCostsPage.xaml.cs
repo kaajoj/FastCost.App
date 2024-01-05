@@ -12,8 +12,8 @@ public partial class AllCostsPage : ContentPage
     protected override async void OnNavigatedTo(NavigatedToEventArgs state)
     {
         base.OnNavigatedTo(state);
-
-        var currentDate = DateTime.UtcNow.Date;
+        
+        var currentDate = ((AllCosts)BindingContext).SelectedDate;
 
         ((AllCosts)BindingContext)?.Costs.Clear();
         var costs = await App.AllCostsService.LoadCostsByMonth(currentDate);

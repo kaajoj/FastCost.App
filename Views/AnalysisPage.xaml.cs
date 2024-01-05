@@ -8,16 +8,17 @@ public partial class AnalysisPage : ContentPage
 {
     public ObservableCollection<IGrouping<Category, CostModel>> GroupCosts { get; set; } = new();
 
-    private string _selectedDate;
-    public string SelectedDate
+    public DateTime selectedDate = DateTime.Now;
+    public DateTime SelectedDate
     {
-        get
-        {
-            return _selectedDate ?? DateTime.Now.ToString();
-        }
+        get { return selectedDate; }
         set
         {
-            _selectedDate = value;
+            if (selectedDate != value)
+            {
+                selectedDate = value;
+                OnPropertyChanged();
+            }
         }
     }
 
@@ -44,7 +45,7 @@ public partial class AnalysisPage : ContentPage
     {
         base.OnNavigatedTo(state);
 
-        var currentDate = DateTime.UtcNow.Date;
+        var currentDate = SelectedDate;
 
         //((AllCostsGroup)BindingContext)?.GroupCosts.Clear();
         GroupCosts.Clear();
