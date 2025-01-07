@@ -1,4 +1,5 @@
-﻿namespace FastCost.DAL
+﻿using Microsoft.Maui.Storage;
+namespace FastCost.DAL
 {
     public class ConfigDb
     {
