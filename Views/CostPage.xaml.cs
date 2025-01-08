@@ -110,23 +110,24 @@ public partial class CostPage : ContentPage
 
     private void OnCategorySelected(object sender, TappedEventArgs args)
     {
-        if (_previousSelectedLabel != null && _previousSelectedLabel.BackgroundColor == Color.Parse("CadetBlue"))
+        if (_previousSelectedLabel != null)
         {
-            _previousSelectedLabel.BackgroundColor = _previousSelectedLabelColor;
+            _previousSelectedLabel.BackgroundColor = Color.Parse("White");
             _previousSelectedLabel.Handler.UpdateValue("Background");
         }
 
         Label selectedLabel = (Label)sender;
         _previousSelectedLabel = selectedLabel;
-        _previousSelectedLabelColor = selectedLabel.BackgroundColor;
 
         selectedLabel.BackgroundColor = Color.Parse("CadetBlue");
         selectedLabel.Handler.UpdateValue("Background");
 
         _selectedCategory = args.Parameter?.ToString();
 
-        if (_selectedCategory != null) 
+        if (_selectedCategory != null)
+        {
             ((CostModel)BindingContext).CategoryId = int.Parse(_selectedCategory);
+        }
 
         // var id = selectedLabel.Id;
         // var text = selectedLabel.Text;
