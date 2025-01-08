@@ -18,13 +18,29 @@ public partial class CostPage : ContentPage
 
     private string _selectedCategory;
     private Label _previousSelectedLabel;
-    private Color _previousSelectedLabelColor;
-
+    private readonly Dictionary<int, string> _categoryDict;
 
     public CostPage() 
     {
         InitializeComponent();
         // this.categoriesGrid.SelectionChanged += OnCategorySelected;
+
+        _categoryDict = new Dictionary<int, string>();
+        int col = 0;
+        int row = 0;
+        for (int i = 1; i <= 8; i++)
+        {
+            _categoryDict.Add(i, $"LblCatC{col}R{row}");
+            if (i == 4)
+            {
+                col = 0;
+                row = 2;
+            }
+            else
+            {
+                col++;
+            }            
+        }
     }
 
     protected override void OnNavigatedTo(NavigatedToEventArgs state)
@@ -39,11 +55,23 @@ public partial class CostPage : ContentPage
 
         if (((CostModel)BindingContext).Value != 0)
         {
-            if(((CostModel)BindingContext).Date.Year != DateTime.UtcNow.Year)
+            CostValueEditor.Text = ((CostModel)BindingContext).Value.ToString();
+            if (((CostModel)BindingContext).Date.Year != DateTime.UtcNow.Year)
             {
                 ((CostModel)BindingContext).Date = DateTime.UtcNow;
             }
-            CostValueEditor.Text = ((CostModel)BindingContext).Value.ToString();
+
+            int categoryId = ((CostModel)BindingContext).CategoryId;
+            _categoryDict.TryGetValue(categoryId, out string labelName);
+
+            if (!string.IsNullOrEmpty(labelName))
+            {
+                Label categoryLabel = (Label)this.FindByName(labelName);
+                categoryLabel.BackgroundColor = Color.Parse("CadetBlue");
+                categoryLabel.Handler.UpdateValue("Background");
+
+                _previousSelectedLabel = categoryLabel;
+            }
         }
         else
         {
