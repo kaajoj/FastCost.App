@@ -4,7 +4,6 @@ namespace FastCost;
 
 public partial class App : Application
 {
-    private readonly IAllCostsService _allCostsService;
     private readonly AppDbContext _dbContext;
 
     public App(AppDbContext dbContext, IAllCostsService allCostsService)
@@ -13,8 +12,6 @@ public partial class App : Application
 
         _dbContext = dbContext;
         InitializeDatabase();
-
-        _allCostsService = allCostsService;
     }
 
     private void InitializeDatabase()
@@ -31,6 +28,6 @@ public partial class App : Application
 
     protected override Window CreateWindow(IActivationState activationState)
     {
-        return new Window(new AppShell(_allCostsService));
+        return new Window(new AppShell());
     }
 }
