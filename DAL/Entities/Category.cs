@@ -9,7 +9,5 @@ namespace FastCost.DAL.Entities
         public int Id { get; set; }
 
         public string Name { get; set; }
-
-        public decimal? SumValue { get; set; }
     }
 }

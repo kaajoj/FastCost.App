@@ -1,12 +1,11 @@
-﻿using FastCost.DAL.Entities;
-using FastCost.Models;
+﻿using FastCost.Models;
 using System.Collections.ObjectModel;
 
 namespace FastCost.Views;
 
 public partial class AnalysisPage : ContentPage
 {
-    public ObservableCollection<IGrouping<Category, CostModel>> GroupCosts { get; set; } = new();
+    public ObservableCollection<IGrouping<CategoryModel, CostModel>> GroupCosts { get; set; } = new();
 
     public DateTime selectedDate = DateTime.Now;
     public DateTime SelectedDate
@@ -47,7 +46,6 @@ public partial class AnalysisPage : ContentPage
 
         var currentDate = SelectedDate;
 
-        //((AllCostsGroup)BindingContext)?.GroupCosts.Clear();
         GroupCosts.Clear();
         var groupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(currentDate);
         foreach (var costGroup in groupCosts)
@@ -60,7 +58,6 @@ public partial class AnalysisPage : ContentPage
             costGroup.Key.SumValue = sumGroup;
 
             GroupCosts.Add(costGroup);
-            //((AllCostsGroup)BindingContext)?.GroupCosts.Add(costGroup);
         }
 
         Sum = await App.AllCostsService.GetSum(currentDate);
@@ -72,7 +69,6 @@ public partial class AnalysisPage : ContentPage
     {
         DateTime selectedDate = e.NewDate;
 
-        //((AllCostsGroup)BindingContext)?.GroupCosts.Clear();
         GroupCosts.Clear();
         var groupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(selectedDate);
         foreach (var costGroup in groupCosts)
@@ -85,7 +81,6 @@ public partial class AnalysisPage : ContentPage
             costGroup.Key.SumValue = sumGroup;
 
             GroupCosts.Add(costGroup);
-            //((AllCostsGroup)BindingContext)?.GroupCosts.Add(costGroup);
         }
 
         Sum = await App.AllCostsService.GetSum(selectedDate);

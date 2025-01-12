@@ -6,6 +6,6 @@
 
         public string Name { get; set; }
 
-        public int SumValue { get; set; }
+        public decimal? SumValue { get; set; }
     }
 }

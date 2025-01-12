@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using FastCost.DAL.Entities;
 
 namespace FastCost.Models
 {
@@ -13,7 +12,7 @@ namespace FastCost.Models
         public string Description { get; set; }
 
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public CategoryModel Category { get; set; }
 
         public string FormattedDate => Date.ToString("dd.MM");
 
