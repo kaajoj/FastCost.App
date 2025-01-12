@@ -12,24 +12,9 @@ namespace FastCost.Services
             return results;
         }
 
-        public async Task<List<CostModel>> LoadCostsByMonth(DateTime date)
+        public async Task<List<Cost>> LoadCostsByMonth(DateTime date)
         {
-            var results = await App.CostRepository.GetCostsByMonth(date);
-            var costs = results.Adapt<List<CostModel>>();
-
-            // workaround with linking category to cost
-            // TODO: db tables relation
-            var categories = await App.CategoryRepository.GetCategoriesAsync();
-            foreach (var cost in costs)
-            {
-                cost.Category = categories.SingleOrDefault(cat => cat.Id == cost.CategoryId);
-                if (cost.Category is null)
-                {
-                    cost.Category = new Category { Name = "no category" };
-                }
-            }
-
-            return costs;
+            return await App.CostRepository.GetCostsByMonth(date);
         }
 
         public async Task<decimal> GetSum(DateTime date)

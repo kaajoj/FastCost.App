@@ -1,4 +1,5 @@
 ﻿using FastCost.Models;
+using Mapster;
 
 namespace FastCost.Views;
 
@@ -17,7 +18,7 @@ public partial class AllCostsPage : ContentPage
 
         ((AllCosts)BindingContext)?.Costs.Clear();
         var costs = await App.AllCostsService.LoadCostsByMonth(currentDate);
-        foreach (CostModel cost in costs.OrderBy(cost => cost.Date))
+        foreach (CostModel cost in costs.Adapt<List<CostModel>>().OrderBy(cost => cost.Date))
         {
             ((AllCosts)BindingContext)?.Costs.Add(cost);
         }
@@ -50,7 +51,7 @@ public partial class AllCostsPage : ContentPage
 
         ((AllCosts)BindingContext)?.Costs.Clear();
         var costs = await App.AllCostsService.LoadCostsByMonth(selectedDate);
-        foreach (CostModel cost in costs.OrderBy(cost => cost.Date))
+        foreach (CostModel cost in costs.Adapt<List<CostModel>>().OrderBy(cost => cost.Date))
         {
             ((AllCosts)BindingContext)?.Costs.Add(cost);
         }

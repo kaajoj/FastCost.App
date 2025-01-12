@@ -1,71 +1,54 @@
 ﻿using FastCost.DAL.Entities;
-using SQLite;
+using Microsoft.EntityFrameworkCore;
 
 namespace FastCost.DAL
 {
     public class CategoryRepository : ICategoryRepository
     {
-        SQLiteAsyncConnection Database;
+        private readonly AppDbContext _dbContext;
 
-        public CategoryRepository()
+        public CategoryRepository(AppDbContext dbContext)
         {
-        }
-
-        async Task Init()
-        {
-            if (Database is not null)
-                return;
-
-            Database = new SQLiteAsyncConnection(ConfigDb.DatabasePath, ConfigDb.Flags);
-            await Database.CreateTableAsync<Category>();
-            await InitCategoriesAsync();
+            _dbContext = dbContext;
+            EnsureCategoriesInitializedAsync().Wait();
         }
 
         public async Task<List<Category>> GetCategoriesAsync()
         {
-            await Init();
-            return await Database.Table<Category>().ToListAsync();
+            return await _dbContext.Categories.ToListAsync();
+
         }
-
-        // public async Task<List<Category>> GetCategoriesNotDoneAsync()
-        // {
-        //     await Init();
-        //     return await Database.Table<Category>().Where(t => t.Done).ToListAsync();
-        //
-        //     // SQL queries are also possible
-        //     //return await Database.QueryAsync<TodoCategory>("SELECT * FROM [TodoCategory] WHERE [Done] = 0");
-        // }
-
         public async Task<Category> GetCategoryAsync(int id)
         {
-            await Init();
-            return await Database.Table<Category>().Where(i => i.Id == id).FirstOrDefaultAsync();
+            return await _dbContext.Categories.FirstOrDefaultAsync(c => c.Id == id);
         }
 
         public async Task<int> SaveCategoryAsync(Category category)
         {
-            await Init();
             if (category.Id != 0)
-                return await Database.UpdateAsync(category);
+            {
+                _dbContext.Categories.Update(category);
+            }
             else
-                return await Database.InsertAsync(category);
+            {
+                await _dbContext.Categories.AddAsync(category);
+            }
+
+            return await _dbContext.SaveChangesAsync();
         }
 
         public async Task<int> DeleteCategoryAsync(Category category)
         {
-            await Init();
-            return await Database.DeleteAsync(category);
+            _dbContext.Categories.Remove(category);
+            return await _dbContext.SaveChangesAsync();
         }
 
-        private async Task InitCategoriesAsync()
+        private async Task EnsureCategoriesInitializedAsync()
         {
-            var categoriesDb = await Database.Table<Category>().ToListAsync();
-            if (categoriesDb.Any())
-            {
+            if (await _dbContext.Categories.AnyAsync())
                 return;
-            }
 
-            var categories = new List<Category>()
+            var categories = new List<Category>
             {
                 new() { Id = 1, Name = "food" },
                 new() { Id = 2, Name = "apartment" },
@@ -77,7 +60,8 @@ namespace FastCost.DAL
                 new() { Id = 8, Name = "other" }
             };
 
-            await Database.InsertAllAsync(categories);
+            await _dbContext.Categories.AddRangeAsync(categories);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

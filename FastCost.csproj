@@ -43,6 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Mapster" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" />
     <PackageReference Include="sqlite-net-pcl" />
     <PackageReference Include="SQLitePCLRaw.bundle_green" />

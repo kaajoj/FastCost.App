@@ -100,7 +100,7 @@ public partial class CostPage : ContentPage
                 NumberGroupSeparator = indexOfComma > indexOfDot ? "." : ","
             };
 
-            decimal.TryParse(CostValueEditor.Text, NumberStyles.Number, numberFormat, out var enteredCost);
+            decimal.TryParse(CostValueEditor.Text?.Trim(), NumberStyles.Number, numberFormat, out var enteredCost);
 
             if (BindingContext is CostModel costModel)
             {
@@ -116,7 +116,7 @@ public partial class CostPage : ContentPage
         {
             await DisplayAlert("Unable to add cost", "Cost value was not valid.", "OK");
         }
-        catch (Exception)
+        catch (Exception eee)
         {
             await DisplayAlert("Unable to add cost", "Cost adding failed.", "OK");
         }
