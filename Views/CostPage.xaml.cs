@@ -10,12 +10,12 @@ namespace FastCost.Views;
 [QueryProperty(nameof(CostValue), nameof(CostValue))]
 public partial class CostPage : ContentPage
 {
-    private readonly CostRepository _costRepository;
+    private readonly ICostRepository _costRepository;
     private string _selectedCategory;
     private Label _previousSelectedLabel;
     private readonly Dictionary<int, string> _categoryDict;
 
-    public CostPage(CostRepository costRepository) 
+    public CostPage(ICostRepository costRepository) 
     {
         InitializeComponent();
         // this.categoriesGrid.SelectionChanged += OnCategorySelected;
