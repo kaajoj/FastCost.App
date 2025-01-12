@@ -2,7 +2,7 @@
 
 namespace FastCost.DAL
 {
-    internal interface ICostRepository
+    public interface ICostRepository
     {
         Task<List<Cost>> GetCostsAsync();
         Task<Cost> GetCostAsync(int id);

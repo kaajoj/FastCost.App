@@ -1,18 +1,22 @@
-﻿using System.Globalization;
+﻿using FastCost.DAL;
+using System.Globalization;
 
 namespace FastCost.Views;
 
 public partial class MainPage : ContentPage
 {
-    public MainPage()
+    private readonly ICostRepository _costRepository;
+
+    public MainPage(ICostRepository costRepository)
 	{
 		InitializeComponent();
+        _costRepository = costRepository;
     }
     
     protected override async void OnAppearing()
     {
         var currentDate = DateTime.UtcNow.Date;
-        var costs = await App.CostRepository.GetCostsByMonth(currentDate);
+        var costs = await _costRepository.GetCostsByMonth(currentDate);
 
         var costsInCurrentMonth = costs.Sum(c => c.Value);
 

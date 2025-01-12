@@ -1,25 +1,20 @@
-﻿using FastCost.DAL;
-using FastCost.Services;
+﻿using FastCost.Services;
 
 namespace FastCost;
 
 public partial class App : Application
 {
-    internal static CostRepository CostRepository;
-    internal static CategoryRepository CategoryRepository;
-    internal static AllCostsService AllCostsService;
+    private readonly IAllCostsService _allCostsService;
     private readonly AppDbContext _dbContext;
 
-    public App(AppDbContext dbContext, CostRepository costRepository, CategoryRepository categoryRepository, AllCostsService allCostsService)
+    public App(AppDbContext dbContext, IAllCostsService allCostsService)
 	{
         InitializeComponent();
 
         _dbContext = dbContext;
         InitializeDatabase();
 
-        CostRepository = costRepository;
-        CategoryRepository = categoryRepository;
-        AllCostsService = allCostsService;
+        _allCostsService = allCostsService;
     }
 
     private void InitializeDatabase()
@@ -36,6 +31,6 @@ public partial class App : Application
 
     protected override Window CreateWindow(IActivationState activationState)
     {
-        return new Window(new AppShell());
+        return new Window(new AppShell(_allCostsService));
     }
 }

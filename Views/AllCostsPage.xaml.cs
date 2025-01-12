@@ -1,13 +1,17 @@
 ﻿using FastCost.Models;
+using FastCost.Services;
 using Mapster;
 
 namespace FastCost.Views;
 
 public partial class AllCostsPage : ContentPage
 {
-    public AllCostsPage()
+    private readonly IAllCostsService _allCostsService;
+
+    public AllCostsPage(IAllCostsService allCostsService)
 	{
         InitializeComponent();
+        _allCostsService = allCostsService;
     }
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs state)
@@ -17,13 +21,13 @@ public partial class AllCostsPage : ContentPage
         var currentDate = ((AllCosts)BindingContext).SelectedDate;
 
         ((AllCosts)BindingContext)?.Costs.Clear();
-        var costs = await App.AllCostsService.LoadCostsByMonth(currentDate);
+        var costs = await _allCostsService.LoadCostsByMonth(currentDate);
         foreach (CostModel cost in costs.Adapt<List<CostModel>>().OrderBy(cost => cost.Date))
         {
             ((AllCosts)BindingContext)?.Costs.Add(cost);
         }
 
-        ((AllCosts)BindingContext).Sum = await App.AllCostsService.GetSum(currentDate);
+        ((AllCosts)BindingContext).Sum = await _allCostsService.GetSum(currentDate);
     }
 
     private async void Add_Clicked(object sender, EventArgs e)
@@ -50,12 +54,12 @@ public partial class AllCostsPage : ContentPage
         DateTime selectedDate = e.NewDate;
 
         ((AllCosts)BindingContext)?.Costs.Clear();
-        var costs = await App.AllCostsService.LoadCostsByMonth(selectedDate);
+        var costs = await _allCostsService.LoadCostsByMonth(selectedDate);
         foreach (CostModel cost in costs.Adapt<List<CostModel>>().OrderBy(cost => cost.Date))
         {
             ((AllCosts)BindingContext)?.Costs.Add(cost);
         }
 
-        ((AllCosts)BindingContext).Sum = await App.AllCostsService.GetSum(selectedDate);
+        ((AllCosts)BindingContext).Sum = await _allCostsService.GetSum(selectedDate);
     }
 }

@@ -1,6 +1,5 @@
 ﻿using FastCost.DAL;
 using FastCost.Services;
-using FastCost.Views;
 using Microsoft.Extensions.Logging;
 
 namespace FastCost;
@@ -21,12 +20,12 @@ public static class MauiProgram
 
         builder.Services.AddDbContext<AppDbContext>();
 
-        builder.Services.AddScoped<CostRepository>();
-        builder.Services.AddScoped<CategoryRepository>();
-        builder.Services.AddScoped<AllCostsService>();
+        builder.Services.AddScoped<IAllCostsService, AllCostsService>();
+		builder.Services.AddScoped<ICostRepository, CostRepository>();
+		builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 #if DEBUG
-        builder.Logging.AddDebug();
+		builder.Logging.AddDebug();
 #endif
 
 		return builder.Build();

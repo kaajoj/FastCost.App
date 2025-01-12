@@ -1,10 +1,19 @@
 ﻿using FastCost.Models;
+using FastCost.Services;
 using System.Collections.ObjectModel;
 
 namespace FastCost.Views;
 
 public partial class AnalysisPage : ContentPage
 {
+    private readonly IAllCostsService _allCostsService;
+
+    public AnalysisPage(IAllCostsService allCostsService)
+    {
+        InitializeComponent();
+        _allCostsService = allCostsService;
+    }
+
     public ObservableCollection<IGrouping<CategoryModel, CostModel>> GroupCosts { get; set; } = new();
 
     public DateTime selectedDate = DateTime.Now;
@@ -35,11 +44,6 @@ public partial class AnalysisPage : ContentPage
         }
     }
 
-    public AnalysisPage()
-    {
-        InitializeComponent();
-    }
-
     protected override async void OnNavigatedTo(NavigatedToEventArgs state)
     {
         base.OnNavigatedTo(state);
@@ -47,7 +51,7 @@ public partial class AnalysisPage : ContentPage
         var currentDate = SelectedDate;
 
         GroupCosts.Clear();
-        var groupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(currentDate);
+        var groupCosts = await _allCostsService?.GetCostsByMonthGroupByCategory(currentDate);
         foreach (var costGroup in groupCosts)
         {
             decimal? sumGroup = decimal.Zero;
@@ -60,7 +64,7 @@ public partial class AnalysisPage : ContentPage
             GroupCosts.Add(costGroup);
         }
 
-        Sum = await App.AllCostsService.GetSum(currentDate);
+        Sum = await _allCostsService.GetSum(currentDate);
 
         BindingContext = this;
     }
@@ -70,7 +74,7 @@ public partial class AnalysisPage : ContentPage
         DateTime selectedDate = e.NewDate;
 
         GroupCosts.Clear();
-        var groupCosts = await App.AllCostsService?.GetCostsByMonthGroupByCategory(selectedDate);
+        var groupCosts = await _allCostsService?.GetCostsByMonthGroupByCategory(selectedDate);
         foreach (var costGroup in groupCosts)
         {
             decimal? sumGroup = decimal.Zero;
@@ -83,7 +87,7 @@ public partial class AnalysisPage : ContentPage
             GroupCosts.Add(costGroup);
         }
 
-        Sum = await App.AllCostsService.GetSum(selectedDate);
+        Sum = await _allCostsService.GetSum(selectedDate);
 
         BindingContext = this;
     }

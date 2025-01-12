@@ -1,4 +1,5 @@
-﻿using FastCost.DAL.Entities;
+﻿using FastCost.DAL;
+using FastCost.DAL.Entities;
 using FastCost.Models;
 using Mapster;
 
@@ -6,26 +7,33 @@ namespace FastCost.Services
 {
     public class AllCostsService : IAllCostsService
     {
+        private readonly ICostRepository _costRepository;
+
+        public AllCostsService(ICostRepository costRepository)
+        {
+            _costRepository = costRepository;
+        }
+
         public async Task<List<Cost>> LoadCostsBackUp()
         {
-            var results = await App.CostRepository.GetCostsAsync();
+            var results = await _costRepository.GetCostsAsync();
             return results;
         }
 
         public async Task<List<Cost>> LoadCostsByMonth(DateTime date)
         {
-            return await App.CostRepository.GetCostsByMonth(date);
+            return await _costRepository.GetCostsByMonth(date);
         }
 
         public async Task<decimal> GetSum(DateTime date)
         {
-            var costs = await App.CostRepository.GetCostsByMonth(date);
+            var costs = await _costRepository.GetCostsByMonth(date);
             return costs.Sum(c => c.Value);
         }
 
         public async Task<IEnumerable<IGrouping<CategoryModel, CostModel>>> GetCostsByMonthGroupByCategory(DateTime date)
         {
-            var results = await App.CostRepository.GetCostsByMonth(date);
+            var results = await _costRepository.GetCostsByMonth(date);
             var costs = results.Adapt<List<CostModel>>();
 
             return costs.GroupBy(cost => cost.Category);

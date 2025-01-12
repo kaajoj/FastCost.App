@@ -1,4 +1,5 @@
-﻿using FastCost.DAL.Entities;
+﻿using FastCost.DAL;
+using FastCost.DAL.Entities;
 using FastCost.Models;
 using Mapster;
 using System.Globalization;
@@ -9,21 +10,17 @@ namespace FastCost.Views;
 [QueryProperty(nameof(CostValue), nameof(CostValue))]
 public partial class CostPage : ContentPage
 {
-    public string ItemId
-    {
-        set { _ = LoadCostAsync(value); }
-    }
-
-    public string CostValue { get; set; }
-
+    private readonly CostRepository _costRepository;
     private string _selectedCategory;
     private Label _previousSelectedLabel;
     private readonly Dictionary<int, string> _categoryDict;
 
-    public CostPage() 
+    public CostPage(CostRepository costRepository) 
     {
         InitializeComponent();
         // this.categoriesGrid.SelectionChanged += OnCategorySelected;
+
+        _costRepository = costRepository;
 
         _categoryDict = new Dictionary<int, string>();
         int col = 0;
@@ -42,6 +39,13 @@ public partial class CostPage : ContentPage
             }            
         }
     }
+
+    public string ItemId
+    {
+        set { _ = LoadCostAsync(value); }
+    }
+
+    public string CostValue { get; set; }
 
     protected override void OnNavigatedTo(NavigatedToEventArgs state)
     {
@@ -82,7 +86,7 @@ public partial class CostPage : ContentPage
 
     private async Task LoadCostAsync(string id)
     {
-        var cost = await App.CostRepository.GetCostAsync(int.Parse(id));
+        var cost = await _costRepository.GetCostAsync(int.Parse(id));
         var costModel = cost.Adapt<CostModel>();
 
         BindingContext = costModel;
@@ -107,7 +111,7 @@ public partial class CostPage : ContentPage
                 costModel.Value = enteredCost;
 
                 var cost = costModel.Adapt<Cost>();
-                await App.CostRepository.SaveCostAsync(cost);
+                await _costRepository.SaveCostAsync(cost);
             }
 
             await Shell.Current.GoToAsync($"//allCosts", true);
@@ -116,7 +120,7 @@ public partial class CostPage : ContentPage
         {
             await DisplayAlert("Unable to add cost", "Cost value was not valid.", "OK");
         }
-        catch (Exception eee)
+        catch (Exception)
         {
             await DisplayAlert("Unable to add cost", "Cost adding failed.", "OK");
         }
@@ -130,7 +134,7 @@ public partial class CostPage : ContentPage
 
             if (await DisplayAlert("Delete cost", "Do you want to remove the cost with the value: " + cost.Value + "?", "Yes", "No"))
             {
-                await App.CostRepository.DeleteCostAsync(cost);
+                await _costRepository.DeleteCostAsync(cost);
                 await Shell.Current.GoToAsync("..");
             }
         }

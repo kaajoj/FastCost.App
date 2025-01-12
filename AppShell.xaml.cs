@@ -1,14 +1,15 @@
 ﻿using FastCost.Models;
 using System.Windows.Input;
-using Microsoft.Maui.Storage;
+using FastCost.Services;
 
 namespace FastCost;
 
 public partial class AppShell : Shell
 {
+    private readonly IAllCostsService _allCostsService;
     public ICommand ExportCommand { get; private set; }
 
-    public AppShell()
+    public AppShell(IAllCostsService allCostsService)
 	{
 		InitializeComponent();
 
@@ -16,12 +17,13 @@ public partial class AppShell : Shell
 
         ExportCommand = new Command(ExportData);
         BindingContext = this;
+        _allCostsService = allCostsService;
     }
 
     private async void ExportData()
     {
         var allCosts = new AllCosts();
-        var costs = await App.AllCostsService.LoadCostsBackUp();
+        var costs = await _allCostsService.LoadCostsBackUp();
 
         var filePath = Path.Combine(FileSystem.AppDataDirectory, "costsBackUp.csv");
 
