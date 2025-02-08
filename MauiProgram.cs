@@ -1,4 +1,5 @@
 ﻿using FastCost.DAL;
+using FastCost.Mappings;
 using FastCost.Services;
 using Microsoft.Extensions.Logging;
 
@@ -20,6 +21,8 @@ public static class MauiProgram
 
         builder.Services.AddDbContext<AppDbContext>();
 
+        MapsterConfig.RegisterMappings();
+
         builder.Services.AddScoped<IAllCostsService, AllCostsService>();
 		builder.Services.AddScoped<ICostRepository, CostRepository>();
 		builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -28,6 +31,6 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 
-		return builder.Build();
-	}
+        return builder.Build();
+    }
 }
