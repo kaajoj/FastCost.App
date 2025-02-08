@@ -65,16 +65,19 @@ public partial class CostPage : ContentPage
                 ((CostModel)BindingContext).Date = DateTime.UtcNow;
             }
 
-            int categoryId = ((CostModel)BindingContext).CategoryId;
-            _categoryDict.TryGetValue(categoryId, out string labelName);
-
-            if (!string.IsNullOrEmpty(labelName))
+            int? categoryId = ((CostModel)BindingContext).CategoryId;
+            if (categoryId != null)
             {
-                Label categoryLabel = (Label)this.FindByName(labelName);
-                categoryLabel.BackgroundColor = Color.Parse("CadetBlue");
-                categoryLabel.Handler.UpdateValue("Background");
+                _categoryDict.TryGetValue((int)categoryId, out string labelName);
 
-                _previousSelectedLabel = categoryLabel;
+                if (!string.IsNullOrEmpty(labelName))
+                {
+                    Label categoryLabel = (Label)this.FindByName(labelName);
+                    categoryLabel.BackgroundColor = Color.Parse("CadetBlue");
+                    categoryLabel.Handler.UpdateValue("Background");
+
+                    _previousSelectedLabel = categoryLabel;
+                }
             }
         }
         else

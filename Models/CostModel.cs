@@ -3,16 +3,16 @@ using System.Runtime.CompilerServices;
 
 namespace FastCost.Models
 {
-    public class CostModel : INotifyPropertyChanged
+    public partial class CostModel : INotifyPropertyChanged
     {
         public int Id { get; set; }
 
         public decimal? Value { get; set; } = null;
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
-        public int CategoryId { get; set; }
-        public CategoryModel Category { get; set; }
+        public int? CategoryId { get; set; }
+        public CategoryModel? Category { get; set; }
 
         public string FormattedDate => Date.ToString("dd.MM");
 
