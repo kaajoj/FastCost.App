@@ -29,7 +29,7 @@ namespace FastCost.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("categories");
 
                     b.HasData(
                         new
@@ -96,7 +96,7 @@ namespace FastCost.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Costs");
+                    b.ToTable("costs");
                 });
 
             modelBuilder.Entity("FastCost.DAL.Entities.Cost", b =>

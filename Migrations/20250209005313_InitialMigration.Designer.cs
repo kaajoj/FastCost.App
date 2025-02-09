@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FastCost.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250208180749_InitialMigration")]
+    [Migration("20250209005313_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -32,7 +32,7 @@ namespace FastCost.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("categories");
 
                     b.HasData(
                         new
@@ -99,7 +99,7 @@ namespace FastCost.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Costs");
+                    b.ToTable("costs");
                 });
 
             modelBuilder.Entity("FastCost.DAL.Entities.Cost", b =>

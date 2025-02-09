@@ -14,7 +14,7 @@ namespace FastCost.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Categories",
+                name: "categories",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -23,11 +23,11 @@ namespace FastCost.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
+                    table.PrimaryKey("PK_categories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Costs",
+                name: "costs",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -39,16 +39,16 @@ namespace FastCost.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Costs", x => x.Id);
+                    table.PrimaryKey("PK_costs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Costs_Categories_CategoryId",
+                        name: "FK_costs_categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "Categories",
+                        principalTable: "categories",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.InsertData(
-                table: "Categories",
+                table: "categories",
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
@@ -63,8 +63,8 @@ namespace FastCost.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Costs_CategoryId",
-                table: "Costs",
+                name: "IX_costs_CategoryId",
+                table: "costs",
                 column: "CategoryId");
         }
 
@@ -72,10 +72,10 @@ namespace FastCost.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Costs");
+                name: "costs");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "categories");
         }
     }
 }

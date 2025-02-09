@@ -1,5 +1,6 @@
 ﻿using FastCost.DAL;
 using FastCost.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace FastCost;
 
@@ -19,7 +20,7 @@ public partial class App : Application
     {
         try
         {
-            _dbContext.Database.EnsureCreated();
+            _dbContext.Database.Migrate();
         }
         catch (Exception ex)
         {
