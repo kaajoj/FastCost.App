@@ -57,7 +57,7 @@ public partial class CostPage : ContentPage
             ((CostModel)BindingContext).Date = DateTime.UtcNow;
         }
 
-        if (((CostModel)BindingContext).Value != 0)
+        if (((CostModel)BindingContext).Value != null && ((CostModel)BindingContext).Value != 0)
         {
             CostValueEditor.Text = ((CostModel)BindingContext).Value.ToString();
             if (((CostModel)BindingContext).Date.Year != DateTime.UtcNow.Year)
@@ -82,7 +82,6 @@ public partial class CostPage : ContentPage
         }
         else
         {
-            CostValueEditor.Text = string.Empty;
             ((CostModel)BindingContext).Date = DateTime.UtcNow;
         }
     }
