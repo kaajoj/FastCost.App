@@ -146,7 +146,7 @@ public partial class CostPage : ContentPage
     {
         if (_previousSelectedLabel != null)
         {
-            _previousSelectedLabel.BackgroundColor = Color.Parse("White");
+            _previousSelectedLabel.BackgroundColor = Application.Current?.PlatformAppTheme == AppTheme.Dark ? Colors.Black : Colors.White;
             _previousSelectedLabel?.Handler?.UpdateValue("Background");
         }
 
