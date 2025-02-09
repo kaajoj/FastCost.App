@@ -28,7 +28,7 @@ namespace FastCost.DAL
                 .ToListAsync();
         }
 
-        public async Task<Cost> GetCostAsync(int id)
+        public async Task<Cost?> GetCostAsync(int id)
         {
             return await _dbContext.Costs.FirstOrDefaultAsync(i => i.Id == id);
         }
