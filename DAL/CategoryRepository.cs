@@ -10,20 +10,20 @@ namespace FastCost.DAL
         public CategoryRepository(AppDbContext dbContext)
         {
             _dbContext = dbContext;
-            EnsureCategoriesInitializedAsync().Wait();
+            EnsureCategoriesInitialized().Wait();
         }
 
-        public async Task<List<Category>> GetCategoriesAsync()
+        public async Task<List<Category>> GetCategories()
         {
             return await _dbContext.Categories.ToListAsync();
-
         }
-        public async Task<Category> GetCategoryAsync(int id)
+
+        public async Task<Category?> GetCategory(int id)
         {
             return await _dbContext.Categories.FirstOrDefaultAsync(c => c.Id == id);
         }
 
-        public async Task<int> SaveCategoryAsync(Category category)
+        public async Task<int> SaveCategory(Category category)
         {
             if (category.Id != 0)
             {
@@ -37,13 +37,14 @@ namespace FastCost.DAL
             return await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<int> DeleteCategoryAsync(Category category)
+        public async Task<int> DeleteCategory(Category category)
         {
             _dbContext.Categories.Remove(category);
             return await _dbContext.SaveChangesAsync();
         }
+           
 
-        private async Task EnsureCategoriesInitializedAsync()
+        private async Task EnsureCategoriesInitialized()
         {
             if (await _dbContext.Categories.AnyAsync())
                 return;

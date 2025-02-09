@@ -4,9 +4,9 @@ namespace FastCost.DAL
 {
     interface ICategoryRepository
     {
-        Task<List<Category>> GetCategoriesAsync();
-        Task<Category> GetCategoryAsync(int id);
-        Task<int> SaveCategoryAsync(Category category);
-        Task<int> DeleteCategoryAsync(Category category);
+        Task<List<Category>> GetCategories();
+        Task<Category?> GetCategory(int id);
+        Task<int> SaveCategory(Category category);
+        Task<int> DeleteCategory(Category category);
     }
 }
