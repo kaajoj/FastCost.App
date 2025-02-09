@@ -5,7 +5,7 @@ namespace FastCost.DAL;
 
 public partial class AppDbContext : DbContext
 {
-    public const string DatabaseFilename = "FastCostSQLite.db3";
+    public const string DatabaseFilename = "FastCostDbSQLite.db3";
     public static string DbPath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DatabaseFilename);
 
     public DbSet<Cost> Costs { get; set; }
