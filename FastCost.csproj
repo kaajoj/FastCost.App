@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-	<TargetFrameworks>net9.0;net9.0-android</TargetFrameworks>
+	<TargetFrameworks>net9.0-android</TargetFrameworks>
+	<!--<TargetFrameworks>net9.0;net9.0-android</TargetFrameworks>--> <!-- for xunit testing -->
 	<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
 	<OutputType Condition="'$(TargetFramework)' != 'net9.0'">Exe</OutputType>
 	<RootNamespace>FastCost</RootNamespace>
@@ -9,16 +10,18 @@
     <ImplicitUsings>enable</ImplicitUsings>
 	<Nullable>enable</Nullable>
 	<!-- Optimization -->
-	  <AndroidEnableAot>true</AndroidEnableAot>
-	  <RunAOTCompilation>true</RunAOTCompilation>
-    <!-- Display name -->
+	<AndroidEnableProfiledAot>true</AndroidEnableProfiledAot>
+	<AndroidEnableAot>true</AndroidEnableAot>
+	<RunAOTCompilation>true</RunAOTCompilation>
+	<EnableAssemblyILStripping>true</EnableAssemblyILStripping>
+	<!-- Display name -->
     <ApplicationTitle>FastCost</ApplicationTitle>
     <!-- App Identifier -->
     <ApplicationId>com.companyname.fastcost</ApplicationId>
     <!-- Versions -->
-	  <ApplicationVersion>4</ApplicationVersion>
-	  <!--<ApplicationDisplayVersion>1.0.5</ApplicationDisplayVersion>-->
-	  <!--<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>--> <!-- bug workaround, comment out or use 1.0 for xunit testing -->
+	<ApplicationVersion>5</ApplicationVersion>
+	<ApplicationDisplayVersion>1.0.6</ApplicationDisplayVersion>
+	<!--<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>--> <!-- bug workaround, comment out or use 1.0 for xunit testing -->
 	<DefaultLanguage>en</DefaultLanguage>
 	<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
     <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
