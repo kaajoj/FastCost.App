@@ -8,6 +8,9 @@
     <SingleProject>true</SingleProject>
     <ImplicitUsings>enable</ImplicitUsings>
 	<Nullable>enable</Nullable>
+	<!-- Optimization -->
+	  <AndroidEnableAot>true</AndroidEnableAot>
+	  <RunAOTCompilation>true</RunAOTCompilation>
     <!-- Display name -->
     <ApplicationTitle>FastCost</ApplicationTitle>
     <!-- App Identifier -->
