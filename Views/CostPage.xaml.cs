@@ -49,7 +49,7 @@ public partial class CostPage : ContentPage
 
     protected override void OnNavigatedTo(NavigatedToEventArgs state)
     {
-         base.OnNavigatedTo(state);
+        base.OnNavigatedTo(state);
 
         if (!string.IsNullOrEmpty(CostValue))
         {
@@ -74,7 +74,7 @@ public partial class CostPage : ContentPage
                 {
                     Label categoryLabel = (Label)this.FindByName(labelName);
                     categoryLabel.BackgroundColor = Color.Parse("CadetBlue");
-                    categoryLabel.Handler.UpdateValue("Background");
+                    categoryLabel?.Handler?.UpdateValue("Background");
 
                     _previousSelectedLabel = categoryLabel;
                 }
@@ -148,14 +148,14 @@ public partial class CostPage : ContentPage
         if (_previousSelectedLabel != null)
         {
             _previousSelectedLabel.BackgroundColor = Color.Parse("White");
-            _previousSelectedLabel.Handler.UpdateValue("Background");
+            _previousSelectedLabel?.Handler?.UpdateValue("Background");
         }
 
         Label selectedLabel = (Label)sender;
         _previousSelectedLabel = selectedLabel;
 
         selectedLabel.BackgroundColor = Color.Parse("CadetBlue");
-        selectedLabel.Handler.UpdateValue("Background");
+        selectedLabel?.Handler?.UpdateValue("Background");
 
         _selectedCategory = args.Parameter?.ToString();
 

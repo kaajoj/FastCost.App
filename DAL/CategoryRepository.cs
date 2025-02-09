@@ -10,7 +10,6 @@ namespace FastCost.DAL
         public CategoryRepository(AppDbContext dbContext)
         {
             _dbContext = dbContext;
-            EnsureCategoriesInitialized().Wait();
         }
 
         public async Task<List<Category>> GetCategories()
@@ -41,28 +40,6 @@ namespace FastCost.DAL
         {
             _dbContext.Categories.Remove(category);
             return await _dbContext.SaveChangesAsync();
-        }
-           
-
-        private async Task EnsureCategoriesInitialized()
-        {
-            if (await _dbContext.Categories.AnyAsync())
-                return;
-
-            var categories = new List<Category>
-            {
-                new() { Id = 1, Name = "food" },
-                new() { Id = 2, Name = "apartment" },
-                new() { Id = 3, Name = "shopping" },
-                new() { Id = 4, Name = "transport" },
-                new() { Id = 5, Name = "trip" },
-                new() { Id = 6, Name = "bank" },
-                new() { Id = 7, Name = "company" },
-                new() { Id = 8, Name = "other" }
-            };
-
-            await _dbContext.Categories.AddRangeAsync(categories);
-            await _dbContext.SaveChangesAsync();
         }
     }
 }

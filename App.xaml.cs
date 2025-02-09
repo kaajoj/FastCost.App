@@ -6,21 +6,21 @@ namespace FastCost;
 
 public partial class App : Application
 {
-    private readonly AppDbContext _dbContext;
-
-    public App(AppDbContext dbContext, IAllCostsService allCostsService)
+    public App(IServiceProvider serviceProvider, IAllCostsService allCostsService)
 	{
         InitializeComponent();
-
-        _dbContext = dbContext;
-        InitializeDatabase();
+        InitializeDatabase(serviceProvider);
     }
 
-    private void InitializeDatabase()
+    private void InitializeDatabase(IServiceProvider serviceProvider)
     {
         try
         {
-            _dbContext.Database.Migrate();
+            using (var scope = serviceProvider.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+                dbContext.Database.Migrate();
+            }
         }
         catch (Exception ex)
         {
